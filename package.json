@@ -8,10 +8,12 @@
     },
     "devDependencies": {
         "@tailwindcss/vite": "^4.0.0",
+        "autoprefixer": "^10.4.21",
         "axios": "^1.11.0",
         "concurrently": "^9.0.1",
         "laravel-vite-plugin": "^2.0.0",
-        "tailwindcss": "^4.1.15",
+        "postcss": "^8.5.6",
+        "tailwindcss": "^4.1.16",
         "vite": "^7.0.7"
     },
     "name": "sistempendukungkeputusandeteksidinipenyakitdiabetesmilitus",
@@ -69,7 +71,6 @@
         "nanoid": "^3.3.11",
         "picocolors": "^1.1.1",
         "picomatch": "^4.0.3",
-        "postcss": "^8.5.6",
         "proxy-from-env": "^1.1.0",
         "require-directory": "^2.1.1",
         "rollup": "^4.52.4",
@@ -93,5 +94,13 @@
     },
     "keywords": [],
     "author": "",
-    "license": "ISC"
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/yusuf0705/Sistem-Pendukung-Keputusan-untuk-Deteksi-Dini-Penyakit-Diabetes-Militus.git"
+    },
+    "bugs": {
+        "url": "https://github.com/yusuf0705/Sistem-Pendukung-Keputusan-untuk-Deteksi-Dini-Penyakit-Diabetes-Militus/issues"
+    },
+    "homepage": "https://github.com/yusuf0705/Sistem-Pendukung-Keputusan-untuk-Deteksi-Dini-Penyakit-Diabetes-Militus#readme"
 }
