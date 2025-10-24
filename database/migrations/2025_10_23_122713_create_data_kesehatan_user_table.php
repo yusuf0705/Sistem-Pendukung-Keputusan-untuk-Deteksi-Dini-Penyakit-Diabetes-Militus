@@ -11,23 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('data_kesehatan_user', function (Blueprint $table) {
-            $table->id('id_data_kesehatan_user');
-            
-            // 🔧 Perbaikan di sini:
-            // Menentukan kolom referensi foreign key secara eksplisit (users.id_user)
-            $table->foreignId('id_user')
-                  ->constrained('users', 'id_user')
-                  ->onDelete('cascade');
-            
-            $table->string('nama');
-            $table->integer('usia');
-            $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
-            $table->float('berat_badan');
-            $table->float('tinggi_badan');
-            $table->float('imt')->nullable();
-            $table->timestamps();
-        });
+     Schema::create('data_kesehatan_user', function (Blueprint $table) {
+    $table->id('id_data_kesehatan_user');
+    $table->unsignedBigInteger('id_user'); // harus sesuai tipe users.id_user
+    $table->foreign('id_user')
+          ->references('id_user') // kolom di tabel users
+          ->on('users')
+          ->onDelete('cascade');
+
+    $table->string('nama');
+    $table->integer('usia');
+    $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
+    $table->float('berat_badan');
+    $table->float('tinggi_badan');
+    $table->float('imt')->nullable();
+    $table->timestamps();
+});
+
     }
 
     /**
