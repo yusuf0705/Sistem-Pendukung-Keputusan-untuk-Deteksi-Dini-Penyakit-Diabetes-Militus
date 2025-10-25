@@ -22,6 +22,8 @@ Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
 Route::get('/forgot-password', [AuthController::class, 'showForgotPassword'])->name('forgot.password');
 
+Route::get('/dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard'); 
+
 // Deteksi Routes
 Route::prefix('deteksi')->name('deteksi.')->group(function () {
     Route::get('/', [DeteksiController::class, 'index'])->name('index');
@@ -32,3 +34,4 @@ Route::prefix('deteksi')->name('deteksi.')->group(function () {
 Route::prefix('riwayat_kesehatan')->name('riwayat_kesehatan.')->group(function () {
     Route::get('/', [RiwayatController::class, 'index'])->name('index');
 });
+
