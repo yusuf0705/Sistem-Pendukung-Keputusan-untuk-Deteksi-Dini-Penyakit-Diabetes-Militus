@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DeteksiController;
 use App\Http\Controllers\RiwayatController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PemeriksaanController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -23,7 +25,7 @@ Route::get('/register', [AuthController::class, 'showRegister'])->name('register
 Route::get('/forgot-password', [AuthController::class, 'showForgotPassword'])->name('forgot.password');
 
 Route::get('/dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard'); 
-
+Route::get('/pemeriksaan', [PemeriksaanController::class, 'index'])->name('pemeriksaan');
 // Deteksi Routes
 Route::prefix('deteksi')->name('deteksi.')->group(function () {
     Route::get('/', [DeteksiController::class, 'index'])->name('index');

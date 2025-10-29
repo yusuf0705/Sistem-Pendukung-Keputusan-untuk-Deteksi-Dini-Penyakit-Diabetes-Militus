@@ -82,7 +82,7 @@
       <div>
         <h4 class="text-2xl font-bold mb-3">SPK Diabetes</h4>
         <p class="text-sm">Sistem Pendukung Keputusan<br>Deteksi Dini Diabetes Melitus</p>
-        <p class="mt-3 text-sm">Jl. Letjen Suprapto No. 20<br>Jakarta Pusat 10510<br>Telp. (021) 1234-5678</p>
+        <!-- <p class="mt-3 text-sm">Jl. Letjen Suprapto No. 20<br>Jakarta Pusat 10510<br>Telp. (021) 1234-5678</p> -->
       </div>
 
       <!-- Kolom 2 -->

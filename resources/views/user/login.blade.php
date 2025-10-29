@@ -48,9 +48,9 @@
                     <a href="{{ route('forgot.password') }}" class="text-sm text-blue-600 hover:underline">Lupa Password?</a>
                 </div>
 
-                <button type="submit" class="w-full bg-custom-green text-white py-2 rounded-md hover:opacity-90">
-                    Masuk
-                </button>
+                <div>
+                <a href="{{ route('dashboard') }}" class="w-full bg-custom-green text-white py-2 rounded-md hover:opacity-90">Masuk</a>
+                </div>
             </form>
 
             <p class="text-center text-sm text-gray-700 mt-5">

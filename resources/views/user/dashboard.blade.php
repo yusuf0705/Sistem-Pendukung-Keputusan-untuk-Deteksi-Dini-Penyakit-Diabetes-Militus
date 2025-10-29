@@ -1,46 +1,19 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard Diabetes AI</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+@extends('layouts.navbar')
+
+@section('title', 'Riwayat Kesehatan')
+
+@section('content')
+
+
   <style>
     :root {
       --green-main: #146135;
       --green-light: #e6f3ec;
     }
   </style>
-</head>
-<body class="bg-gray-100 font-sans">
 
   <div class="flex min-h-screen">
-
-    <!-- Sidebar -->
-    <aside class="w-64 bg-[color:var(--green-main)] text-white flex flex-col">
-      <div class="flex items-center justify-center h-20 border-b border-green-700/30">
-        <h1 class="text-xl font-semibold">Menu</h1>
-      </div>
-      <nav class="flex-1 px-4 py-6 space-y-4">
-        <a href="#" class="flex items-center space-x-2 bg-[color:var(--green-main)]/90 p-3 rounded-lg">
-          <span>📊</span>
-          <span>Dashboard</span>
-        </a>
-        <a href="#" class="flex items-center space-x-2 hover:bg-[color:var(--green-main)]/80 p-3 rounded-lg transition">
-          <span>🤖</span>
-          <span>DeteksiAI</span>
-        </a>
-        <a href="#" class="flex items-center space-x-2 hover:bg-[color:var(--green-main)]/80 p-3 rounded-lg transition">
-          <span>📋</span>
-          <span>Riwayat Kesehatan</span>
-        </a>
-        <a href="#" class="flex items-center space-x-2 hover:bg-[color:var(--green-main)]/80 p-3 rounded-lg transition">
-          <span>⚙</span>
-          <span>Pengaturan</span>
-        </a>
-      </nav>
-    </aside>
-
+    
     <!-- Konten Utama -->
     <main class="flex-1 p-8">
       <h2 class="text-gray-700 text-2xl font-semibold mb-2">Halo, <span class="text-[color:var(--green-main)]">Andi</span></h2>
@@ -89,6 +62,6 @@
       </div>
     </main>
   </div>
-
+@endsection
 </body>
 </html>
