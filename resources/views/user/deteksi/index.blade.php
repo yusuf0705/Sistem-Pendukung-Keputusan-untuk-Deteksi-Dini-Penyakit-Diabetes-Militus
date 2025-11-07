@@ -1,6 +1,8 @@
 @extends('layouts.navbar')
 
 @section('title', 'Dashboard - Deteksi Diabetes')
+@section('page_title', 'Deteksi Diabetes')
+
 
 @section('content')
 <div class="p-8">

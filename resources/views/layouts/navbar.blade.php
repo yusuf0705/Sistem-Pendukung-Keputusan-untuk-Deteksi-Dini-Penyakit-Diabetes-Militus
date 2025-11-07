@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'deteksi Kesehatan')</title>
+    <title>@yield('title', 'Deteksi Kesehatan')</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         .sidebar-hover:hover {
             background-color: #0f4a27;
@@ -22,7 +23,18 @@
 
         <!-- Main Content -->
         <div class="flex-1 overflow-auto">
-            @yield('content')
+            <!-- Header -->
+            <header class="bg-white shadow p-4 flex justify-between items-center">
+                <h1 class="text-lg font-semibold text-gray-700">@yield('page_title', 'Dashboard')</h1>
+                <button class="text-red-600 hover:text-red-800">
+                    <i class="fa-solid fa-right-from-bracket"></i> Logout
+                </button>
+            </header>
+
+            <!-- Content -->
+            <main class="p-6">
+                @yield('content')
+            </main>
         </div>
     </div>
 
@@ -39,6 +51,7 @@
             });
         }
     </script>
+
     @stack('scripts')
 </body>
 </html>
