@@ -26,6 +26,7 @@ Route::get('/forgot-password', [AuthController::class, 'showForgotPassword'])->n
 
 Route::get('/dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard'); 
 Route::get('/pemeriksaan', [PemeriksaanController::class, 'index'])->name('pemeriksaan');
+
 // Deteksi Routes
 Route::prefix('deteksi')->name('deteksi.')->group(function () {
     Route::get('/', [DeteksiController::class, 'index'])->name('index');
@@ -52,4 +53,3 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::delete('/destroy/{id}', [UserManagementController::class, 'destroy'])->name('destroy');
     });
 });
-
