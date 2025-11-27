@@ -6,21 +6,14 @@
     <title>Masuk</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .bg-custom-green {
-            background-color: #146135;
-        }
-        .text-custom-green {
-            color: #146135;
-        }
-        .border-custom-green {
-            border-color: #146135;
-        }
+        .bg-custom-green { background-color: #146135; }
+        .text-custom-green { color: #146135; }
+        .border-custom-green { border-color: #146135; }
     </style>
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
 
     <div class="bg-white rounded-lg shadow-md w-full max-w-sm">
-        <!-- Header Hijau -->
         <div class="bg-custom-green h-4 rounded-t-lg"></div>
 
         <div class="p-6">
@@ -30,7 +23,7 @@
             </p>
 
             <!-- Form Login -->
-            <form action="#" method="POST" class="space-y-4">
+            <form action="{{ route('login.store') }}" method="POST" class="space-y-4">
                 @csrf
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
@@ -45,11 +38,15 @@
                 </div>
 
                 <div class="text-left">
-                    <a href="{{ route('forgot.password') }}" class="text-sm text-blue-600 hover:underline">Lupa Password?</a>
+                    <a href="{{ route('forgot.password') }}" class="text-sm text-blue-600 hover:underline">
+                        Lupa Password?
+                    </a>
                 </div>
 
                 <div>
-                <a href="{{ route('dashboard') }}" class="w-full bg-custom-green text-white py-2 rounded-md hover:opacity-90">Masuk</a>
+                    <button type="submit" class="w-full bg-custom-green text-white py-2 rounded-md hover:opacity-90">
+                        Masuk
+                    </button>
                 </div>
             </form>
 

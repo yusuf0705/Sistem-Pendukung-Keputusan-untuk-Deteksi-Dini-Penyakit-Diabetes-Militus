@@ -20,9 +20,21 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 // Auth Routes
-Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+// Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+// Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+// Route::get('/forgot-password', [AuthController::class, 'showForgotPassword'])->name('forgot.password');
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+Route::post('/register', [AuthController::class, 'register'])->name('register.store');
+
+// LOGIN
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.store');
+
+// FORGOT PASSWORD
 Route::get('/forgot-password', [AuthController::class, 'showForgotPassword'])->name('forgot.password');
+
+// LOGOUT
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard'); 
 Route::get('/pemeriksaan', [PemeriksaanController::class, 'index'])->name('pemeriksaan');

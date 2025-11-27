@@ -24,24 +24,28 @@
             </p>
 
             <!-- Form Register -->
-            <form action="#" method="POST" class="space-y-4">
+            <form action="{{ route('register.store') }}" method="POST" class="space-y-4">
                 @csrf
+
                 <div>
                     <label for="name" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
                     <input type="text" id="name" name="name" placeholder="Masukkan nama lengkapmu"
-                        class="w-full mt-1 p-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-custom-green">
+                        class="w-full mt-1 p-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-custom-green"
+                        required>
                 </div>
 
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
                     <input type="email" id="email" name="email" placeholder="Masukkan email"
-                        class="w-full mt-1 p-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-custom-green">
+                        class="w-full mt-1 p-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-custom-green"
+                        required>
                 </div>
 
                 <div>
                     <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
                     <input type="password" id="password" name="password" placeholder="Masukkan password"
-                        class="w-full mt-1 p-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-custom-green">
+                        class="w-full mt-1 p-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-custom-green"
+                        required>
                 </div>
 
                 <button type="submit" class="w-full bg-custom-green text-white py-2 rounded-md hover:opacity-90">
