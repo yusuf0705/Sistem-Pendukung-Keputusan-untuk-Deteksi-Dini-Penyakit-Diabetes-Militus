@@ -8,6 +8,7 @@ use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PemeriksaanController;
 use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\DataKesehatanController;
 
 // Landing page
 Route::get('/', function () {
@@ -39,11 +40,42 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard'); 
 Route::get('/pemeriksaan', [PemeriksaanController::class, 'index'])->name('pemeriksaan');
 
+
+Route::middleware('auth')->group(function () {
+
+    Route::get('/kesehatan', [DataKesehatanController::class, 'index'])->name('kesehatan.index');
+
+    Route::get('/kesehatan/tambah', [DataKesehatanController::class, 'create'])->name('kesehatan.create');
+    Route::post('/kesehatan/store', [DataKesehatanController::class, 'store'])->name('kesehatan.store');
+
+    Route::get('/kesehatan/edit/{id}', [DataKesehatanController::class, 'edit'])->name('kesehatan.edit');
+    Route::post('/kesehatan/update/{id}', [DataKesehatanController::class, 'update'])->name('kesehatan.update');
+
+    Route::delete('/kesehatan/delete/{id}', [DataKesehatanController::class, 'destroy'])->name('kesehatan.delete');
+
+});
+
 // Deteksi Routes
+// Route::prefix('deteksi')->name('deteksi.')->group(function () {
+//     Route::get('/', [DeteksiController::class, 'index'])->name('index');
+//     Route::get('/create', [DeteksiController::class, 'create'])->name('create');
+//     Route::post('/store', [DeteksiController::class, 'store'])->name('store');
+// });
 Route::prefix('deteksi')->name('deteksi.')->group(function () {
     Route::get('/', [DeteksiController::class, 'index'])->name('index');
     Route::get('/create', [DeteksiController::class, 'create'])->name('create');
-    Route::post('/store', [DeteksiController::class, 'store'])->name('store');
+    Route::post('/cek', [DeteksiController::class, 'cekDiabetes'])->name('cek');
+});
+
+
+// Route::get('/dataset', [DatasetController::class, 'readDataset']);
+
+Route::get('/dataset', function () {
+    $path = storage_path('app/datasets/dataset_diabetes_dini.csv');
+    $content = file_get_contents($path);
+
+    return response($content)
+        ->header('Content-Type', 'text/plain'); // agar tidak download
 });
 
 // Riwayat Kesehatan Routes
