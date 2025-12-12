@@ -4,32 +4,30 @@ namespace App\ML;
 
 class MLService
 {
-    private $modelPath; // ← deklarasi DI SINI
-
-    public function __construct()
+    public function predict($data)
     {
-        $path = base_path("app/ML/model_diabetes.pkl");
+        /**
+         * Contoh model sederhana
+         * Bisa kamu ganti dengan model asli (Python, PMML, ONNX, dsb)
+         */
 
-        if (!file_exists($path)) {
-            throw new \Exception("Model ML tidak ditemukan di: " . $path);
-        }
+        $risk = 0;
 
-        // simpan lokasi model
-        $this->modelPath = $path;
+        // Rule sederhana
+        if ($data["usia"] >= 45) $risk += 2;
+        if ($data["imt"] >= 30) $risk += 3;
+        if ($data["keluarga_diabetes"] == 1) $risk += 3;
+        if ($data["riwayat_hipertensi"] == 1) $risk += 2;
+        if ($data["riwayat_obesitas"] == 1) $risk += 2;
+        if ($data["olahraga"] == 0) $risk += 2;
+        if ($data["pola_makan"] == 0) $risk += 3;
+
+        // Tentukan hasil AI
+        $hasil = [
+            "diabetes" => $risk >= 8 ? 1 : 0,
+            "score"    => min(100, $risk * 5)
+        ];
+
+        return $hasil;
     }
-
-    public function predict(array $input)
-    {
-        $jsonInput = json_encode($input);
-
-        // Jalankan Python untuk prediksi
-        // NOTE: predict.py harus ada di folder yang sama
-        $command = "python " . base_path("app/ML/predict.py") 
-                 . " " . escapeshellarg($jsonInput);
-
-        $output = shell_exec($command);
-
-        return json_decode($output, true);
-    }
-    
 }

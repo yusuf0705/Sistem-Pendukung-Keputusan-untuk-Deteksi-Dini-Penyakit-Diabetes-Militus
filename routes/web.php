@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\AdminDashboardController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DeteksiController;
 use App\Http\Controllers\RiwayatController;
@@ -10,20 +10,18 @@ use App\Http\Controllers\PemeriksaanController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\DataKesehatanController;
 
+
 // Landing page
 Route::get('/', function () {
     return view('user.landingpage');
 })->name('landingpage');
 
+
 // Dashboard user biasa
-Route::get('/dashboard', function () {
-    return view('user.dashboard');
-})->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard');
+
 
 // Auth Routes
-// Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-// Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
-// Route::get('/forgot-password', [AuthController::class, 'showForgotPassword'])->name('forgot.password');
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
 Route::post('/register', [AuthController::class, 'register'])->name('register.store');
 
@@ -37,30 +35,27 @@ Route::get('/forgot-password', [AuthController::class, 'showForgotPassword'])->n
 // LOGOUT
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard'); 
+
+// Pemeriksaan
 Route::get('/pemeriksaan', [PemeriksaanController::class, 'index'])->name('pemeriksaan');
 
 
+// Protected Routes
 Route::middleware('auth')->group(function () {
 
     Route::get('/kesehatan', [DataKesehatanController::class, 'index'])->name('kesehatan.index');
-
     Route::get('/kesehatan/tambah', [DataKesehatanController::class, 'create'])->name('kesehatan.create');
     Route::post('/kesehatan/store', [DataKesehatanController::class, 'store'])->name('kesehatan.store');
-
     Route::get('/kesehatan/edit/{id}', [DataKesehatanController::class, 'edit'])->name('kesehatan.edit');
     Route::post('/kesehatan/update/{id}', [DataKesehatanController::class, 'update'])->name('kesehatan.update');
-
     Route::delete('/kesehatan/delete/{id}', [DataKesehatanController::class, 'destroy'])->name('kesehatan.delete');
 
 });
 
-// Deteksi Routes
-// Route::prefix('deteksi')->name('deteksi.')->group(function () {
-//     Route::get('/', [DeteksiController::class, 'index'])->name('index');
-//     Route::get('/create', [DeteksiController::class, 'create'])->name('create');
-//     Route::post('/store', [DeteksiController::class, 'store'])->name('store');
-// });
+
+// ========================
+// Deteksi Routes (fixed)
+// ========================
 Route::prefix('deteksi')->name('deteksi.')->group(function () {
     Route::get('/', [DeteksiController::class, 'index'])->name('index');
     Route::get('/create', [DeteksiController::class, 'create'])->name('create');
@@ -68,26 +63,26 @@ Route::prefix('deteksi')->name('deteksi.')->group(function () {
 });
 
 
-// Route::get('/dataset', [DatasetController::class, 'readDataset']);
-
+// Dataset
 Route::get('/dataset', function () {
     $path = storage_path('app/datasets/dataset_diabetes_dini.csv');
     $content = file_get_contents($path);
-
     return response($content)
-        ->header('Content-Type', 'text/plain'); // agar tidak download
+        ->header('Content-Type', 'text/plain');
 });
 
-// Riwayat Kesehatan Routes
+
+// Riwayat Kesehatan
 Route::prefix('riwayat_kesehatan')->name('riwayat_kesehatan.')->group(function () {
     Route::get('/', [RiwayatController::class, 'index'])->name('index');
 });
 
+
 // Admin Routes
 Route::prefix('admin')->name('admin.')->group(function () {
+
     Route::get('/dashboard', [AdminDashboardController::class, 'dashboard'])->name('dashboard');
 
-    // User Management Routes
     Route::prefix('users')->name('users.')->group(function () {
         Route::get('/', [UserManagementController::class, 'index'])->name('index');
         Route::get('/create', [UserManagementController::class, 'create'])->name('create');
@@ -96,4 +91,5 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::put('/update/{id}', [UserManagementController::class, 'update'])->name('update');
         Route::delete('/destroy/{id}', [UserManagementController::class, 'destroy'])->name('destroy');
     });
+
 });

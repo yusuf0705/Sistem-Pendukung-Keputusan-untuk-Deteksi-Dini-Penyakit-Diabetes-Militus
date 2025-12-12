@@ -3,34 +3,32 @@ import json
 import pickle
 import numpy as np
 
-# Ambil input dari PHP
-data = json.loads(sys.argv[1])
-
 # Load model
-with open("model_diabetes.pkl", "rb") as f:
-    saved = pickle.load(f)
+model_path = "app/ML/model_diabetes.pkl"
+with open(model_path, "rb") as f:
+    model = pickle.load(f)
 
-model = saved["model"]
-scaler = saved["scaler"]
-label_encoders = saved["label_encoders"]
+# Ambil input JSON dari argumen CLI
+input_json = sys.argv[1]
+data = json.loads(input_json)
 
-# Encode nilai string
-for key in data:
-    if key in label_encoders:
-        data[key] = label_encoders[key].transform([data[key]])[0]
-
-# Konversi jadi array
-X = np.array(list(data.values())).reshape(1, -1)
-
-# Scaling
-X_scaled = scaler.transform(X)
+# Convert ke urutan numerik
+features = np.array([
+    data["usia"],
+    data["jenis_kelamin"],
+    data["riwayat_keluarga"],
+    data["merokok"],
+    data["alkohol"],
+    data["obesitas"],
+    data["olahraga"]
+]).reshape(1, -1)
 
 # Prediksi
-result = model.predict(X_scaled)[0]
-prob = model.predict_proba(X_scaled)[0][1]
+pred = model.predict(features)[0]
+proba = model.predict_proba(features)[0][1]
 
-# Kirim hasil ke PHP
+# Output JSON
 print(json.dumps({
-    "diabetes": int(result),
-    "probabilitas": float(prob)
+    "diabetes": int(pred),
+    "probabilitas": float(proba)
 }))
