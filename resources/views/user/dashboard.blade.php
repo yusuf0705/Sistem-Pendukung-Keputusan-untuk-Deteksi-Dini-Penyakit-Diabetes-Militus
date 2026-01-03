@@ -16,10 +16,7 @@
 
         {{-- Header --}}
         <h2 class="text-2xl font-semibold text-gray-700 mb-1">
-            Halo,
-            <span class="text-[color:var(--green-main)]">
-                {{ Auth::user()->name }}
-            </span>
+           Halo, {{ $user->name }}
         </h2>
         <p class="text-gray-500 mb-8">
             Pantau risiko diabetes Anda secara real-time

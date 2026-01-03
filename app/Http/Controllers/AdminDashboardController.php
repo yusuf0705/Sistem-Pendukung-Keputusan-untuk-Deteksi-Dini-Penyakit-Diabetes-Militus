@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class AdminDashboardController extends Controller
 {
     public function dashboard()
     {
-        return view('admin.dashboard');
-    }
+        $totalPengguna = User::where('role', 'pengguna')->count();
+        $admin = Auth::user(); 
 
-    public function users()
-    {
-        return view('admin.users.index');
+        return view('admin.dashboard', [
+            'totalPengguna' => $totalPengguna,
+            'admin' => $admin,
+            'pageTitle' => 'Admin Dashboard',
+        ]);
     }
 }

@@ -16,11 +16,5 @@
             <i class="fas fa-users mr-3"></i>
             <span class="menu-text">User Management</span>
         </a>
-        
-        <a href="" 
-           class="flex items-center px-6 py-3 sidebar-hover transition {{ request()->routeIs('riwayat_kesehatan.*') ? 'active-menu' : '' }}">
-            <i class="fas fa-heart mr-3"></i>
-            <span class="menu-text">Riwayat Kesehatan</span>
-        </a>
     </nav>
 </aside>

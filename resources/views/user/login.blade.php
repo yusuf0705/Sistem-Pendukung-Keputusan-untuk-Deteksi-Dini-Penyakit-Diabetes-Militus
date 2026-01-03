@@ -104,6 +104,19 @@
         </p>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+@if (session('logout'))
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Logout Berhasil',
+        text: '{{ session('logout') }}',
+        confirmButtonColor: '#16a34a',
+        timer: 2000,
+        showConfirmButton: false
+    });
+</script>
+@endif
 </body>
 </html>
