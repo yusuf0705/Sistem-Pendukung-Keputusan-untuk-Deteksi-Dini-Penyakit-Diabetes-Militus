@@ -4,6 +4,19 @@
 @section('page-title', 'Dashboard')
 
 @section('content')
+
+<div class="mb-6">
+    <h2 class="text-2xl font-semibold text-gray-700">
+        Halo,
+        <span class="text-green-700 font-bold">
+            {{ $admin->name }}
+        </span>
+    </h2>
+    <p class="text-gray-500">
+        Selamat datang di panel admin
+    </p>
+</div>
+
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
     
     <!-- Card Total Users -->
@@ -11,8 +24,9 @@
         <div class="flex items-center justify-between">
             <div>
                 <p class="text-gray-500 text-sm font-medium">Total Pengguna</p>
-                <h3 class="text-3xl font-bold text-gray-800 mt-2">156</h3>
-                <p class="text-green-500 text-sm mt-2">↑ 12% dari bulan lalu</p>
+               <h3 class="text-3xl font-bold text-gray-800 mt-2">
+                      {{ $totalPengguna }}
+            </h3>
             </div>
             <div class="bg-blue-100 rounded-full p-4">
                 <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">

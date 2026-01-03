@@ -13,7 +13,6 @@ class UserManagementController extends Controller
      */
     public function index()
     {
-        // Ubah 'id' jadi 'id_user'
         $users = User::orderBy('id_user', 'asc')->get();
         return view('admin.users.index', compact('users'));
     }
@@ -38,7 +37,6 @@ class UserManagementController extends Controller
             'role'     => 'required|in:admin,pengguna',
         ]);
 
-        // Simpan data ke database
         User::create([
             'name'     => $validated['name'],
             'email'    => $validated['email'],
@@ -46,8 +44,9 @@ class UserManagementController extends Controller
             'role'     => $validated['role'],
         ]);
 
-        return redirect()->route('admin.users.index')
-                         ->with('success', 'Pengguna berhasil ditambahkan!');
+        return redirect()
+            ->route('admin.users.index')
+            ->with('success', 'Pengguna berhasil ditambahkan!');
     }
 
     /**
@@ -60,23 +59,34 @@ class UserManagementController extends Controller
     }
 
     /**
-     * Update data pengguna
+     * Update data pengguna (PASSWORD FIX)
      */
     public function update(Request $request, $id_user)
     {
         $user = User::findOrFail($id_user);
 
         $validated = $request->validate([
-            'name'  => 'required|string|max:100',
-            'email' => 'required|email|unique:users,email,' . $user->id_user . ',id_user',
-            'role'  => 'required|in:admin,pengguna',
+            'name'     => 'required|string|max:100',
+            'email'    => 'required|email|unique:users,email,' . $user->id_user . ',id_user',
+            'password' => 'nullable|min:6', // boleh kosong
+            'role'     => 'required|in:admin,pengguna',
         ]);
 
-        // Update data
-        $user->update($validated);
+        // Update data utama
+        $user->name  = $validated['name'];
+        $user->email = $validated['email'];
+        $user->role  = $validated['role'];
 
-        return redirect()->route('admin.users.index')
-                         ->with('success', 'Data pengguna berhasil diperbarui!');
+        // Update password hanya jika diisi
+        if (!empty($validated['password'])) {
+            $user->password = Hash::make($validated['password']);
+        }
+
+        $user->save();
+
+        return redirect()
+            ->route('admin.users.index')
+            ->with('success', 'Data pengguna berhasil diperbarui!');
     }
 
     /**
@@ -87,7 +97,8 @@ class UserManagementController extends Controller
         $user = User::findOrFail($id_user);
         $user->delete();
 
-        return redirect()->route('admin.users.index')
-                         ->with('success', 'Pengguna berhasil dihapus!');
+        return redirect()
+            ->route('admin.users.index')
+            ->with('success', 'Pengguna berhasil dihapus!');
     }
 }
