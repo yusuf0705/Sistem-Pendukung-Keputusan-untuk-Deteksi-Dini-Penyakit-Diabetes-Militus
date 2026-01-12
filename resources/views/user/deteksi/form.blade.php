@@ -16,7 +16,6 @@
             border-color: #ef4444 !important;
         }
         
-        /* Modal Styles */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -45,6 +44,8 @@
             z-index: 9999;
             max-width: 500px;
             width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
         }
         
         .modal-container.show {
@@ -67,6 +68,36 @@
                 opacity: 1;
             }
         }
+
+        /* Tooltip styles */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 12px;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
     </style>
 </head>
 
@@ -78,7 +109,6 @@
 <!-- Modal Container -->
 <div class="modal-container" id="modalContainer">
     <div class="p-8">
-        <!-- Icon -->
         <div class="flex justify-center mb-6">
             <div class="w-20 h-20 rounded-full bg-blue-100 flex items-center justify-center">
                 <svg class="w-12 h-12 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -87,22 +117,16 @@
             </div>
         </div>
         
-        <!-- Title -->
         <h3 class="text-2xl font-bold text-gray-800 text-center mb-3" id="modalTitle">
             Silahkan Isi Semua Formnya
         </h3>
         
-        <!-- Description -->
         <p class="text-gray-600 text-center mb-6" id="modalDescription">
             Anda belum mengisi beberapa pilihan yang wajib diisi.
         </p>
         
-        <!-- List of missing fields -->
-        <div id="modalList" class="mb-6">
-            <!-- Dynamic content will be inserted here -->
-        </div>
+        <div id="modalList" class="mb-6"></div>
         
-        <!-- OK Button -->
         <div class="flex justify-center">
             <button type="button" id="modalOkBtn" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-3 rounded-lg transition duration-200 shadow-md">
                 OK
@@ -158,12 +182,14 @@
                     <label class="block font-semibold text-gray-700 mb-2">
                         Usia (tahun) <span class="text-red-500">*</span>
                     </label>
-                    <input type="text" name="usia" 
+                    <input type="number" name="usia" 
                         value="{{ old('usia') }}"
                         class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition @error('usia') border-red-500 @enderror"
                         placeholder="Contoh: 30" 
-                        maxlength="3">
-                    <p class="text-red-500 text-sm mt-1 hidden" id="error-usia">⚠️ Usia hanya bisa menggunakan angka!</p>
+                        min="1"
+                        max="120"
+                        step="1">
+                    <p class="text-red-500 text-sm mt-1 hidden" id="error-usia">⚠️ Usia harus antara 1-120 tahun!</p>
                     @error('usia')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
@@ -190,11 +216,14 @@
                     <label class="block font-semibold text-gray-700 mb-2">
                         Berat Badan (kg) <span class="text-red-500">*</span>
                     </label>
-                    <input type="text" name="berat_badan" 
+                    <input type="number" name="berat_badan" 
                         value="{{ old('berat_badan') }}"
                         class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition @error('berat_badan') border-red-500 @enderror"
-                        placeholder="Contoh: 65.5">
-                    <p class="text-red-500 text-sm mt-1 hidden" id="error-berat_badan">⚠️ Berat badan hanya bisa menggunakan angka!</p>
+                        placeholder="Contoh: 65.5"
+                        min="1"
+                        max="500"
+                        step="0.1">
+                    <p class="text-red-500 text-sm mt-1 hidden" id="error-berat_badan">⚠️ Berat badan harus antara 1-500 kg!</p>
                     @error('berat_badan')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
@@ -205,11 +234,14 @@
                     <label class="block font-semibold text-gray-700 mb-2">
                         Tinggi Badan (cm) <span class="text-red-500">*</span>
                     </label>
-                    <input type="text" name="tinggi_badan" 
+                    <input type="number" name="tinggi_badan" 
                         value="{{ old('tinggi_badan') }}"
                         class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition @error('tinggi_badan') border-red-500 @enderror"
-                        placeholder="Contoh: 170">
-                    <p class="text-red-500 text-sm mt-1 hidden" id="error-tinggi_badan">⚠️ Tinggi badan hanya bisa menggunakan angka!</p>
+                        placeholder="Contoh: 170"
+                        min="50"
+                        max="300"
+                        step="0.1">
+                    <p class="text-red-500 text-sm mt-1 hidden" id="error-tinggi_badan">⚠️ Tinggi badan harus antara 50-300 cm!</p>
                     @error('tinggi_badan')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
@@ -219,6 +251,12 @@
                 <div class="md:col-span-2">
                     <label class="block font-semibold text-gray-700 mb-2">
                         Indeks Massa Tubuh (IMT) <span class="text-red-500">*</span>
+                        <span class="tooltip ml-1">
+                            <svg class="w-4 h-4 inline text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="tooltiptext">IMT dihitung otomatis: Berat (kg) / (Tinggi (m))²</span>
+                        </span>
                     </label>
                     <div class="flex items-center gap-4">
                         <input type="number" step="0.01" name="imt" id="imt"
@@ -253,6 +291,7 @@
                         <option value="1" {{ old('keluarga_diabetes') == '1' ? 'selected' : '' }}>Ada</option>
                         <option value="0" {{ old('keluarga_diabetes') == '0' ? 'selected' : '' }}>Tidak Ada</option>
                     </select>
+                    <p class="text-xs text-gray-500 mt-1">Orangtua, saudara kandung, atau anak</p>
                     @error('keluarga_diabetes')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
@@ -269,6 +308,7 @@
                         <option value="1" {{ old('riwayat_hipertensi') == '1' ? 'selected' : '' }}>Ya</option>
                         <option value="0" {{ old('riwayat_hipertensi') == '0' ? 'selected' : '' }}>Tidak</option>
                     </select>
+                    <p class="text-xs text-gray-500 mt-1">Tekanan darah tinggi (>140/90 mmHg)</p>
                     @error('riwayat_hipertensi')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
@@ -285,6 +325,7 @@
                         <option value="1" {{ old('riwayat_obesitas') == '1' ? 'selected' : '' }}>Ya</option>
                         <option value="0" {{ old('riwayat_obesitas') == '0' ? 'selected' : '' }}>Tidak</option>
                     </select>
+                    <p class="text-xs text-gray-500 mt-1">Pernah atau sedang mengalami kelebihan berat badan</p>
                     @error('riwayat_obesitas')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
@@ -338,10 +379,11 @@
                     <select name="olahraga"
                         class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition @error('olahraga') border-red-500 @enderror">
                         <option value="">-- Pilih --</option>
-                        <option value="0" {{ old('olahraga') == '0' ? 'selected' : '' }}>Tidak Pernah</option>
-                        <option value="1" {{ old('olahraga') == '1' ? 'selected' : '' }}>Kadang-kadang</option>
-                        <option value="2" {{ old('olahraga') == '2' ? 'selected' : '' }}>Rutin</option>
+                        <option value="0" {{ old('olahraga') == '0' ? 'selected' : '' }}>Tidak Pernah (0x/minggu)</option>
+                        <option value="1" {{ old('olahraga') == '1' ? 'selected' : '' }}>Kadang-kadang (1-2x/minggu)</option>
+                        <option value="2" {{ old('olahraga') == '2' ? 'selected' : '' }}>Rutin (≥3x/minggu)</option>
                     </select>
+                    <p class="text-xs text-gray-500 mt-1">Minimal 30 menit per sesi</p>
                     @error('olahraga')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
@@ -355,13 +397,68 @@
                     <select name="pola_makan"
                         class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition @error('pola_makan') border-red-500 @enderror">
                         <option value="">-- Pilih --</option>
-                        <option value="0" {{ old('pola_makan') == '0' ? 'selected' : '' }}>Tidak Sehat</option>
-                        <option value="1" {{ old('pola_makan') == '1' ? 'selected' : '' }}>Cukup Sehat</option>
-                        <option value="2" {{ old('pola_makan') == '2' ? 'selected' : '' }}>Sangat Sehat</option>
+                        <option value="0" {{ old('pola_makan') == '0' ? 'selected' : '' }}>Tidak Sehat (banyak gorengan, junk food)</option>
+                        <option value="1" {{ old('pola_makan') == '1' ? 'selected' : '' }}>Cukup Sehat (sesekali sayur/buah)</option>
+                        <option value="2" {{ old('pola_makan') == '2' ? 'selected' : '' }}>Sangat Sehat (rutin sayur/buah)</option>
                     </select>
                     @error('pola_makan')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Gejala (Optional) -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-orange-500">
+                🩹 Gejala yang Dialami <span class="text-sm font-normal text-gray-500">(Opsional)</span>
+            </h2>
+            <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-4 rounded">
+                <p class="text-sm text-orange-800">
+                    <span class="font-semibold">ℹ️ Info:</span> Bagian ini bersifat opsional. Isi jika Anda mengalami gejala berikut.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Sering Buang Air Kecil Malam -->
+                <div>
+                    <label class="block font-semibold text-gray-700 mb-2">
+                        Sering Buang Air Kecil Malam Hari
+                    </label>
+                    <select name="sering_buang_air_kecil_malam"
+                        class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition">
+                        <option value="">-- Pilih --</option>
+                        <option value="1" {{ old('sering_buang_air_kecil_malam') == '1' ? 'selected' : '' }}>Ya</option>
+                        <option value="0" {{ old('sering_buang_air_kecil_malam') == '0' ? 'selected' : '' }}>Tidak</option>
+                    </select>
+                    <p class="text-xs text-gray-500 mt-1">Lebih dari 2x per malam</p>
+                </div>
+
+                <!-- Sering Lapar -->
+                <div>
+                    <label class="block font-semibold text-gray-700 mb-2">
+                        Sering Merasa Lapar
+                    </label>
+                    <select name="sering_lapar"
+                        class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition">
+                        <option value="">-- Pilih --</option>
+                        <option value="1" {{ old('sering_lapar') == '1' ? 'selected' : '' }}>Ya</option>
+                        <option value="0" {{ old('sering_lapar') == '0' ? 'selected' : '' }}>Tidak</option>
+                    </select>
+                    <p class="text-xs text-gray-500 mt-1">Meski sudah makan cukup</p>
+                </div>
+
+                <!-- Pandangan Kabur -->
+                <div>
+                    <label class="block font-semibold text-gray-700 mb-2">
+                        Pandangan Kabur
+                    </label>
+                    <select name="pandangan_kabur"
+                        class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition">
+                        <option value="">-- Pilih --</option>
+                        <option value="1" {{ old('pandangan_kabur') == '1' ? 'selected' : '' }}>Ya</option>
+                        <option value="0" {{ old('pandangan_kabur') == '0' ? 'selected' : '' }}>Tidak</option>
+                    </select>
+                    <p class="text-xs text-gray-500 mt-1">Penglihatan tidak jelas</p>
                 </div>
             </div>
         </div>
@@ -372,7 +469,7 @@
                 class="flex-1 bg-gradient-to-r from-green-600 to-green-700 text-white py-4 rounded-xl font-bold text-lg hover:from-green-700 hover:to-green-800 transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
                 🔍 Deteksi Sekarang
             </button>
-            <button type="reset"
+            <button type="button" id="resetBtn"
                 class="px-8 bg-gray-200 text-gray-700 py-4 rounded-xl font-semibold hover:bg-gray-300 transition duration-300">
                 Reset
             </button>
@@ -390,7 +487,6 @@
 </div>
 
 <script>
-    // Fungsi untuk menampilkan modal
     function showModal(title, description, listItems = []) {
         const modalOverlay = document.getElementById('modalOverlay');
         const modalContainer = document.getElementById('modalContainer');
@@ -401,7 +497,6 @@
         modalTitle.textContent = title;
         modalDescription.textContent = description;
         
-        // Buat list jika ada
         if (listItems.length > 0) {
             let listHTML = '<ul class="text-left space-y-2 bg-gray-50 p-4 rounded-lg max-h-64 overflow-y-auto">';
             listItems.forEach(item => {
@@ -421,7 +516,6 @@
         document.body.style.overflow = 'hidden';
     }
     
-    // Fungsi untuk menutup modal
     function closeModal() {
         const modalOverlay = document.getElementById('modalOverlay');
         const modalContainer = document.getElementById('modalContainer');
@@ -431,24 +525,20 @@
         document.body.style.overflow = 'auto';
     }
     
-    // Event listener untuk tombol OK
     document.getElementById('modalOkBtn').addEventListener('click', closeModal);
-    
-    // Event listener untuk overlay
     document.getElementById('modalOverlay').addEventListener('click', closeModal);
     
-    // Tutup modal dengan ESC key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             closeModal();
         }
     });
 
-    // Validasi input hanya angka untuk field numerik
+    // Validasi input numerik
     const numericFields = [
-        { name: 'usia', allowDecimal: false, min: 1, max: 120 },
-        { name: 'berat_badan', allowDecimal: true, min: 1, max: 500 },
-        { name: 'tinggi_badan', allowDecimal: true, min: 50, max: 300 }
+        { name: 'usia', min: 1, max: 120 },
+        { name: 'berat_badan', min: 1, max: 500 },
+        { name: 'tinggi_badan', min: 50, max: 300 }
     ];
 
     numericFields.forEach(field => {
@@ -457,43 +547,19 @@
 
         if (input && errorMsg) {
             input.addEventListener('input', function(e) {
-                let value = this.value;
+                const numValue = parseFloat(this.value);
                 
-                // Regex untuk validasi: hanya angka dan titik desimal (jika diizinkan)
-                const regex = field.allowDecimal ? /^[0-9]*\.?[0-9]*$/ : /^[0-9]*$/;
-                
-                if (!regex.test(value)) {
-                    // Tampilkan pesan error
+                if (this.value && (numValue < field.min || numValue > field.max)) {
                     errorMsg.classList.remove('hidden');
                     this.classList.add('border-red-500');
                     this.classList.remove('border-gray-300');
-                    
-                    // Hapus karakter non-angka
-                    this.value = value.replace(/[^0-9.]/g, '');
-                    
-                    // Pastikan hanya ada satu titik desimal
-                    if (field.allowDecimal) {
-                        const parts = this.value.split('.');
-                        if (parts.length > 2) {
-                            this.value = parts[0] + '.' + parts.slice(1).join('');
-                        }
-                    }
                 } else {
-                    // Sembunyikan pesan error
                     errorMsg.classList.add('hidden');
                     this.classList.remove('border-red-500');
                     this.classList.add('border-gray-300');
                 }
-
-                // Validasi min/max
-                const numValue = parseFloat(this.value);
-                if (numValue && (numValue < field.min || numValue > field.max)) {
-                    errorMsg.textContent = `⚠️ ${field.name.replace('_', ' ')} harus antara ${field.min} - ${field.max}!`;
-                    errorMsg.classList.remove('hidden');
-                }
             });
 
-            // Validasi saat blur (keluar dari field)
             input.addEventListener('blur', function() {
                 if (this.value === '') {
                     errorMsg.classList.add('hidden');
@@ -504,7 +570,7 @@
         }
     });
 
-    // Hitung IMT otomatis dan tampilkan kategori
+    // Hitung IMT otomatis
     const berat = document.querySelector('input[name="berat_badan"]');
     const tinggi = document.querySelector('input[name="tinggi_badan"]');
     const imt = document.getElementById('imt');
@@ -521,7 +587,6 @@
                     let bmi = beratNum / (t * t);
                     imt.value = bmi.toFixed(2);
                     
-                    // Tentukan kategori IMT
                     let kategori = '';
                     let bgColor = '';
                     let textColor = '';
@@ -560,7 +625,6 @@
         tinggi.addEventListener('input', hitungIMT);
     }
 
-    // Jalankan saat halaman load (untuk old() values)
     window.addEventListener('load', hitungIMT);
 
     // Validasi form sebelum submit
@@ -568,13 +632,12 @@
     
     if (formDeteksi) {
         formDeteksi.addEventListener('submit', function(e) {
-            // Cek semua field required
             const requiredFields = [
-                { name: 'usia', label: 'Usia', type: 'text' },
+                { name: 'usia', label: 'Usia', type: 'number' },
                 { name: 'jenis_kelamin', label: 'Jenis Kelamin', type: 'select' },
-                { name: 'berat_badan', label: 'Berat Badan', type: 'text' },
-                { name: 'tinggi_badan', label: 'Tinggi Badan', type: 'text' },
-                { name: 'imt', label: 'IMT', type: 'text' },
+                { name: 'berat_badan', label: 'Berat Badan', type: 'number' },
+                { name: 'tinggi_badan', label: 'Tinggi Badan', type: 'number' },
+                { name: 'imt', label: 'IMT', type: 'number' },
                 { name: 'keluarga_diabetes', label: 'Riwayat Keluarga Diabetes', type: 'select' },
                 { name: 'merokok', label: 'Kebiasaan Merokok', type: 'select' },
                 { name: 'minum_alkohol', label: 'Konsumsi Alkohol', type: 'select' },
@@ -597,20 +660,16 @@
                 }
             });
 
-            // Jika ada field yang kosong
             if (emptyFields.length > 0) {
                 e.preventDefault();
                 
-                // Cek apakah ada dropdown yang belum dipilih
                 if (emptySelects.length > 0) {
-                    // Tampilkan modal khusus untuk dropdown
                     showModal(
                         'Silahkan Isi Semua Formnya',
                         'Anda belum mengisi beberapa pilihan yang wajib diisi:',
                         emptySelects
                     );
                 } else {
-                    // Tampilkan modal untuk field biasa
                     showModal(
                         'Tolong Isi Semua Kolom',
                         'Beberapa field wajib belum diisi:',
@@ -618,14 +677,12 @@
                     );
                 }
                 
-                // Scroll ke field pertama yang kosong
                 const firstEmptyFieldName = requiredFields.find(f => emptyFields.includes(f.label))?.name;
                 const firstEmptyField = document.querySelector(`[name="${firstEmptyFieldName}"]`);
                 if (firstEmptyField) {
                     firstEmptyField.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     setTimeout(() => {
                         firstEmptyField.focus();
-                        // Tambahkan efek shake
                         firstEmptyField.classList.add('animate-shake');
                         setTimeout(() => {
                             firstEmptyField.classList.remove('animate-shake');
@@ -636,7 +693,6 @@
                 return false;
             }
 
-            // Cek apakah ada field numerik yang invalid
             const hasNumericError = numericFields.some(field => {
                 const input = document.querySelector(`input[name="${field.name}"]`);
                 const errorMsg = document.getElementById(`error-${field.name}`);
@@ -653,7 +709,6 @@
                 return false;
             }
 
-            // Cek IMT
             const imtValue = parseFloat(imt.value);
             if (!imtValue || imtValue <= 0) {
                 e.preventDefault();
@@ -669,17 +724,14 @@
     }
 
     // Reset handler dengan konfirmasi
-    const resetBtn = document.querySelector('button[type="reset"]');
+    const resetBtn = document.getElementById('resetBtn');
     if (resetBtn) {
         resetBtn.addEventListener('click', function(e) {
-            e.preventDefault(); // Cegah reset langsung
-            
-            // Tampilkan modal konfirmasi
+            e.preventDefault();
             showResetConfirmation();
         });
     }
     
-    // Fungsi untuk menampilkan konfirmasi reset
     function showResetConfirmation() {
         const modalOverlay = document.getElementById('modalOverlay');
         const modalContainer = document.getElementById('modalContainer');
@@ -706,26 +758,21 @@
             </div>
         `;
         
-        // Sembunyikan tombol OK default
         modalOkBtn.style.display = 'none';
         
         modalOverlay.classList.add('show');
         modalContainer.classList.add('show');
         document.body.style.overflow = 'hidden';
         
-        // Event listener untuk tombol Ya
         document.getElementById('confirmResetBtn').addEventListener('click', function() {
-            // Reset form
             formDeteksi.reset();
             
-            // Reset IMT
             if (imt) imt.value = '';
             if (imtKategori) {
                 imtKategori.className = 'px-4 py-3 rounded-lg font-semibold text-sm min-w-[150px] text-center bg-gray-100 text-gray-500';
                 imtKategori.textContent = 'Isi berat & tinggi';
             }
             
-            // Sembunyikan semua pesan error
             numericFields.forEach(field => {
                 const errorMsg = document.getElementById(`error-${field.name}`);
                 if (errorMsg) {
@@ -738,25 +785,20 @@
                 }
             });
             
-            // Tutup modal dan tampilkan pesan sukses
             closeModal();
             
-            // Tampilkan notifikasi reset berhasil
             setTimeout(() => {
                 showModal(
                     'Form Berhasil Direset',
                     'Semua data telah dikosongkan. Anda dapat mengisi form dari awal.',
                     []
                 );
-                // Kembalikan tombol OK
                 modalOkBtn.style.display = 'inline-block';
             }, 300);
         });
         
-        // Event listener untuk tombol Batal
         document.getElementById('cancelResetBtn').addEventListener('click', function() {
             closeModal();
-            // Kembalikan tombol OK
             modalOkBtn.style.display = 'inline-block';
         });
     }

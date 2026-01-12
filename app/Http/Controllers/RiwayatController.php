@@ -23,25 +23,31 @@ class RiwayatController extends Controller
                     'id_riwayat_kesehatan' => $item->id_riwayat_kesehatan,
                     'id_data_kesehatan_user' => $item->id_data_kesehatan_user,
                     'created_at' => $item->created_at,
+                    
                     // Data dari data_kesehatan_user
                     'nama' => $item->dataKesehatanUser->nama,
                     'usia' => $item->dataKesehatanUser->usia,
-                    'jenis_kelamin' => $item->dataKesehatanUser->jenis_kelamin,
+                    'jenis_kelamin' => $item->dataKesehatanUser->jenis_kelamin == 1 || $item->dataKesehatanUser->jenis_kelamin == 'Laki-laki' 
+                        ? 'Laki-Laki' 
+                        : 'Perempuan',
                     'berat_badan' => $item->dataKesehatanUser->berat_badan,
                     'tinggi_badan' => $item->dataKesehatanUser->tinggi_badan,
                     'imt' => $item->dataKesehatanUser->imt,
-                    // Data dari riwayat_kesehatan
-                    'keluarga_diabetes' => $item->keluarga_diabetes,
-                    'merokok' => $item->merokok,
-                    'minum_alkohol' => $item->minum_alkohol,
-                    'riwayat_hipertensi' => $item->riwayat_hipertensi,
-                    'riwayat_obesitas' => $item->riwayat_obesitas,
-                    'olahraga' => $item->olahraga,
-                    'pola_makan' => $item->pola_makan,
-                    // Data medis
-                    'gula_darah_sewaktu' => $item->gula_darah_sewaktu ?? 0,
-                    'hba1c' => $item->hba1c ?? 0,
-                    'kolesterol' => $item->kolesterol ?? 0,
+                    
+                    // Data gaya hidup dari riwayat_kesehatan
+                    'keluarga_diabetes' => $this->formatYaTidak($item->keluarga_diabetes),
+                    'merokok' => $this->formatYaTidak($item->merokok),
+                    'minum_alkohol' => $this->formatYaTidak($item->minum_alkohol),
+                    'riwayat_hipertensi' => $this->formatYaTidak($item->riwayat_hipertensi),
+                    'riwayat_obesitas' => $this->formatYaTidak($item->riwayat_obesitas),
+                    'olahraga' => $this->formatOlahraga($item->olahraga),
+                    'pola_makan' => $this->formatPolaMakan($item->pola_makan),
+                    
+                    // GEJALA YANG DIALAMI
+                    'sering_buang_air_kecil_malam' => $this->formatGejala($item->sering_buang_air_kecil_malam),
+                    'sering_lapar' => $this->formatGejala($item->sering_lapar),
+                    'pandangan_kabur' => $this->formatGejala($item->pandangan_kabur),
+                    
                     // Data hasil analisis AI
                     'tingkat_resiko' => $item->tingkat_resiko,
                     'skor_resiko' => $item->skor_resiko,
@@ -56,7 +62,98 @@ class RiwayatController extends Controller
                 ];
             });
 
-        // PENTING: Pastikan view path-nya benar
         return view('user.riwayat_kesehatan.index', compact('riwayat'));
+    }
+
+    /**
+     * Format field Ya/Tidak
+     * Menangani nilai yang sudah string "Ya"/"Tidak" atau masih 1/0
+     */
+    private function formatYaTidak($value)
+    {
+        // Jika null atau empty string
+        if ($value === null || $value === '') {
+            return 'Tidak Diisi';
+        }
+        
+        // Jika sudah berupa string "Ya" atau "Tidak" (dari database)
+        if ($value === 'Ya' || $value === 'Tidak') {
+            return $value;
+        }
+        
+        // Jika masih berupa 1/0 (fallback)
+        return $value == 1 ? 'Ya' : 'Tidak';
+    }
+
+    /**
+     * Format field gejala (opsional)
+     * Menangani nilai yang sudah string "Ya"/"Tidak" atau masih 1/0 atau NULL
+     */
+    private function formatGejala($value)
+    {
+        // Jika null atau empty string (gejala tidak diisi)
+        if ($value === null || $value === '') {
+            return 'Tidak Diisi';
+        }
+        
+        // Jika sudah berupa string "Ya" atau "Tidak" (dari database)
+        if ($value === 'Ya' || $value === 'Tidak') {
+            return $value;
+        }
+        
+        // Jika masih berupa 1/0 (fallback)
+        return $value == 1 ? 'Ya' : 'Tidak';
+    }
+
+    /**
+     * Format olahraga
+     * Menangani nilai yang sudah string atau masih angka 0/1/2
+     */
+    private function formatOlahraga($value)
+    {
+        // Jika null atau empty
+        if ($value === null || $value === '') {
+            return 'Tidak Diisi';
+        }
+        
+        // Jika sudah berupa string (dari database)
+        if (is_string($value) && !is_numeric($value)) {
+            return $value;
+        }
+        
+        // Map dari angka ke string
+        $options = [
+            '0' => 'Tidak Pernah',
+            '1' => 'Kadang-kadang',
+            '2' => 'Rutin',
+        ];
+        
+        return $options[(string)$value] ?? 'Tidak Diisi';
+    }
+
+    /**
+     * Format pola makan
+     * Menangani nilai yang sudah string atau masih angka 0/1/2
+     */
+    private function formatPolaMakan($value)
+    {
+        // Jika null atau empty
+        if ($value === null || $value === '') {
+            return 'Tidak Diisi';
+        }
+        
+        // Jika sudah berupa string (dari database)
+        if (is_string($value) && !is_numeric($value)) {
+            return $value;
+        }
+        
+        // Map dari angka ke string
+        $options = [
+            '0' => 'Tidak Sehat',
+            '1' => 'Cukup Sehat',
+            '2' => 'Sangat Sehat',
+        ];
+        
+        return $options[(string)$value] ?? 'Tidak Diisi';
     }
 }

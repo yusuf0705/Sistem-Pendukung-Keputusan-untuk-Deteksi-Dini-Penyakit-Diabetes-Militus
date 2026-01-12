@@ -4,17 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log; // Tambahkan ini
+use Illuminate\Support\Facades\Log;
 use App\Models\DataKesehatanUser;
 use App\Models\RiwayatKesehatan;
-use App\ML\MLService;
+use App\Services\MLService;
 
 class DeteksiController extends Controller
 {
-    // Halaman index/dashboard dengan statistik
+    protected $mlService;
+
+    public function __construct(MLService $mlService)
+    {
+        $this->mlService = $mlService;
+    }
+
     public function index()
     {
-        // Ambil riwayat pemeriksaan terakhir user
         $lastCheckup = RiwayatKesehatan::whereHas('dataKesehatanUser', function($query) {
                 $query->where('id_user', Auth::id());
             })
@@ -22,27 +27,23 @@ class DeteksiController extends Controller
             ->latest()
             ->first();
 
-        // Hitung total pemeriksaan user
         $totalCheckups = RiwayatKesehatan::whereHas('dataKesehatanUser', function($query) {
                 $query->where('id_user', Auth::id());
             })
             ->count();
 
-        // Hitung hasil normal (risiko rendah)
         $normalCount = RiwayatKesehatan::whereHas('dataKesehatanUser', function($query) {
                 $query->where('id_user', Auth::id());
             })
             ->where('tingkat_resiko', 'Rendah')
             ->count();
 
-        // Hitung hasil perlu perhatian (risiko sedang & tinggi)
         $abnormalCount = RiwayatKesehatan::whereHas('dataKesehatanUser', function($query) {
                 $query->where('id_user', Auth::id());
             })
             ->whereIn('tingkat_resiko', ['Sedang', 'Tinggi'])
             ->count();
 
-        // Format hasil untuk lastCheckup jika ada
         if ($lastCheckup) {
             $lastCheckup->result = $lastCheckup->status_diabetes . ' - Risiko ' . $lastCheckup->tingkat_resiko;
         }
@@ -55,73 +56,103 @@ class DeteksiController extends Controller
         ));
     }
 
-    // Halaman form deteksi
     public function create()
     {
         return view("user.deteksi.form");
     }
 
-    // Proses deteksi
     public function cekDiabetes(Request $request)
     {
         $validated = $request->validate(
             [
-                "usia" => "required|numeric",
-                "jenis_kelamin" => "required|numeric",
-                "berat_badan" => "required|numeric",
-                "tinggi_badan" => "required|numeric",
+                "usia" => "required|numeric|min:1|max:120",
+                "jenis_kelamin" => "required|numeric|in:0,1",
+                "berat_badan" => "required|numeric|min:1",
+                "tinggi_badan" => "required|numeric|min:1",
                 "imt" => "required|numeric",
-                "keluarga_diabetes" => "required|numeric",
-                "merokok" => "required|numeric",
-                "minum_alkohol" => "required|numeric",
-                "riwayat_hipertensi" => "required|numeric",
-                "riwayat_obesitas" => "required|numeric",
-                "olahraga" => "required|numeric",
-                "pola_makan" => "required|numeric",
+                "keluarga_diabetes" => "required|numeric|in:0,1",
+                "merokok" => "required|numeric|in:0,1",
+                "minum_alkohol" => "required|numeric|in:0,1",
+                "riwayat_hipertensi" => "required|numeric|in:0,1",
+                "riwayat_obesitas" => "required|numeric|in:0,1",
+                "olahraga" => "required|numeric|in:0,1,2",
+                "pola_makan" => "required|numeric|in:0,1,2",
+                "sering_buang_air_kecil_malam" => "nullable|numeric|in:0,1",
+                "sering_lapar" => "nullable|numeric|in:0,1",
+                "pandangan_kabur" => "nullable|numeric|in:0,1",
             ],
             [
                 "*.required" => "Semua field wajib diisi!",
                 "*.numeric"  => "Input tidak valid",
+                "*.min" => "Nilai terlalu kecil",
+                "*.max" => "Nilai terlalu besar",
+                "*.in" => "Pilihan tidak valid",
             ]
         );
 
-        // ======================
-        // HITUNG SKOR RISIKO
-        // ======================
-        $skor = 0;
+        // Hitung skor risiko manual (untuk fallback)
+        $skor = $this->hitungSkorManual($validated);
+        $kategoriManual = $this->getKategoriFromSkor($skor);
 
-        if ($validated["usia"] >= 45) $skor += 2;
-        if ($validated["imt"] >= 30) $skor += 3;
-        elseif ($validated["imt"] >= 25) $skor += 2;
+        // Prediksi menggunakan ML API
+        try {
+            $mlData = [
+                'usia' => (int) $validated['usia'],
+                'jenis_kelamin' => $validated['jenis_kelamin'] == 1 ? 'Laki-laki' : 'Perempuan',
+                'berat_badan' => (float) $validated['berat_badan'],
+                'tinggi_badan' => (float) $validated['tinggi_badan'],
+                'imt' => (float) $validated['imt'],
+                'keluarga_diabetes' => (int) $validated['keluarga_diabetes'],
+                'merokok' => (int) $validated['merokok'],
+                'minum_alkohol' => (int) $validated['minum_alkohol'],
+                'riwayat_hipertensi' => (int) $validated['riwayat_hipertensi'],
+                'riwayat_obesitas' => (int) $validated['riwayat_obesitas'],
+                'olahraga' => $this->mapOlahragaForML($validated['olahraga']),
+                'pola_makan' => $this->mapPolaMakanForML($validated['pola_makan']),
+                'sering_buang_air_kecil_malam' => (int) ($validated['sering_buang_air_kecil_malam'] ?? 0),
+                'sering_lapar' => (int) ($validated['sering_lapar'] ?? 0),
+                'pandangan_kabur' => (int) ($validated['pandangan_kabur'] ?? 0),
+            ];
 
-        if ($validated["keluarga_diabetes"] == 1) $skor += 3;
-        if ($validated["merokok"] == 1) $skor += 2;
-        if ($validated["minum_alkohol"] == 1) $skor += 1;
-        if ($validated["riwayat_hipertensi"] == 1) $skor += 3;
-        if ($validated["riwayat_obesitas"] == 1) $skor += 2;
-        if ($validated["olahraga"] == 0) $skor += 2;
-        if ($validated["pola_makan"] == 0) $skor += 3;
+            $mlResult = $this->mlService->predict($mlData);
 
-        if ($skor >= 12) $kategori = "Tinggi";
-        elseif ($skor >= 6) $kategori = "Sedang";
-        else $kategori = "Rendah";
+            if ($mlResult['success']) {
+                $prediction = $mlResult['data'];
+                
+                $kategori = $prediction['risk_level'];
+                $probabilitas = $prediction['probability']['diabetes'];
+                $prediksiDiabetes = $prediction['prediction'];
+                $confidence = $prediction['confidence'];
+                
+                $explanation = $this->mlService->explain($mlData);
+                $riskFactors = $explanation['data']['identified_risk_factors'] ?? [];
+                $recommendation = $explanation['data']['recommendation'] ?? '';
+                
+            } else {
+                Log::warning('ML API failed, using manual calculation', [
+                    'error' => $mlResult['error'] ?? 'Unknown error'
+                ]);
+                
+                $kategori = $kategoriManual;
+                $probabilitas = $skor / 20;
+                $prediksiDiabetes = $skor >= 12 ? 1 : 0;
+                $confidence = 0.5;
+                $riskFactors = [];
+                $recommendation = '';
+            }
 
-        // ======================
-        // PREDIKSI AI
-        // ======================
-        $ml = new MLService();
-        $predict = $ml->predict($validated);
+        } catch (\Exception $e) {
+            Log::error('ML Service Error: ' . $e->getMessage());
+            
+            $kategori = $kategoriManual;
+            $probabilitas = $skor / 20;
+            $prediksiDiabetes = $skor >= 12 ? 1 : 0;
+            $confidence = 0.5;
+            $riskFactors = [];
+            $recommendation = '';
+        }
 
-        $hasil = [
-            "skor" => $skor,
-            "kategori" => $kategori,
-            "diabetes" => $predict["diabetes"] ?? 0,
-            "score" => min($skor * 5, 100),
-        ];
-
-        // ======================
-        // SIMPAN KE DATABASE
-        // ======================
+        // Simpan ke database
         try {
             // 1. Simpan data kesehatan user
             $dataKesehatan = DataKesehatanUser::create([
@@ -135,12 +166,21 @@ class DeteksiController extends Controller
             ]);
 
             // 2. Generate analisis lengkap
-            $analisis = $this->generateAnalisis($validated, $skor, $kategori, $predict);
+            $analisis = $this->generateAnalisis(
+                $validated, 
+                $skor, 
+                $kategori, 
+                $prediksiDiabetes,
+                $probabilitas,
+                $riskFactors,
+                $recommendation
+            );
 
-            // 3. Simpan riwayat kesehatan lengkap
+            // 3. Simpan riwayat kesehatan lengkap (DENGAN GEJALA)
             $riwayatKesehatan = RiwayatKesehatan::create([
                 'id_data_kesehatan_user' => $dataKesehatan->id_data_kesehatan_user,
-                // Data input
+                
+                // Data input gaya hidup
                 'keluarga_diabetes' => $validated['keluarga_diabetes'] == 1 ? 'Ya' : 'Tidak',
                 'merokok' => $validated['merokok'] == 1 ? 'Ya' : 'Tidak',
                 'minum_alkohol' => $validated['minum_alkohol'] == 1 ? 'Ya' : 'Tidak',
@@ -148,13 +188,21 @@ class DeteksiController extends Controller
                 'riwayat_obesitas' => $validated['riwayat_obesitas'] == 1 ? 'Ya' : 'Tidak',
                 'olahraga' => $this->mapOlahraga($validated['olahraga']),
                 'pola_makan' => $this->mapPolaMakan($validated['pola_makan']),
-                // Data medis hasil analisis
-                'gula_darah_sewaktu' => $analisis['gula_darah_sewaktu'],
-                'hba1c' => $analisis['hba1c'],
-                'kolesterol' => $analisis['kolesterol'],
+                
+                // ✅ TAMBAHAN: Data gejala (opsional)
+                'sering_buang_air_kecil_malam' => isset($validated['sering_buang_air_kecil_malam']) 
+                    ? ($validated['sering_buang_air_kecil_malam'] == 1 ? 'Ya' : 'Tidak') 
+                    : null,
+                'sering_lapar' => isset($validated['sering_lapar']) 
+                    ? ($validated['sering_lapar'] == 1 ? 'Ya' : 'Tidak') 
+                    : null,
+                'pandangan_kabur' => isset($validated['pandangan_kabur']) 
+                    ? ($validated['pandangan_kabur'] == 1 ? 'Ya' : 'Tidak') 
+                    : null,
+                
                 // Hasil analisis AI
                 'tingkat_resiko' => $kategori,
-                'skor_resiko' => $hasil['score'],
+                'skor_resiko' => round($probabilitas * 100, 2),
                 'status_diabetes' => $analisis['status_diabetes'],
                 'penjelasan_resiko' => $analisis['penjelasan_resiko'],
                 'rekomendasi_diet' => $analisis['rekomendasi_diet'],
@@ -165,45 +213,60 @@ class DeteksiController extends Controller
                 'pesan_konsultasi' => $analisis['pesan_konsultasi'],
             ]);
 
-            // Tambahkan ID riwayat ke hasil untuk referensi
-            $hasil['id_riwayat'] = $riwayatKesehatan->id_riwayat_kesehatan;
+            $hasil = [
+                'id_riwayat' => $riwayatKesehatan->id_riwayat_kesehatan,
+                'kategori' => $kategori,
+                'skor' => $skor,
+                'score' => round($probabilitas * 100, 2),
+                'diabetes' => $prediksiDiabetes,
+                'confidence' => round($confidence * 100, 2),
+                'risk_factors' => $riskFactors,
+                'recommendation' => $recommendation,
+                'analisis' => $analisis,
+            ];
             
         } catch (\Exception $e) {
-            // Log error dengan benar menggunakan Log facade
-            Log::error('Error saving health data: ' . $e->getMessage(), [
-                'user_id' => Auth::id(),
-                'trace' => $e->getTraceAsString()
-            ]);
+            Log::error('Error saving health data: ' . $e->getMessage());
+            
+            return back()
+                ->with('error', 'Gagal menyimpan data kesehatan. Silakan coba lagi.')
+                ->withInput();
         }
 
         return view("user.deteksi.hasil", compact("hasil"));
     }
 
-    private function generateAnalisis($data, $skor, $kategori, $predict)
+    private function hitungSkorManual($data)
     {
-        $statusDiabetes = ($predict["diabetes"] ?? 0) > 0.5 ? 'Prediabetes' : 'Normal';
-        
-        if ($kategori === 'Rendah') {
-            $gulaDarah = rand(70, 110);
-            $hba1c = rand(40, 54) / 10;
-        } elseif ($kategori === 'Sedang') {
-            $gulaDarah = rand(110, 140);
-            $hba1c = rand(54, 64) / 10;
-            $statusDiabetes = 'Prediabetes';
-        } else {
-            $gulaDarah = rand(140, 180);
-            $hba1c = rand(64, 75) / 10;
-            $statusDiabetes = 'Prediabetes';
-        }
+        $skor = 0;
+        if ($data["usia"] >= 45) $skor += 2;
+        if ($data["imt"] >= 30) $skor += 3;
+        elseif ($data["imt"] >= 25) $skor += 2;
+        if ($data["keluarga_diabetes"] == 1) $skor += 3;
+        if ($data["merokok"] == 1) $skor += 2;
+        if ($data["minum_alkohol"] == 1) $skor += 1;
+        if ($data["riwayat_hipertensi"] == 1) $skor += 3;
+        if ($data["riwayat_obesitas"] == 1) $skor += 2;
+        if ($data["olahraga"] == 0) $skor += 2;
+        if ($data["pola_makan"] == 0) $skor += 3;
+        return $skor;
+    }
 
-        $perluKonsul = $skor >= 10 ? 'Ya' : 'Tidak';
+    private function getKategoriFromSkor($skor)
+    {
+        if ($skor >= 12) return "Tinggi";
+        elseif ($skor >= 6) return "Sedang";
+        else return "Rendah";
+    }
+
+    private function generateAnalisis($data, $skor, $kategori, $prediksiDiabetes, $probabilitas, $riskFactors, $recommendation)
+    {
+        $statusDiabetes = $prediksiDiabetes == 1 ? 'Prediabetes' : 'Normal';
+        $perluKonsul = $kategori === 'Tinggi' ? 'Ya' : 'Tidak';
 
         return [
             'status_diabetes' => $statusDiabetes,
-            'gula_darah_sewaktu' => $gulaDarah,
-            'hba1c' => $hba1c,
-            'kolesterol' => rand(150, 240),
-            'penjelasan_resiko' => $this->generatePenjelasan($kategori, $skor),
+            'penjelasan_resiko' => $this->generatePenjelasan($kategori, $skor, $probabilitas, $riskFactors),
             'rekomendasi_diet' => $this->generateRekomendasiDiet($kategori),
             'rekomendasi_olahraga' => $this->generateRekomendasiOlahraga($kategori),
             'perubahan_gaya_hidup' => $this->generatePerubahanGayaHidup($kategori),
@@ -213,27 +276,48 @@ class DeteksiController extends Controller
         ];
     }
 
+    private function mapOlahragaForML($value)
+    {
+        return [0 => 'Jarang', 1 => 'Kadang', 2 => 'Rutin'][$value] ?? 'Jarang';
+    }
+
+    private function mapPolaMakanForML($value)
+    {
+        return [0 => 'Tidak Sehat', 1 => 'Cukup Sehat', 2 => 'Sehat'][$value] ?? 'Tidak Sehat';
+    }
+
     private function mapOlahraga($value)
     {
-        $map = [0 => 'Tidak Pernah', 1 => 'Kadang-kadang', 2 => 'Rutin'];
-        return $map[$value] ?? 'Tidak Pernah';
+        return [0 => 'Tidak Pernah', 1 => 'Kadang-kadang', 2 => 'Rutin'][$value] ?? 'Tidak Pernah';
     }
 
     private function mapPolaMakan($value)
     {
-        $map = [0 => 'Tidak Sehat', 1 => 'Cukup Sehat', 2 => 'Sangat Sehat'];
-        return $map[$value] ?? 'Tidak Sehat';
+        return [0 => 'Tidak Sehat', 1 => 'Cukup Sehat', 2 => 'Sangat Sehat'][$value] ?? 'Tidak Sehat';
     }
 
-    private function generatePenjelasan($kategori, $skor)
+    private function generatePenjelasan($kategori, $skor, $probabilitas, $riskFactors)
     {
+        $probPersen = round($probabilitas * 100, 1);
+        $penjelasan = "Hasil analisis AI menunjukkan probabilitas diabetes Anda sebesar {$probPersen}% dengan skor risiko {$skor}. ";
+        
         if ($kategori === 'Rendah') {
-            return "Kadar gula darah Anda dalam rentang normal dengan skor risiko {$skor}. Gaya hidup sehat yang Anda jalani sangat baik untuk mencegah diabetes. Pertahankan pola hidup sehat Anda.";
+            $penjelasan .= "Kadar gula darah Anda dalam rentang normal. Gaya hidup sehat yang Anda jalani sangat baik untuk mencegah diabetes. Pertahankan pola hidup sehat Anda.";
         } elseif ($kategori === 'Sedang') {
-            return "Anda memiliki beberapa faktor risiko diabetes dengan skor {$skor}. Penting untuk mulai melakukan perubahan gaya hidup untuk mencegah perkembangan ke diabetes tipe 2.";
+            $penjelasan .= "Anda memiliki beberapa faktor risiko diabetes. ";
+            if (!empty($riskFactors)) {
+                $penjelasan .= "Faktor risiko yang teridentifikasi: " . implode(", ", $riskFactors) . ". ";
+            }
+            $penjelasan .= "Penting untuk mulai melakukan perubahan gaya hidup untuk mencegah perkembangan ke diabetes tipe 2.";
         } else {
-            return "Skor risiko Anda mencapai {$skor}, menunjukkan risiko tinggi diabetes. Beberapa faktor risiko seperti riwayat keluarga, gaya hidup, dan kondisi kesehatan memerlukan perhatian serius.";
+            $penjelasan .= "Ini menunjukkan risiko TINGGI diabetes. ";
+            if (!empty($riskFactors)) {
+                $penjelasan .= "Faktor risiko yang teridentifikasi: " . implode(", ", $riskFactors) . ". ";
+            }
+            $penjelasan .= "Beberapa faktor risiko memerlukan perhatian serius dan konsultasi medis segera.";
         }
+        
+        return $penjelasan;
     }
 
     private function generateRekomendasiDiet($kategori)

@@ -1,0 +1,801 @@
+usia,jenis_kelamin,berat_badan,tinggi_badan,imt,keluarga_diabetes,merokok,minum_alkohol,riwayat_hipertensi,riwayat_obesitas,olahraga,pola_makan,diabetes,sering_buang_air_kecil_malam,sering_lapar,pandangan_kabur
+58,Laki-laki,92,146,43.16,1,0,0,0,1,Rutin,Tidak Sehat,1,0,1,0
+19,Laki-laki,59,158,23.63,0,0,1,0,0,Kadang,Sehat,0,1,0,0
+62,Perempuan,62,166,22.5,0,0,1,0,0,Jarang,Cukup Sehat,0,0,1,1
+56,Perempuan,91,147,42.11,1,0,1,0,1,Rutin,Cukup Sehat,1,1,0,0
+20,Laki-laki,50,163,18.82,0,0,1,1,0,Kadang,Sehat,0,1,0,1
+40,Laki-laki,89,162,33.91,0,0,0,0,1,Kadang,Cukup Sehat,0,1,0,1
+67,Laki-laki,97,159,38.37,0,1,1,1,1,Jarang,Tidak Sehat,1,1,0,1
+43,Perempuan,61,154,25.72,0,0,1,1,0,Rutin,Cukup Sehat,0,1,0,0
+50,Perempuan,93,150,41.33,0,0,0,0,1,Rutin,Cukup Sehat,1,0,1,1
+56,Perempuan,61,178,19.25,0,0,1,1,0,Jarang,Cukup Sehat,0,1,0,1
+18,Perempuan,93,177,29.68,0,0,1,0,0,Jarang,Cukup Sehat,0,0,0,1
+49,Laki-laki,68,152,29.43,1,0,0,0,0,Rutin,Tidak Sehat,1,0,1,0
+66,Laki-laki,87,153,37.17,1,0,1,1,1,Jarang,Sehat,1,0,1,1
+60,Perempuan,78,173,26.06,1,0,0,0,0,Jarang,Cukup Sehat,0,0,0,0
+18,Laki-laki,48,185,14.02,0,0,0,1,0,Jarang,Sehat,0,0,1,1
+31,Laki-laki,81,181,24.72,1,0,1,1,0,Jarang,Tidak Sehat,0,0,1,1
+45,Perempuan,100,174,33.03,0,0,0,1,1,Rutin,Cukup Sehat,0,0,0,0
+30,Perempuan,72,153,30.76,0,1,1,0,1,Jarang,Cukup Sehat,0,0,0,0
+23,Laki-laki,71,155,29.55,1,1,0,1,0,Jarang,Tidak Sehat,0,1,0,1
+34,Perempuan,72,163,27.1,1,0,0,1,0,Jarang,Tidak Sehat,0,0,1,0
+21,Perempuan,99,177,31.6,0,0,0,0,1,Jarang,Sehat,0,0,0,1
+25,Laki-laki,83,182,25.06,0,0,1,1,0,Kadang,Tidak Sehat,0,1,0,1
+43,Laki-laki,74,164,27.51,1,0,0,1,0,Rutin,Sehat,0,0,0,0
+50,Perempuan,67,153,28.62,0,0,1,1,0,Jarang,Cukup Sehat,1,1,0,1
+60,Laki-laki,61,153,26.06,0,0,0,1,0,Kadang,Sehat,0,0,1,0
+61,Perempuan,76,177,24.26,1,0,0,1,0,Kadang,Tidak Sehat,0,0,1,0
+58,Perempuan,92,155,38.29,1,1,0,0,1,Jarang,Sehat,1,0,0,1
+55,Laki-laki,53,172,17.92,0,1,1,0,0,Kadang,Tidak Sehat,0,0,0,1
+67,Perempuan,92,184,27.17,0,0,0,0,0,Kadang,Tidak Sehat,1,0,1,1
+69,Laki-laki,55,162,20.96,0,1,0,1,0,Jarang,Tidak Sehat,0,1,1,1
+70,Laki-laki,46,159,18.2,0,1,1,1,0,Jarang,Cukup Sehat,0,1,1,1
+19,Laki-laki,56,161,21.6,1,0,0,1,0,Kadang,Sehat,0,1,1,0
+42,Laki-laki,47,161,18.13,1,0,0,1,0,Kadang,Tidak Sehat,0,1,1,0
+64,Perempuan,64,177,20.43,1,1,1,1,0,Rutin,Tidak Sehat,0,0,1,1
+61,Laki-laki,81,184,23.92,1,1,0,1,0,Kadang,Tidak Sehat,0,1,1,1
+46,Perempuan,77,158,30.84,1,0,0,1,1,Rutin,Sehat,1,1,0,0
+61,Perempuan,96,159,37.97,0,0,0,0,1,Jarang,Cukup Sehat,1,0,1,1
+58,Laki-laki,76,169,26.61,1,0,0,0,0,Jarang,Cukup Sehat,0,0,0,1
+21,Laki-laki,74,152,32.03,0,1,1,1,1,Rutin,Sehat,0,1,1,0
+65,Perempuan,61,173,20.38,0,1,1,0,0,Kadang,Cukup Sehat,0,0,1,0
+35,Perempuan,79,165,29.02,0,0,0,0,0,Kadang,Sehat,0,0,0,0
+44,Perempuan,79,166,28.67,1,1,0,0,0,Kadang,Cukup Sehat,0,0,1,1
+18,Perempuan,93,164,34.58,1,1,0,1,1,Jarang,Cukup Sehat,0,1,1,0
+42,Perempuan,91,170,31.49,0,1,0,0,1,Kadang,Sehat,0,0,0,1
+26,Perempuan,48,156,19.72,1,1,1,0,0,Kadang,Cukup Sehat,0,1,1,1
+66,Perempuan,98,161,37.81,0,1,0,0,1,Kadang,Tidak Sehat,0,0,0,0
+33,Laki-laki,84,146,39.41,0,0,0,1,1,Rutin,Tidak Sehat,0,0,1,1
+67,Perempuan,83,155,34.55,0,0,1,0,1,Rutin,Tidak Sehat,1,1,1,1
+63,Laki-laki,82,149,36.94,0,0,1,0,1,Rutin,Tidak Sehat,1,1,1,1
+22,Perempuan,99,145,47.09,1,1,0,1,1,Kadang,Sehat,0,1,0,1
+29,Perempuan,96,184,28.36,1,1,1,1,0,Kadang,Tidak Sehat,0,0,1,1
+33,Perempuan,84,181,25.64,1,1,0,1,0,Kadang,Tidak Sehat,0,1,0,1
+69,Perempuan,62,166,22.5,1,0,0,0,0,Jarang,Sehat,0,1,1,0
+62,Perempuan,73,176,23.57,0,0,1,0,0,Kadang,Sehat,0,0,1,1
+48,Perempuan,92,172,31.1,1,1,1,1,1,Kadang,Cukup Sehat,1,0,0,0
+38,Laki-laki,93,179,29.03,0,0,0,1,0,Kadang,Sehat,0,1,0,0
+36,Laki-laki,56,168,19.84,1,0,0,1,0,Jarang,Tidak Sehat,0,1,0,1
+24,Laki-laki,63,181,19.23,1,1,1,1,0,Jarang,Tidak Sehat,0,1,1,0
+70,Laki-laki,76,170,26.3,0,0,0,0,0,Rutin,Cukup Sehat,0,0,0,0
+53,Perempuan,83,183,24.78,0,1,1,1,0,Kadang,Sehat,0,1,1,0
+57,Laki-laki,85,158,34.05,0,1,0,0,1,Jarang,Tidak Sehat,0,0,0,0
+44,Perempuan,75,183,22.4,1,0,0,1,0,Rutin,Cukup Sehat,0,1,0,0
+34,Laki-laki,52,172,17.58,0,0,1,0,0,Jarang,Tidak Sehat,0,0,1,1
+46,Laki-laki,89,174,29.4,1,1,1,1,0,Kadang,Tidak Sehat,1,0,1,1
+56,Perempuan,50,146,23.46,0,0,1,0,0,Jarang,Cukup Sehat,0,1,1,0
+55,Perempuan,97,185,28.34,1,0,1,1,0,Kadang,Cukup Sehat,1,1,0,0
+39,Perempuan,63,176,20.34,1,0,1,0,0,Kadang,Cukup Sehat,0,1,0,1
+50,Laki-laki,74,179,23.1,1,0,0,1,0,Rutin,Cukup Sehat,0,1,0,0
+35,Laki-laki,73,163,27.48,1,0,0,0,0,Rutin,Tidak Sehat,0,1,0,1
+23,Laki-laki,74,152,32.03,0,0,1,1,1,Rutin,Sehat,0,1,1,1
+48,Laki-laki,80,174,26.42,0,1,0,0,0,Jarang,Cukup Sehat,0,1,1,1
+70,Laki-laki,91,163,34.25,1,1,0,1,1,Rutin,Cukup Sehat,1,1,1,1
+47,Perempuan,89,157,36.11,0,1,0,1,1,Jarang,Cukup Sehat,1,1,1,1
+60,Laki-laki,47,176,15.17,0,1,0,1,0,Jarang,Sehat,0,1,0,0
+44,Laki-laki,75,149,33.78,1,1,1,0,1,Kadang,Sehat,0,1,1,1
+52,Laki-laki,49,184,14.47,0,1,0,0,0,Kadang,Tidak Sehat,0,0,1,0
+62,Perempuan,47,146,22.05,1,0,1,1,0,Kadang,Cukup Sehat,0,0,0,1
+54,Laki-laki,56,155,23.31,0,1,0,1,0,Rutin,Tidak Sehat,0,0,1,1
+47,Perempuan,96,145,45.66,1,1,0,0,1,Kadang,Cukup Sehat,1,1,1,1
+47,Perempuan,69,157,27.99,1,0,0,1,0,Rutin,Cukup Sehat,1,1,1,0
+60,Perempuan,45,162,17.15,0,1,1,0,0,Rutin,Cukup Sehat,0,0,0,1
+61,Laki-laki,51,185,14.9,0,1,1,0,0,Rutin,Cukup Sehat,0,0,0,1
+38,Perempuan,57,156,23.42,0,1,1,0,0,Kadang,Cukup Sehat,0,1,1,0
+47,Laki-laki,93,154,39.21,0,1,1,0,1,Kadang,Tidak Sehat,1,1,0,1
+41,Perempuan,69,182,20.83,1,0,0,1,0,Jarang,Sehat,0,1,0,0
+58,Perempuan,86,164,31.98,1,0,0,0,1,Jarang,Cukup Sehat,1,1,0,0
+33,Laki-laki,74,169,25.91,1,1,0,1,0,Rutin,Tidak Sehat,0,1,1,1
+20,Perempuan,73,158,29.24,1,0,1,0,0,Rutin,Cukup Sehat,0,1,0,1
+35,Laki-laki,99,152,42.85,1,0,0,0,1,Jarang,Cukup Sehat,0,0,0,0
+22,Laki-laki,58,182,17.51,0,1,0,0,0,Kadang,Tidak Sehat,0,0,1,0
+25,Laki-laki,45,153,19.22,1,0,1,0,0,Jarang,Cukup Sehat,0,0,0,1
+51,Laki-laki,75,149,33.78,1,1,0,1,1,Rutin,Tidak Sehat,1,0,1,1
+59,Laki-laki,75,148,34.24,1,1,0,1,1,Rutin,Cukup Sehat,1,0,0,1
+56,Laki-laki,53,149,23.87,1,1,1,1,0,Kadang,Sehat,0,1,0,0
+59,Laki-laki,73,172,24.68,0,1,1,1,0,Kadang,Cukup Sehat,0,0,1,1
+38,Perempuan,54,168,19.13,1,0,0,0,0,Jarang,Cukup Sehat,0,0,1,0
+53,Laki-laki,80,182,24.15,1,0,1,1,0,Rutin,Cukup Sehat,0,0,1,1
+40,Laki-laki,77,181,23.5,0,0,1,0,0,Jarang,Cukup Sehat,0,1,0,1
+54,Laki-laki,99,172,33.46,0,1,0,0,1,Kadang,Sehat,1,1,1,1
+18,Laki-laki,81,154,34.15,1,0,0,0,1,Jarang,Sehat,0,0,1,1
+47,Perempuan,68,155,28.3,1,1,0,0,0,Jarang,Tidak Sehat,1,0,0,1
+46,Perempuan,83,176,26.79,1,1,1,0,0,Rutin,Tidak Sehat,0,1,1,0
+36,Perempuan,87,178,27.46,1,0,0,1,0,Rutin,Tidak Sehat,0,0,0,1
+31,Laki-laki,63,161,24.3,1,0,0,1,0,Rutin,Cukup Sehat,0,0,0,1
+52,Laki-laki,80,177,25.54,1,0,1,0,0,Kadang,Tidak Sehat,0,1,0,1
+54,Perempuan,70,181,21.37,1,1,0,1,0,Jarang,Cukup Sehat,0,0,1,1
+23,Perempuan,60,151,26.31,1,1,0,1,0,Kadang,Sehat,0,1,0,1
+67,Laki-laki,77,149,34.68,0,0,1,1,1,Rutin,Sehat,1,0,0,0
+27,Perempuan,56,157,22.72,0,0,0,1,0,Kadang,Sehat,0,1,1,1
+27,Perempuan,75,149,33.78,1,1,1,0,1,Kadang,Sehat,0,0,1,1
+46,Laki-laki,68,148,31.04,1,0,0,1,1,Kadang,Sehat,1,0,1,0
+38,Perempuan,54,177,17.24,0,1,0,1,0,Rutin,Tidak Sehat,0,0,0,0
+63,Perempuan,78,173,26.06,0,1,1,1,0,Kadang,Cukup Sehat,0,1,0,1
+22,Perempuan,80,151,35.09,1,1,1,0,1,Kadang,Tidak Sehat,0,0,1,1
+59,Perempuan,83,153,35.46,0,1,1,1,1,Jarang,Sehat,1,0,1,1
+19,Perempuan,56,164,20.82,0,1,1,0,0,Jarang,Tidak Sehat,0,0,0,1
+68,Laki-laki,94,177,30.0,0,1,0,1,1,Jarang,Tidak Sehat,1,0,0,1
+20,Perempuan,88,168,31.18,0,1,1,1,1,Jarang,Sehat,0,0,1,1
+30,Perempuan,73,181,22.28,1,1,1,1,0,Jarang,Tidak Sehat,0,0,1,0
+59,Perempuan,80,168,28.34,0,0,1,0,0,Jarang,Cukup Sehat,1,1,0,1
+23,Laki-laki,67,173,22.39,0,1,0,1,0,Rutin,Cukup Sehat,0,0,1,0
+41,Laki-laki,65,146,30.49,0,1,0,0,1,Jarang,Cukup Sehat,0,1,0,1
+46,Laki-laki,46,150,20.44,1,0,0,1,0,Jarang,Cukup Sehat,0,0,1,0
+21,Laki-laki,85,171,29.07,1,0,0,1,0,Rutin,Sehat,0,0,0,0
+36,Perempuan,84,145,39.95,1,0,1,0,1,Rutin,Sehat,0,0,1,0
+51,Laki-laki,100,169,35.01,1,0,1,1,1,Kadang,Sehat,1,0,1,0
+40,Laki-laki,51,185,14.9,1,0,0,1,0,Rutin,Cukup Sehat,0,0,1,1
+58,Laki-laki,49,153,20.93,1,0,1,0,0,Jarang,Tidak Sehat,0,0,1,1
+50,Perempuan,75,179,23.41,1,0,0,1,0,Kadang,Tidak Sehat,0,1,1,0
+69,Perempuan,70,172,23.66,1,1,1,0,0,Kadang,Sehat,0,1,1,1
+69,Laki-laki,50,172,16.9,1,0,1,1,0,Jarang,Tidak Sehat,0,1,1,1
+46,Perempuan,89,155,37.04,1,1,1,0,1,Rutin,Cukup Sehat,1,1,1,0
+22,Perempuan,77,168,27.28,0,0,0,1,0,Jarang,Tidak Sehat,0,0,0,1
+41,Perempuan,47,181,14.35,0,1,1,1,0,Kadang,Tidak Sehat,0,0,1,1
+38,Perempuan,52,160,20.31,0,0,1,1,0,Rutin,Tidak Sehat,0,1,1,1
+31,Perempuan,57,176,18.4,0,0,0,1,0,Jarang,Sehat,0,1,0,1
+60,Perempuan,80,149,36.03,1,1,0,0,1,Kadang,Sehat,1,0,0,0
+68,Laki-laki,95,160,37.11,1,0,1,1,1,Kadang,Sehat,1,0,0,0
+37,Perempuan,78,175,25.47,1,1,0,0,0,Kadang,Sehat,0,0,1,1
+61,Perempuan,98,153,41.86,0,0,1,0,1,Jarang,Sehat,1,0,1,0
+28,Perempuan,67,159,26.5,1,0,1,0,0,Rutin,Sehat,0,1,0,1
+57,Laki-laki,86,177,27.45,0,0,0,1,0,Rutin,Tidak Sehat,1,0,0,0
+59,Perempuan,94,158,37.65,1,0,1,1,1,Rutin,Cukup Sehat,1,1,0,1
+37,Perempuan,89,149,40.09,0,0,1,1,1,Kadang,Cukup Sehat,0,0,1,0
+38,Perempuan,70,167,25.1,0,1,0,1,0,Jarang,Cukup Sehat,0,0,1,1
+33,Laki-laki,48,151,21.05,1,1,1,0,0,Jarang,Cukup Sehat,0,1,0,0
+49,Perempuan,64,176,20.66,1,0,0,1,0,Rutin,Cukup Sehat,0,0,0,1
+21,Laki-laki,76,163,28.6,1,1,0,0,0,Kadang,Tidak Sehat,0,1,1,1
+41,Laki-laki,48,170,16.61,0,1,1,0,0,Kadang,Sehat,0,1,1,0
+26,Laki-laki,68,170,23.53,1,1,0,0,0,Rutin,Sehat,0,1,0,0
+20,Laki-laki,96,166,34.84,1,1,0,0,1,Kadang,Sehat,0,1,0,1
+57,Perempuan,66,182,19.93,1,1,1,0,0,Kadang,Cukup Sehat,0,0,1,1
+68,Laki-laki,75,183,22.4,1,0,0,1,0,Jarang,Sehat,0,1,0,0
+20,Laki-laki,46,157,18.66,1,1,1,0,0,Kadang,Sehat,0,0,1,1
+65,Laki-laki,78,153,33.32,0,1,1,1,1,Kadang,Tidak Sehat,1,1,1,1
+61,Perempuan,75,184,22.15,0,0,1,1,0,Jarang,Cukup Sehat,0,1,0,1
+38,Perempuan,80,167,28.69,1,1,0,1,0,Kadang,Cukup Sehat,0,0,1,0
+36,Laki-laki,73,167,26.18,1,1,0,0,0,Rutin,Cukup Sehat,0,1,0,0
+57,Laki-laki,48,160,18.75,0,0,0,0,0,Kadang,Cukup Sehat,0,1,0,0
+18,Laki-laki,86,171,29.41,1,1,0,1,0,Kadang,Cukup Sehat,0,0,0,0
+52,Laki-laki,71,156,29.17,0,0,1,1,0,Jarang,Sehat,1,1,0,0
+37,Laki-laki,63,166,22.86,1,1,0,1,0,Kadang,Tidak Sehat,0,0,1,0
+64,Perempuan,90,161,34.72,0,0,1,1,1,Rutin,Sehat,1,0,0,1
+70,Perempuan,65,177,20.75,0,1,0,0,0,Jarang,Cukup Sehat,0,1,0,0
+34,Perempuan,73,160,28.52,1,1,1,0,0,Kadang,Sehat,0,1,0,0
+60,Laki-laki,64,174,21.14,0,1,1,0,0,Rutin,Cukup Sehat,0,1,0,0
+26,Perempuan,74,154,31.2,1,1,1,0,1,Jarang,Sehat,0,0,1,1
+22,Laki-laki,98,148,44.74,0,0,0,1,1,Rutin,Cukup Sehat,0,0,0,1
+23,Perempuan,74,148,33.78,0,1,1,0,1,Rutin,Cukup Sehat,0,1,0,1
+34,Laki-laki,82,158,32.85,0,0,1,1,1,Rutin,Tidak Sehat,0,0,0,1
+20,Perempuan,56,171,19.15,0,1,1,1,0,Kadang,Cukup Sehat,0,1,0,0
+59,Perempuan,56,152,24.24,1,0,0,0,0,Jarang,Cukup Sehat,0,1,1,1
+70,Laki-laki,74,160,28.91,1,0,1,0,0,Rutin,Tidak Sehat,1,0,1,0
+33,Laki-laki,51,149,22.97,0,1,0,0,0,Rutin,Tidak Sehat,0,1,1,0
+52,Laki-laki,53,148,24.2,1,0,1,1,0,Jarang,Cukup Sehat,0,0,0,1
+37,Perempuan,80,148,36.52,0,1,1,0,1,Kadang,Sehat,0,1,1,1
+44,Laki-laki,69,164,25.65,0,1,0,0,0,Kadang,Sehat,0,0,1,0
+53,Perempuan,80,171,27.36,0,1,0,1,0,Jarang,Cukup Sehat,1,0,1,1
+23,Laki-laki,62,148,28.31,1,0,0,0,0,Rutin,Sehat,0,0,1,0
+39,Perempuan,58,145,27.59,0,0,1,0,0,Rutin,Sehat,0,0,1,0
+53,Perempuan,69,163,25.97,1,1,1,1,0,Kadang,Sehat,0,1,1,0
+69,Perempuan,58,165,21.3,1,1,1,0,0,Rutin,Tidak Sehat,0,0,0,1
+53,Perempuan,54,163,20.32,0,1,0,1,0,Rutin,Tidak Sehat,0,1,1,1
+66,Perempuan,74,176,23.89,0,1,0,0,0,Rutin,Sehat,0,1,0,0
+51,Laki-laki,97,149,43.69,0,0,1,0,1,Rutin,Tidak Sehat,0,0,0,0
+31,Perempuan,48,168,17.01,1,1,0,0,0,Rutin,Sehat,0,1,0,0
+51,Perempuan,63,179,19.66,0,1,0,0,0,Jarang,Sehat,0,0,0,0
+57,Perempuan,62,167,22.23,1,0,1,1,0,Kadang,Sehat,0,0,0,1
+61,Laki-laki,50,147,23.14,1,1,1,1,0,Jarang,Sehat,0,0,0,0
+49,Perempuan,81,166,29.39,0,0,0,0,0,Rutin,Sehat,1,1,1,0
+22,Perempuan,81,179,25.28,0,0,1,0,0,Jarang,Sehat,0,0,1,0
+37,Laki-laki,60,181,18.31,1,1,1,0,0,Rutin,Sehat,0,0,1,0
+24,Perempuan,98,159,38.76,0,1,1,1,1,Jarang,Sehat,0,1,1,1
+32,Perempuan,69,180,21.3,1,0,1,0,0,Rutin,Cukup Sehat,0,0,0,0
+35,Laki-laki,90,169,31.51,0,1,1,1,1,Jarang,Tidak Sehat,0,0,1,1
+41,Perempuan,53,151,23.24,0,0,1,1,0,Rutin,Sehat,0,1,0,0
+23,Perempuan,50,180,15.43,1,1,0,1,0,Kadang,Cukup Sehat,0,0,0,0
+61,Perempuan,53,155,22.06,1,1,1,1,0,Jarang,Tidak Sehat,0,0,1,1
+44,Perempuan,95,175,31.02,0,1,1,0,1,Rutin,Sehat,0,1,0,1
+24,Laki-laki,45,164,16.73,1,1,1,1,0,Kadang,Cukup Sehat,0,1,0,1
+38,Laki-laki,65,175,21.22,0,1,1,1,0,Rutin,Sehat,0,1,0,1
+42,Perempuan,68,170,23.53,0,0,0,0,0,Rutin,Cukup Sehat,0,0,1,1
+62,Laki-laki,88,171,30.09,1,0,1,0,1,Kadang,Sehat,1,0,1,1
+22,Perempuan,75,183,22.4,1,1,0,1,0,Rutin,Sehat,0,0,0,0
+60,Perempuan,86,155,35.8,0,1,1,1,1,Jarang,Tidak Sehat,1,0,1,0
+50,Laki-laki,68,173,22.72,1,1,0,1,0,Jarang,Cukup Sehat,0,0,1,1
+23,Laki-laki,67,154,28.25,1,1,1,0,0,Rutin,Cukup Sehat,0,1,1,0
+46,Perempuan,49,165,18.0,1,0,0,0,0,Kadang,Sehat,0,0,0,0
+51,Laki-laki,55,180,16.98,1,1,1,0,0,Kadang,Sehat,0,0,0,1
+43,Laki-laki,57,184,16.84,1,1,1,0,0,Rutin,Tidak Sehat,0,0,1,0
+54,Laki-laki,56,179,17.48,1,1,0,1,0,Jarang,Cukup Sehat,0,1,1,1
+57,Perempuan,52,182,15.7,1,1,1,0,0,Rutin,Sehat,0,1,0,0
+38,Laki-laki,64,160,25.0,0,0,1,0,0,Rutin,Cukup Sehat,0,1,0,1
+45,Laki-laki,85,176,27.44,0,0,1,1,0,Jarang,Tidak Sehat,0,1,1,0
+40,Laki-laki,53,176,17.11,0,1,1,1,0,Rutin,Cukup Sehat,0,1,1,1
+28,Laki-laki,46,181,14.04,0,1,0,1,0,Jarang,Sehat,0,1,0,1
+54,Perempuan,77,180,23.77,0,0,1,1,0,Rutin,Tidak Sehat,0,1,0,1
+24,Laki-laki,100,164,37.18,0,1,1,1,1,Jarang,Cukup Sehat,0,0,0,0
+69,Perempuan,85,184,25.11,1,0,0,0,0,Jarang,Tidak Sehat,0,1,1,0
+38,Perempuan,81,163,30.49,1,0,0,1,1,Jarang,Cukup Sehat,0,0,0,0
+27,Perempuan,93,160,36.33,1,1,0,1,1,Rutin,Cukup Sehat,0,1,1,0
+58,Laki-laki,77,170,26.64,1,1,1,1,0,Kadang,Sehat,0,0,0,1
+58,Perempuan,95,149,42.79,1,0,1,0,1,Kadang,Cukup Sehat,1,1,1,1
+53,Laki-laki,99,181,30.22,1,1,0,0,1,Jarang,Sehat,1,1,0,0
+28,Perempuan,45,174,14.86,1,0,0,1,0,Jarang,Cukup Sehat,0,0,1,1
+23,Perempuan,48,155,19.98,1,1,0,1,0,Rutin,Tidak Sehat,0,0,0,0
+48,Laki-laki,82,153,35.03,0,1,0,0,1,Rutin,Cukup Sehat,1,0,1,0
+48,Laki-laki,69,159,27.29,0,0,0,1,0,Kadang,Cukup Sehat,1,0,1,0
+59,Laki-laki,78,149,35.13,0,0,1,1,1,Rutin,Tidak Sehat,1,0,1,1
+31,Laki-laki,53,151,23.24,0,1,1,1,0,Kadang,Tidak Sehat,0,0,1,0
+33,Perempuan,99,146,46.44,1,0,0,1,1,Kadang,Sehat,0,0,0,1
+42,Laki-laki,76,160,29.69,0,0,1,1,0,Jarang,Cukup Sehat,0,1,1,0
+66,Perempuan,46,149,20.72,0,0,1,0,0,Jarang,Tidak Sehat,0,1,1,1
+45,Perempuan,85,150,37.78,0,1,0,1,1,Jarang,Sehat,0,0,0,1
+43,Laki-laki,89,164,33.09,1,0,0,0,1,Jarang,Cukup Sehat,0,0,1,0
+37,Laki-laki,45,152,19.48,0,0,0,1,0,Kadang,Sehat,0,1,0,1
+26,Perempuan,94,152,40.69,0,1,1,1,1,Rutin,Tidak Sehat,0,1,0,1
+47,Perempuan,76,148,34.7,0,1,0,1,1,Jarang,Sehat,1,0,0,0
+20,Laki-laki,47,160,18.36,1,1,1,0,0,Jarang,Tidak Sehat,0,1,0,1
+33,Perempuan,62,165,22.77,0,1,0,0,0,Jarang,Tidak Sehat,0,0,1,0
+47,Perempuan,65,164,24.17,0,1,0,1,0,Jarang,Cukup Sehat,0,1,0,1
+41,Perempuan,91,157,36.92,0,0,0,1,1,Jarang,Tidak Sehat,0,1,0,1
+18,Perempuan,51,164,18.96,0,0,1,1,0,Jarang,Tidak Sehat,0,1,0,0
+32,Perempuan,74,168,26.22,0,0,0,1,0,Jarang,Sehat,0,0,1,0
+33,Perempuan,99,161,38.19,1,1,1,1,1,Kadang,Cukup Sehat,0,0,0,0
+26,Laki-laki,51,154,21.5,0,1,1,1,0,Kadang,Tidak Sehat,0,1,0,1
+37,Perempuan,99,161,38.19,0,0,0,1,1,Rutin,Sehat,0,0,0,1
+27,Laki-laki,67,160,26.17,1,0,1,1,0,Jarang,Tidak Sehat,0,1,1,0
+24,Perempuan,96,151,42.1,0,0,0,0,1,Jarang,Tidak Sehat,0,0,1,1
+61,Laki-laki,82,182,24.76,1,0,0,0,0,Jarang,Sehat,0,1,0,0
+69,Perempuan,47,152,20.34,1,0,0,1,0,Rutin,Cukup Sehat,0,1,0,1
+61,Perempuan,67,156,27.53,0,0,1,1,0,Kadang,Tidak Sehat,1,0,0,1
+49,Perempuan,75,180,23.15,0,0,1,1,0,Jarang,Cukup Sehat,0,0,0,0
+42,Perempuan,79,175,25.8,1,1,1,1,0,Kadang,Tidak Sehat,0,0,1,0
+19,Perempuan,96,148,43.83,1,1,0,0,1,Jarang,Tidak Sehat,0,0,1,0
+66,Laki-laki,99,181,30.22,1,1,0,0,1,Jarang,Sehat,1,1,1,0
+63,Perempuan,81,181,24.72,0,0,1,1,0,Jarang,Cukup Sehat,0,0,0,0
+32,Laki-laki,78,146,36.59,1,0,1,0,1,Jarang,Cukup Sehat,0,0,1,0
+19,Laki-laki,90,182,27.17,0,0,1,0,0,Kadang,Sehat,0,1,0,1
+37,Perempuan,55,153,23.5,1,1,1,0,0,Rutin,Sehat,0,1,0,0
+42,Perempuan,53,163,19.95,0,0,1,0,0,Jarang,Sehat,0,1,0,0
+49,Laki-laki,92,166,33.39,0,0,1,1,1,Jarang,Sehat,1,0,1,1
+18,Perempuan,60,158,24.03,0,1,1,0,0,Rutin,Tidak Sehat,0,0,1,1
+64,Perempuan,71,155,29.55,1,1,1,1,0,Jarang,Cukup Sehat,1,0,0,1
+22,Laki-laki,46,163,17.31,1,1,0,0,0,Kadang,Tidak Sehat,0,1,0,0
+53,Laki-laki,83,166,30.12,1,0,1,0,1,Rutin,Cukup Sehat,1,0,0,0
+39,Laki-laki,71,157,28.8,1,1,1,0,0,Jarang,Tidak Sehat,0,1,1,0
+21,Perempuan,72,145,34.24,0,1,1,0,1,Jarang,Tidak Sehat,0,0,0,1
+23,Perempuan,64,152,27.7,1,1,1,1,0,Jarang,Sehat,0,1,0,1
+42,Perempuan,73,156,30.0,0,1,1,1,1,Kadang,Tidak Sehat,0,1,0,0
+66,Laki-laki,87,150,38.67,1,1,0,0,1,Kadang,Sehat,1,1,1,0
+48,Perempuan,70,150,31.11,0,0,0,1,1,Jarang,Tidak Sehat,1,0,0,0
+20,Perempuan,88,150,39.11,1,0,0,1,1,Kadang,Sehat,0,0,0,1
+53,Perempuan,65,180,20.06,1,1,0,1,0,Jarang,Cukup Sehat,0,0,0,0
+24,Laki-laki,100,163,37.64,1,1,1,1,1,Rutin,Cukup Sehat,0,1,0,0
+35,Perempuan,84,154,35.42,1,0,1,1,1,Rutin,Tidak Sehat,0,0,1,1
+41,Laki-laki,97,166,35.2,1,1,1,1,1,Rutin,Sehat,0,0,0,0
+37,Perempuan,62,165,22.77,1,0,0,1,0,Jarang,Cukup Sehat,0,1,1,0
+50,Laki-laki,64,149,28.83,1,0,0,0,0,Jarang,Tidak Sehat,1,0,0,0
+47,Laki-laki,90,168,31.89,0,1,1,1,1,Rutin,Cukup Sehat,1,0,0,0
+41,Perempuan,73,183,21.8,0,1,1,1,0,Jarang,Cukup Sehat,0,0,1,0
+42,Laki-laki,99,155,41.21,0,0,0,0,1,Kadang,Sehat,0,1,0,0
+48,Laki-laki,83,156,34.11,0,0,1,1,1,Rutin,Sehat,1,1,1,1
+40,Perempuan,58,161,22.38,1,1,1,0,0,Jarang,Sehat,0,1,1,1
+61,Laki-laki,49,175,16.0,1,1,1,1,0,Kadang,Sehat,0,1,0,0
+51,Laki-laki,96,148,43.83,1,1,0,0,1,Rutin,Cukup Sehat,1,1,1,1
+43,Perempuan,82,147,37.95,0,1,0,1,1,Rutin,Cukup Sehat,0,1,0,0
+36,Laki-laki,53,175,17.31,1,0,1,0,0,Jarang,Cukup Sehat,0,0,1,1
+68,Perempuan,61,168,21.61,1,1,0,1,0,Jarang,Sehat,0,0,1,0
+50,Laki-laki,78,169,27.31,1,1,0,0,0,Jarang,Tidak Sehat,1,1,1,1
+27,Perempuan,94,156,38.63,0,1,1,0,1,Kadang,Sehat,0,0,0,1
+35,Laki-laki,81,155,33.71,0,1,0,0,1,Rutin,Cukup Sehat,0,1,1,1
+48,Perempuan,47,145,22.35,0,1,0,1,0,Rutin,Tidak Sehat,0,0,0,0
+32,Perempuan,53,164,19.71,0,1,1,0,0,Jarang,Tidak Sehat,0,1,1,1
+64,Perempuan,88,172,29.75,0,1,1,1,0,Jarang,Tidak Sehat,1,1,0,0
+32,Laki-laki,91,158,36.45,0,0,0,1,1,Rutin,Sehat,0,0,1,1
+67,Laki-laki,48,183,14.33,0,0,0,0,0,Kadang,Cukup Sehat,0,1,0,1
+48,Laki-laki,89,158,35.65,0,1,1,0,1,Rutin,Sehat,1,1,0,1
+24,Laki-laki,52,163,19.57,0,1,0,0,0,Kadang,Sehat,0,0,1,1
+36,Laki-laki,80,147,37.02,1,0,1,1,1,Jarang,Tidak Sehat,0,0,0,0
+54,Perempuan,50,154,21.08,0,0,1,0,0,Kadang,Cukup Sehat,0,1,1,0
+24,Laki-laki,99,147,45.81,1,1,1,1,1,Rutin,Tidak Sehat,0,0,0,0
+26,Laki-laki,67,166,24.31,1,1,0,1,0,Kadang,Tidak Sehat,0,0,1,1
+47,Perempuan,89,169,31.16,1,1,0,0,1,Jarang,Sehat,1,0,0,0
+44,Perempuan,88,181,26.86,1,0,1,1,0,Rutin,Tidak Sehat,0,0,1,1
+25,Perempuan,47,173,15.7,0,1,1,0,0,Rutin,Sehat,0,0,1,0
+45,Laki-laki,67,175,21.88,1,0,0,0,0,Rutin,Tidak Sehat,0,1,1,0
+22,Perempuan,60,165,22.04,1,1,0,0,0,Rutin,Sehat,0,1,1,0
+23,Perempuan,96,173,32.08,1,0,1,1,1,Kadang,Tidak Sehat,0,1,0,0
+43,Perempuan,80,147,37.02,0,0,1,0,1,Rutin,Sehat,0,1,1,1
+70,Laki-laki,99,159,39.16,1,1,1,1,1,Rutin,Cukup Sehat,1,0,0,0
+18,Perempuan,98,167,35.14,1,1,0,0,1,Jarang,Cukup Sehat,0,0,1,0
+34,Laki-laki,52,157,21.1,1,0,1,0,0,Rutin,Cukup Sehat,0,0,1,0
+58,Laki-laki,74,173,24.73,0,1,0,0,0,Rutin,Cukup Sehat,0,1,0,0
+64,Laki-laki,69,151,30.26,1,1,1,0,1,Kadang,Cukup Sehat,1,1,1,1
+69,Laki-laki,71,153,30.33,1,1,0,0,1,Jarang,Sehat,1,1,1,0
+63,Laki-laki,79,177,25.22,1,0,1,1,0,Rutin,Sehat,0,1,1,1
+69,Laki-laki,51,178,16.1,0,1,0,0,0,Rutin,Tidak Sehat,0,0,1,0
+36,Perempuan,98,154,41.32,0,1,0,0,1,Kadang,Cukup Sehat,0,0,0,1
+33,Perempuan,69,148,31.5,1,1,1,0,1,Jarang,Sehat,0,1,0,1
+32,Perempuan,79,182,23.85,0,0,1,1,0,Jarang,Sehat,0,0,0,0
+65,Laki-laki,47,169,16.46,1,1,1,0,0,Jarang,Sehat,0,1,0,1
+47,Laki-laki,54,147,24.99,1,0,1,1,0,Rutin,Sehat,0,1,0,1
+51,Laki-laki,78,156,32.05,0,0,1,1,1,Jarang,Cukup Sehat,1,0,0,1
+39,Perempuan,58,163,21.83,1,0,0,1,0,Kadang,Tidak Sehat,0,0,0,1
+42,Laki-laki,61,169,21.36,1,0,1,1,0,Kadang,Tidak Sehat,0,1,0,1
+50,Laki-laki,55,151,24.12,0,0,0,0,0,Rutin,Cukup Sehat,0,0,0,1
+59,Laki-laki,46,154,19.4,1,1,0,0,0,Jarang,Tidak Sehat,0,0,1,0
+54,Laki-laki,71,161,27.39,1,1,1,1,0,Kadang,Tidak Sehat,1,1,0,0
+59,Laki-laki,47,182,14.19,0,1,0,1,0,Rutin,Cukup Sehat,0,0,1,1
+42,Perempuan,75,146,35.18,0,0,0,1,1,Rutin,Cukup Sehat,0,0,1,1
+18,Laki-laki,47,152,20.34,0,1,0,1,0,Jarang,Sehat,0,1,0,1
+59,Laki-laki,56,155,23.31,0,1,0,0,0,Jarang,Sehat,0,0,1,0
+36,Laki-laki,51,161,19.68,0,1,1,1,0,Jarang,Sehat,0,0,0,1
+57,Laki-laki,65,157,26.37,1,1,1,1,0,Rutin,Sehat,0,0,1,1
+45,Laki-laki,65,145,30.92,0,0,1,1,1,Kadang,Tidak Sehat,0,1,1,1
+46,Perempuan,76,164,28.26,0,0,0,1,0,Jarang,Sehat,1,0,1,0
+64,Laki-laki,99,146,46.44,0,1,0,0,1,Rutin,Cukup Sehat,1,1,0,1
+43,Laki-laki,91,182,27.47,1,0,1,0,0,Kadang,Cukup Sehat,0,0,0,0
+66,Laki-laki,55,173,18.38,0,0,1,1,0,Jarang,Tidak Sehat,0,1,0,0
+34,Perempuan,47,159,18.59,0,1,1,1,0,Kadang,Tidak Sehat,0,0,1,0
+63,Perempuan,82,161,31.63,0,1,1,1,1,Rutin,Sehat,1,0,1,1
+32,Perempuan,97,167,34.78,1,1,1,0,1,Rutin,Tidak Sehat,0,1,0,0
+22,Perempuan,54,158,21.63,0,0,1,0,0,Rutin,Tidak Sehat,0,1,1,0
+48,Perempuan,58,175,18.94,0,1,0,0,0,Jarang,Tidak Sehat,0,0,0,0
+54,Laki-laki,55,148,25.11,1,0,1,0,0,Rutin,Sehat,0,1,0,0
+46,Perempuan,55,175,17.96,0,1,0,0,0,Rutin,Sehat,0,1,0,1
+47,Laki-laki,69,159,27.29,1,0,0,0,0,Jarang,Sehat,1,1,0,0
+29,Perempuan,83,184,24.52,0,0,0,1,0,Rutin,Tidak Sehat,0,0,1,1
+41,Laki-laki,72,178,22.72,0,1,1,1,0,Rutin,Sehat,0,0,1,0
+34,Perempuan,99,159,39.16,0,1,1,1,1,Jarang,Tidak Sehat,0,0,0,0
+42,Laki-laki,71,165,26.08,1,0,0,1,0,Rutin,Sehat,0,1,1,1
+54,Perempuan,62,184,18.31,1,0,1,1,0,Jarang,Cukup Sehat,0,1,1,1
+54,Perempuan,92,170,31.83,0,0,0,1,1,Rutin,Tidak Sehat,1,0,0,1
+68,Perempuan,84,180,25.93,0,0,1,0,0,Jarang,Tidak Sehat,0,1,1,0
+22,Perempuan,68,159,26.9,0,0,1,1,0,Rutin,Sehat,0,1,0,0
+58,Perempuan,45,173,15.04,0,1,0,0,0,Rutin,Sehat,0,0,0,0
+41,Laki-laki,55,145,26.16,0,1,1,1,0,Rutin,Cukup Sehat,0,1,0,0
+65,Laki-laki,80,150,35.56,1,1,1,1,1,Jarang,Sehat,1,0,1,1
+54,Laki-laki,56,161,21.6,1,0,0,1,0,Kadang,Tidak Sehat,0,1,1,1
+42,Perempuan,93,160,36.33,1,1,1,0,1,Kadang,Tidak Sehat,0,1,0,1
+58,Laki-laki,96,159,37.97,1,1,1,0,1,Rutin,Cukup Sehat,1,0,1,0
+43,Perempuan,80,149,36.03,0,1,1,1,1,Jarang,Sehat,0,1,0,0
+49,Laki-laki,92,160,35.94,0,1,0,0,1,Jarang,Tidak Sehat,1,1,0,0
+25,Laki-laki,84,176,27.12,0,0,1,1,0,Rutin,Cukup Sehat,0,1,1,1
+29,Perempuan,59,170,20.42,0,0,1,1,0,Rutin,Tidak Sehat,0,1,1,0
+47,Laki-laki,74,178,23.36,1,0,0,0,0,Kadang,Sehat,0,0,1,1
+57,Perempuan,80,156,32.87,1,0,1,1,1,Rutin,Cukup Sehat,1,1,0,1
+45,Laki-laki,89,171,30.44,1,1,1,1,1,Kadang,Tidak Sehat,0,0,0,0
+64,Perempuan,80,160,31.25,1,1,0,0,1,Rutin,Tidak Sehat,1,1,0,0
+44,Perempuan,99,153,42.29,1,1,1,1,1,Rutin,Sehat,0,0,1,0
+62,Laki-laki,58,148,26.48,1,1,0,1,0,Rutin,Cukup Sehat,0,1,1,1
+53,Perempuan,46,167,16.49,1,0,1,0,0,Rutin,Sehat,0,0,1,1
+38,Perempuan,50,173,16.71,1,1,1,0,0,Jarang,Sehat,0,1,1,1
+22,Laki-laki,66,155,27.47,0,1,1,1,0,Rutin,Cukup Sehat,0,1,1,1
+67,Perempuan,78,182,23.55,1,1,0,0,0,Jarang,Tidak Sehat,0,0,1,0
+31,Laki-laki,51,170,17.65,0,0,1,0,0,Jarang,Cukup Sehat,0,0,0,1
+57,Laki-laki,86,150,38.22,1,1,0,0,1,Rutin,Cukup Sehat,1,1,0,0
+51,Laki-laki,47,146,22.05,1,1,1,1,0,Rutin,Cukup Sehat,0,1,0,0
+55,Perempuan,92,185,26.88,1,1,1,1,0,Rutin,Tidak Sehat,0,0,1,1
+41,Perempuan,54,161,20.83,1,0,0,0,0,Kadang,Cukup Sehat,0,1,0,1
+66,Perempuan,45,164,16.73,1,1,0,0,0,Rutin,Cukup Sehat,0,0,1,1
+43,Laki-laki,90,155,37.46,1,1,0,1,1,Jarang,Cukup Sehat,0,0,1,1
+59,Perempuan,57,171,19.49,0,0,0,1,0,Jarang,Sehat,0,1,1,1
+62,Perempuan,65,157,26.37,0,0,0,0,0,Jarang,Tidak Sehat,0,1,1,0
+63,Perempuan,59,145,28.06,0,0,0,1,0,Jarang,Cukup Sehat,1,1,1,1
+41,Perempuan,66,147,30.54,0,0,0,1,1,Kadang,Tidak Sehat,0,1,0,0
+34,Perempuan,52,145,24.73,0,1,1,0,0,Rutin,Tidak Sehat,0,0,1,0
+51,Laki-laki,69,175,22.53,1,1,0,0,0,Rutin,Sehat,0,0,1,1
+58,Perempuan,68,157,27.59,0,0,0,0,0,Rutin,Cukup Sehat,1,1,0,0
+68,Perempuan,52,182,15.7,1,0,0,0,0,Rutin,Sehat,0,1,0,1
+67,Laki-laki,55,160,21.48,1,0,1,0,0,Jarang,Cukup Sehat,0,0,0,0
+49,Laki-laki,80,165,29.38,1,1,0,0,0,Rutin,Cukup Sehat,1,1,0,1
+20,Perempuan,80,173,26.73,1,1,0,0,0,Rutin,Cukup Sehat,0,1,1,1
+56,Laki-laki,78,149,35.13,0,1,1,1,1,Rutin,Cukup Sehat,1,1,0,1
+64,Laki-laki,84,146,39.41,1,0,1,0,1,Rutin,Sehat,1,1,0,1
+67,Laki-laki,63,184,18.61,1,1,1,0,0,Jarang,Sehat,0,0,0,0
+29,Laki-laki,51,157,20.69,1,0,0,0,0,Rutin,Sehat,0,1,1,1
+21,Perempuan,83,159,32.83,0,0,0,1,1,Jarang,Cukup Sehat,0,0,1,1
+70,Perempuan,97,148,44.28,1,0,0,1,1,Jarang,Tidak Sehat,1,0,0,0
+52,Perempuan,57,157,23.12,0,0,1,0,0,Rutin,Sehat,0,1,1,1
+24,Laki-laki,80,156,32.87,1,1,0,1,1,Kadang,Cukup Sehat,0,1,1,1
+66,Perempuan,83,165,30.49,0,0,1,1,1,Kadang,Cukup Sehat,1,1,1,0
+64,Laki-laki,83,163,31.24,0,0,1,0,1,Kadang,Tidak Sehat,1,0,1,0
+67,Perempuan,77,180,23.77,0,0,0,1,0,Kadang,Tidak Sehat,0,0,1,1
+55,Laki-laki,61,159,24.13,1,0,1,0,0,Rutin,Tidak Sehat,0,1,1,0
+49,Laki-laki,86,183,25.68,1,0,1,0,0,Jarang,Cukup Sehat,0,1,1,1
+25,Laki-laki,45,183,13.44,1,0,1,0,0,Kadang,Sehat,0,0,1,0
+27,Laki-laki,73,170,25.26,0,0,1,1,0,Kadang,Tidak Sehat,0,0,1,0
+48,Laki-laki,70,180,21.6,1,0,1,1,0,Rutin,Tidak Sehat,0,0,1,0
+49,Perempuan,57,181,17.4,0,0,0,1,0,Kadang,Cukup Sehat,0,0,0,1
+45,Perempuan,57,167,20.44,1,1,0,1,0,Jarang,Cukup Sehat,0,1,0,1
+20,Laki-laki,88,157,35.7,1,0,0,0,1,Rutin,Tidak Sehat,0,0,0,1
+18,Perempuan,64,152,27.7,1,1,0,1,0,Jarang,Sehat,0,0,0,1
+53,Perempuan,91,184,26.88,0,0,1,0,0,Kadang,Tidak Sehat,0,0,1,0
+68,Perempuan,74,148,33.78,0,0,1,1,1,Rutin,Sehat,1,1,0,0
+36,Perempuan,69,159,27.29,0,1,1,0,0,Jarang,Tidak Sehat,0,1,0,0
+33,Perempuan,76,166,27.58,1,0,0,1,0,Rutin,Cukup Sehat,0,1,1,0
+50,Perempuan,85,148,38.81,1,1,0,1,1,Jarang,Tidak Sehat,1,1,1,0
+23,Perempuan,88,178,27.77,0,1,0,0,0,Kadang,Cukup Sehat,0,1,1,0
+31,Laki-laki,79,182,23.85,0,0,1,0,0,Kadang,Tidak Sehat,0,0,1,0
+53,Laki-laki,65,156,26.71,0,0,1,1,0,Kadang,Cukup Sehat,0,1,1,0
+67,Laki-laki,53,151,23.24,0,0,1,0,0,Rutin,Tidak Sehat,0,0,0,1
+23,Perempuan,77,153,32.89,1,1,0,1,1,Kadang,Cukup Sehat,0,0,0,0
+32,Laki-laki,93,171,31.8,0,1,1,0,1,Rutin,Sehat,0,0,0,0
+29,Perempuan,76,184,22.45,1,1,0,1,0,Kadang,Tidak Sehat,0,1,1,1
+57,Laki-laki,51,178,16.1,1,1,0,0,0,Rutin,Sehat,0,1,0,1
+51,Laki-laki,63,157,25.56,1,1,1,1,0,Kadang,Tidak Sehat,0,1,1,0
+62,Laki-laki,98,174,32.37,1,0,0,0,1,Rutin,Sehat,1,0,1,1
+38,Perempuan,56,146,26.27,1,0,1,0,0,Kadang,Cukup Sehat,0,0,0,0
+25,Perempuan,68,185,19.87,0,1,0,1,0,Rutin,Cukup Sehat,0,0,0,1
+54,Laki-laki,100,155,41.62,0,0,0,1,1,Kadang,Cukup Sehat,1,1,1,0
+25,Laki-laki,45,157,18.26,1,0,1,1,0,Kadang,Sehat,0,0,1,0
+31,Perempuan,71,174,23.45,1,0,0,0,0,Rutin,Cukup Sehat,0,0,0,0
+27,Laki-laki,47,167,16.85,0,0,1,1,0,Jarang,Tidak Sehat,0,0,1,0
+28,Perempuan,87,184,25.7,0,1,1,0,0,Jarang,Cukup Sehat,0,1,1,1
+70,Laki-laki,98,172,33.13,0,1,1,0,1,Jarang,Sehat,1,1,1,1
+51,Laki-laki,84,158,33.65,0,0,0,1,1,Rutin,Sehat,1,1,1,1
+34,Perempuan,84,153,35.88,1,1,1,0,1,Rutin,Tidak Sehat,0,1,0,0
+25,Laki-laki,85,174,28.08,0,0,1,1,0,Jarang,Cukup Sehat,0,1,0,0
+58,Laki-laki,61,163,22.96,0,1,1,1,0,Jarang,Tidak Sehat,0,1,1,1
+64,Laki-laki,57,156,23.42,1,1,1,1,0,Jarang,Sehat,0,0,1,0
+58,Perempuan,66,179,20.6,1,1,0,1,0,Rutin,Sehat,0,1,0,0
+54,Perempuan,49,167,17.57,0,1,0,1,0,Kadang,Sehat,0,0,1,0
+56,Laki-laki,90,164,33.46,1,0,1,1,1,Jarang,Cukup Sehat,1,0,1,1
+37,Laki-laki,64,178,20.2,0,0,1,0,0,Jarang,Tidak Sehat,0,1,0,1
+50,Laki-laki,66,157,26.78,1,1,1,0,0,Jarang,Sehat,0,0,0,0
+47,Perempuan,52,178,16.41,0,1,0,0,0,Kadang,Cukup Sehat,0,0,0,1
+19,Perempuan,58,185,16.95,1,0,0,1,0,Kadang,Sehat,0,1,1,0
+35,Laki-laki,62,155,25.81,0,0,0,0,0,Rutin,Cukup Sehat,0,1,1,0
+63,Perempuan,60,181,18.31,0,0,1,1,0,Rutin,Cukup Sehat,0,0,0,0
+48,Laki-laki,69,151,30.26,0,0,1,1,1,Jarang,Sehat,1,1,1,1
+39,Laki-laki,50,179,15.61,1,0,0,1,0,Jarang,Cukup Sehat,0,1,1,1
+32,Laki-laki,100,154,42.17,1,1,1,0,1,Rutin,Sehat,0,1,1,1
+49,Laki-laki,75,149,33.78,0,1,1,1,1,Jarang,Cukup Sehat,1,1,0,0
+43,Laki-laki,80,165,29.38,0,1,1,1,0,Rutin,Cukup Sehat,0,0,0,0
+48,Perempuan,66,149,29.73,0,1,1,1,0,Rutin,Sehat,1,0,0,0
+65,Perempuan,82,152,35.49,1,1,0,1,1,Jarang,Cukup Sehat,1,1,0,0
+61,Perempuan,76,165,27.92,0,0,0,0,0,Rutin,Sehat,0,0,0,0
+46,Perempuan,84,169,29.41,1,0,0,1,0,Kadang,Sehat,1,1,1,1
+23,Laki-laki,77,184,22.74,1,0,1,0,0,Kadang,Sehat,0,0,0,1
+25,Perempuan,60,146,28.15,1,1,1,1,0,Kadang,Cukup Sehat,0,1,0,0
+48,Laki-laki,80,157,32.46,1,1,1,0,1,Kadang,Sehat,1,0,0,0
+22,Laki-laki,91,154,38.37,1,1,0,0,1,Jarang,Sehat,0,1,1,1
+57,Laki-laki,77,174,25.43,1,1,1,1,0,Jarang,Tidak Sehat,0,1,0,1
+64,Laki-laki,62,177,19.79,1,1,0,0,0,Rutin,Cukup Sehat,0,1,0,1
+62,Laki-laki,91,154,38.37,1,1,0,0,1,Jarang,Cukup Sehat,1,0,1,0
+39,Laki-laki,74,175,24.16,1,1,1,1,0,Kadang,Cukup Sehat,0,0,0,1
+64,Perempuan,85,148,38.81,1,0,0,1,1,Rutin,Sehat,1,0,1,1
+23,Laki-laki,49,177,15.64,1,1,0,1,0,Kadang,Cukup Sehat,0,0,0,0
+55,Laki-laki,68,173,22.72,0,1,0,1,0,Jarang,Sehat,0,0,1,0
+27,Laki-laki,93,176,30.02,1,1,0,1,1,Rutin,Sehat,0,0,0,1
+21,Perempuan,48,152,20.78,0,1,1,1,0,Kadang,Cukup Sehat,0,0,1,1
+48,Perempuan,78,154,32.89,1,0,1,1,1,Kadang,Sehat,1,1,0,0
+52,Perempuan,84,172,28.39,1,1,1,1,0,Jarang,Cukup Sehat,1,1,1,0
+64,Laki-laki,66,178,20.83,0,1,0,0,0,Jarang,Tidak Sehat,0,1,0,0
+61,Perempuan,59,167,21.16,1,1,0,0,0,Jarang,Sehat,0,0,0,0
+56,Laki-laki,50,152,21.64,0,1,0,0,0,Rutin,Tidak Sehat,0,1,1,1
+60,Laki-laki,74,185,21.62,1,1,1,1,0,Jarang,Tidak Sehat,0,1,0,1
+42,Perempuan,61,148,27.85,1,0,1,0,0,Kadang,Tidak Sehat,0,1,0,1
+24,Laki-laki,94,179,29.34,1,0,0,1,0,Rutin,Cukup Sehat,0,0,0,0
+22,Perempuan,46,173,15.37,1,0,0,0,0,Rutin,Cukup Sehat,0,1,0,1
+43,Laki-laki,90,177,28.73,1,1,1,1,0,Rutin,Tidak Sehat,0,0,0,1
+62,Perempuan,81,152,35.06,1,1,1,1,1,Jarang,Sehat,1,0,1,1
+23,Perempuan,86,163,32.37,0,0,0,1,1,Rutin,Tidak Sehat,0,1,1,0
+58,Perempuan,50,176,16.14,1,0,0,0,0,Jarang,Tidak Sehat,0,0,1,1
+22,Perempuan,79,176,25.5,1,0,0,1,0,Jarang,Cukup Sehat,0,0,1,0
+31,Perempuan,54,179,16.85,0,0,0,0,0,Kadang,Sehat,0,0,1,0
+33,Laki-laki,56,145,26.63,0,1,0,1,0,Rutin,Tidak Sehat,0,0,0,0
+49,Laki-laki,96,149,43.24,0,1,1,1,1,Kadang,Tidak Sehat,1,0,1,0
+66,Laki-laki,56,182,16.91,1,0,0,1,0,Jarang,Cukup Sehat,0,0,1,0
+46,Laki-laki,47,182,14.19,0,0,1,0,0,Jarang,Cukup Sehat,0,0,0,0
+29,Laki-laki,63,182,19.02,1,1,0,0,0,Jarang,Sehat,0,1,1,1
+33,Laki-laki,89,184,26.29,0,0,1,0,0,Rutin,Cukup Sehat,0,1,1,0
+53,Laki-laki,52,157,21.1,0,1,0,1,0,Rutin,Sehat,0,0,1,0
+30,Laki-laki,88,154,37.11,1,1,0,0,1,Rutin,Tidak Sehat,0,0,1,1
+31,Perempuan,66,161,25.46,1,0,0,0,0,Rutin,Tidak Sehat,0,0,0,1
+50,Laki-laki,60,149,27.03,1,1,1,0,0,Rutin,Sehat,1,1,0,0
+38,Laki-laki,60,151,26.31,1,0,1,0,0,Jarang,Cukup Sehat,0,1,0,1
+27,Laki-laki,74,184,21.86,0,1,1,0,0,Kadang,Sehat,0,0,1,1
+30,Perempuan,47,153,20.08,0,1,0,0,0,Kadang,Cukup Sehat,0,1,0,1
+32,Perempuan,55,183,16.42,0,0,0,1,0,Rutin,Cukup Sehat,0,0,1,1
+35,Laki-laki,92,172,31.1,0,0,1,1,1,Rutin,Tidak Sehat,0,0,0,1
+20,Laki-laki,91,175,29.71,0,1,1,1,0,Rutin,Tidak Sehat,0,1,1,0
+23,Laki-laki,58,171,19.84,0,1,1,0,0,Rutin,Tidak Sehat,0,0,1,1
+28,Perempuan,92,181,28.08,0,1,1,0,0,Rutin,Cukup Sehat,0,0,1,1
+63,Laki-laki,49,185,14.32,1,1,0,1,0,Kadang,Cukup Sehat,0,0,0,1
+65,Laki-laki,88,177,28.09,1,0,0,1,0,Kadang,Cukup Sehat,1,0,1,1
+29,Laki-laki,90,180,27.78,0,0,1,0,0,Rutin,Tidak Sehat,0,1,0,0
+38,Perempuan,77,162,29.34,1,1,0,0,0,Kadang,Cukup Sehat,0,1,1,0
+48,Perempuan,84,173,28.07,1,0,0,1,0,Jarang,Tidak Sehat,1,1,0,1
+22,Laki-laki,62,155,25.81,0,0,1,0,0,Jarang,Sehat,0,0,1,1
+61,Laki-laki,67,175,21.88,1,1,0,1,0,Jarang,Tidak Sehat,0,0,0,1
+44,Perempuan,76,165,27.92,1,1,1,0,0,Kadang,Tidak Sehat,0,1,0,1
+41,Perempuan,54,148,24.65,1,1,1,0,0,Rutin,Tidak Sehat,0,1,0,0
+63,Laki-laki,60,155,24.97,0,0,1,0,0,Kadang,Cukup Sehat,0,1,0,0
+53,Laki-laki,67,165,24.61,0,1,1,0,0,Rutin,Cukup Sehat,0,0,0,1
+49,Laki-laki,65,174,21.47,0,0,1,1,0,Kadang,Cukup Sehat,0,0,1,1
+62,Laki-laki,47,175,15.35,0,0,1,0,0,Kadang,Sehat,0,0,1,1
+23,Perempuan,83,148,37.89,0,0,1,0,1,Jarang,Tidak Sehat,0,1,0,1
+30,Perempuan,83,165,30.49,0,1,1,0,1,Rutin,Cukup Sehat,0,1,1,1
+18,Perempuan,67,167,24.02,1,1,0,0,0,Rutin,Cukup Sehat,0,1,1,1
+28,Perempuan,53,171,18.13,0,0,0,1,0,Kadang,Sehat,0,1,0,1
+23,Laki-laki,85,171,29.07,1,1,0,1,0,Rutin,Sehat,0,0,0,0
+42,Perempuan,76,180,23.46,0,1,1,1,0,Rutin,Sehat,0,1,0,0
+68,Laki-laki,61,154,25.72,1,1,0,1,0,Kadang,Tidak Sehat,0,1,0,0
+25,Perempuan,49,176,15.82,1,1,1,1,0,Rutin,Sehat,0,1,0,1
+50,Laki-laki,55,161,21.22,0,0,1,1,0,Rutin,Tidak Sehat,0,1,0,0
+35,Perempuan,85,171,29.07,1,0,1,1,0,Rutin,Sehat,0,0,0,0
+66,Laki-laki,93,183,27.77,0,1,1,1,0,Kadang,Sehat,1,1,0,1
+70,Laki-laki,53,145,25.21,1,1,1,1,0,Kadang,Tidak Sehat,0,0,0,0
+50,Laki-laki,95,157,38.54,0,1,1,0,1,Jarang,Tidak Sehat,1,0,1,1
+37,Perempuan,97,153,41.44,1,1,0,1,1,Jarang,Sehat,0,0,0,0
+62,Laki-laki,64,159,25.32,0,0,0,0,0,Kadang,Sehat,0,0,0,0
+67,Perempuan,47,172,15.89,0,0,0,0,0,Kadang,Tidak Sehat,0,1,0,0
+37,Laki-laki,95,151,41.66,0,0,0,0,1,Rutin,Cukup Sehat,0,0,0,0
+65,Perempuan,67,182,20.23,1,0,0,0,0,Jarang,Sehat,0,0,0,0
+36,Laki-laki,45,179,14.04,0,0,1,1,0,Rutin,Sehat,0,0,1,0
+29,Perempuan,72,169,25.21,0,0,1,0,0,Kadang,Tidak Sehat,0,1,0,0
+49,Perempuan,80,163,30.11,0,0,1,1,1,Jarang,Cukup Sehat,1,1,1,1
+61,Perempuan,80,159,31.64,1,1,1,0,1,Jarang,Cukup Sehat,1,1,0,0
+61,Perempuan,70,151,30.7,1,0,0,0,1,Kadang,Cukup Sehat,1,0,0,0
+41,Laki-laki,57,166,20.69,1,0,0,1,0,Rutin,Cukup Sehat,0,1,1,1
+40,Perempuan,70,183,20.9,1,1,0,1,0,Jarang,Tidak Sehat,0,1,1,1
+32,Laki-laki,51,146,23.93,0,0,1,0,0,Jarang,Cukup Sehat,0,1,0,1
+57,Laki-laki,87,149,39.19,1,1,0,1,1,Rutin,Cukup Sehat,1,1,1,1
+69,Laki-laki,72,147,33.32,0,1,1,1,1,Kadang,Cukup Sehat,1,1,0,0
+29,Perempuan,76,155,31.63,1,0,1,1,1,Kadang,Tidak Sehat,0,1,1,1
+53,Laki-laki,48,177,15.32,1,1,1,1,0,Rutin,Sehat,0,1,1,1
+21,Laki-laki,47,182,14.19,0,1,1,0,0,Rutin,Cukup Sehat,0,1,0,1
+40,Perempuan,67,171,22.91,0,0,0,0,0,Rutin,Cukup Sehat,0,0,0,1
+25,Perempuan,46,155,19.15,1,0,1,1,0,Rutin,Sehat,0,1,1,0
+62,Perempuan,46,182,13.89,1,1,1,1,0,Rutin,Tidak Sehat,0,1,0,0
+39,Perempuan,96,177,30.64,1,0,1,1,1,Kadang,Tidak Sehat,0,1,0,0
+36,Perempuan,64,148,29.22,1,0,0,0,0,Rutin,Cukup Sehat,0,1,0,1
+45,Laki-laki,95,167,34.06,0,1,1,1,1,Rutin,Sehat,0,1,0,1
+43,Perempuan,77,184,22.74,1,0,0,0,0,Rutin,Cukup Sehat,0,0,1,1
+58,Perempuan,91,181,27.78,0,0,1,1,0,Jarang,Tidak Sehat,1,0,1,1
+44,Perempuan,85,149,38.29,0,1,1,1,1,Rutin,Tidak Sehat,0,1,0,1
+33,Laki-laki,57,154,24.03,0,0,1,1,0,Kadang,Sehat,0,1,1,0
+30,Laki-laki,53,162,20.2,0,1,1,0,0,Rutin,Tidak Sehat,0,1,0,0
+23,Perempuan,64,183,19.11,0,1,1,0,0,Kadang,Sehat,0,0,0,0
+54,Laki-laki,87,178,27.46,1,1,0,0,0,Rutin,Tidak Sehat,1,1,1,1
+69,Laki-laki,58,172,19.61,0,0,0,0,0,Kadang,Cukup Sehat,0,1,1,0
+49,Perempuan,65,152,28.13,1,1,0,1,0,Jarang,Cukup Sehat,1,1,1,1
+19,Laki-laki,89,148,40.63,0,1,1,1,1,Rutin,Sehat,0,1,0,0
+46,Perempuan,70,145,33.29,1,1,0,0,1,Kadang,Tidak Sehat,1,0,1,1
+69,Perempuan,62,147,28.69,0,1,1,1,0,Kadang,Sehat,1,1,0,0
+62,Perempuan,49,177,15.64,1,1,1,1,0,Rutin,Tidak Sehat,0,0,0,1
+68,Laki-laki,70,145,33.29,0,1,1,0,1,Jarang,Tidak Sehat,1,0,0,1
+68,Perempuan,75,173,25.06,0,1,0,1,0,Kadang,Tidak Sehat,0,0,1,1
+29,Perempuan,98,169,34.31,0,0,0,0,1,Jarang,Cukup Sehat,0,0,1,0
+21,Perempuan,72,184,21.27,1,0,0,1,0,Jarang,Sehat,0,0,0,1
+67,Perempuan,52,176,16.79,0,0,0,1,0,Kadang,Sehat,0,1,1,0
+45,Laki-laki,58,183,17.32,1,0,1,0,0,Kadang,Tidak Sehat,0,0,1,1
+33,Perempuan,68,160,26.56,1,0,0,1,0,Jarang,Cukup Sehat,0,1,0,1
+63,Perempuan,61,183,18.21,0,0,0,0,0,Kadang,Tidak Sehat,0,1,1,0
+18,Perempuan,84,177,26.81,1,1,1,1,0,Jarang,Sehat,0,0,0,1
+28,Perempuan,74,166,26.85,0,0,1,1,0,Jarang,Cukup Sehat,0,0,1,0
+26,Perempuan,92,162,35.06,1,1,1,1,1,Rutin,Cukup Sehat,0,1,1,0
+38,Perempuan,80,154,33.73,1,0,0,0,1,Jarang,Tidak Sehat,0,0,0,1
+34,Laki-laki,72,174,23.78,0,1,0,1,0,Kadang,Sehat,0,1,1,1
+25,Laki-laki,67,152,29.0,0,0,1,0,0,Jarang,Sehat,0,1,0,0
+51,Laki-laki,49,171,16.76,0,1,0,1,0,Jarang,Cukup Sehat,0,0,1,1
+55,Laki-laki,54,165,19.83,0,0,1,1,0,Kadang,Sehat,0,1,0,1
+20,Perempuan,91,165,33.43,0,0,0,1,1,Kadang,Tidak Sehat,0,0,1,0
+43,Perempuan,60,156,24.65,1,0,0,0,0,Jarang,Cukup Sehat,0,1,1,0
+25,Perempuan,96,176,30.99,1,1,0,1,1,Rutin,Tidak Sehat,0,1,0,1
+46,Perempuan,62,175,20.24,1,0,1,1,0,Rutin,Tidak Sehat,0,1,1,0
+20,Perempuan,88,174,29.07,0,0,1,0,0,Kadang,Cukup Sehat,0,1,0,1
+37,Laki-laki,88,153,37.59,1,0,1,1,1,Rutin,Tidak Sehat,0,0,0,0
+50,Perempuan,51,171,17.44,1,1,1,1,0,Rutin,Tidak Sehat,0,0,0,1
+29,Laki-laki,47,170,16.26,0,1,1,1,0,Rutin,Sehat,0,1,1,1
+39,Laki-laki,56,158,22.43,0,1,0,1,0,Rutin,Tidak Sehat,0,0,1,0
+18,Laki-laki,74,175,24.16,1,1,1,1,0,Rutin,Sehat,0,1,1,0
+26,Laki-laki,57,145,27.11,0,0,0,0,0,Jarang,Cukup Sehat,0,0,0,1
+58,Laki-laki,64,150,28.44,1,0,1,1,0,Jarang,Tidak Sehat,1,0,0,1
+49,Perempuan,100,146,46.91,1,0,0,1,1,Rutin,Cukup Sehat,1,0,1,0
+24,Perempuan,99,171,33.86,1,1,0,1,1,Kadang,Cukup Sehat,0,1,0,0
+51,Laki-laki,81,172,27.38,1,0,1,1,0,Kadang,Tidak Sehat,1,1,1,1
+62,Perempuan,55,146,25.8,1,0,1,1,0,Kadang,Tidak Sehat,0,0,1,1
+26,Perempuan,71,169,24.86,1,1,0,0,0,Kadang,Sehat,0,0,1,0
+29,Laki-laki,83,155,34.55,1,0,1,1,1,Kadang,Tidak Sehat,0,0,0,0
+40,Perempuan,88,167,31.55,0,0,0,0,1,Kadang,Cukup Sehat,0,0,0,0
+53,Laki-laki,61,176,19.69,1,1,0,1,0,Jarang,Sehat,0,0,0,1
+69,Perempuan,51,152,22.07,0,0,0,0,0,Rutin,Tidak Sehat,0,0,1,0
+64,Perempuan,93,173,31.07,1,0,0,1,1,Kadang,Tidak Sehat,1,0,0,1
+44,Laki-laki,98,160,38.28,1,1,1,0,1,Jarang,Cukup Sehat,0,1,1,1
+58,Laki-laki,93,154,39.21,1,0,0,1,1,Kadang,Cukup Sehat,1,1,1,0
+46,Laki-laki,90,145,42.81,0,0,1,1,1,Kadang,Tidak Sehat,1,1,0,1
+66,Laki-laki,81,154,34.15,0,1,1,1,1,Rutin,Sehat,1,1,1,1
+18,Perempuan,84,178,26.51,0,1,1,0,0,Rutin,Sehat,0,1,1,1
+67,Laki-laki,50,164,18.59,0,1,1,0,0,Rutin,Sehat,0,1,0,0
+50,Perempuan,66,178,20.83,0,0,0,1,0,Jarang,Cukup Sehat,0,1,0,0
+41,Perempuan,77,185,22.5,1,0,0,0,0,Kadang,Cukup Sehat,0,0,1,1
+33,Laki-laki,64,167,22.95,1,0,1,0,0,Jarang,Cukup Sehat,0,0,1,1
+24,Laki-laki,98,172,33.13,1,0,0,0,1,Kadang,Tidak Sehat,0,1,0,1
+22,Perempuan,70,178,22.09,1,1,1,1,0,Kadang,Sehat,0,1,1,0
+27,Laki-laki,90,176,29.05,1,0,0,0,0,Kadang,Cukup Sehat,0,0,0,1
+25,Perempuan,52,152,22.51,1,1,0,0,0,Jarang,Cukup Sehat,0,1,1,1
+36,Perempuan,95,146,44.57,0,0,1,0,1,Kadang,Cukup Sehat,0,0,0,1
+18,Laki-laki,67,180,20.68,0,0,1,1,0,Rutin,Cukup Sehat,0,1,1,1
+48,Laki-laki,77,153,32.89,1,1,1,0,1,Rutin,Cukup Sehat,1,0,1,1
+32,Perempuan,79,166,28.67,0,1,1,0,0,Jarang,Sehat,0,0,1,0
+59,Laki-laki,84,157,34.08,0,0,1,0,1,Jarang,Sehat,1,0,0,1
+68,Laki-laki,98,160,38.28,1,0,1,1,1,Rutin,Tidak Sehat,1,1,0,1
+45,Laki-laki,46,171,15.73,1,1,1,0,0,Jarang,Tidak Sehat,0,0,1,0
+29,Perempuan,54,150,24.0,1,1,0,0,0,Rutin,Cukup Sehat,0,0,0,0
+37,Perempuan,65,151,28.51,0,1,1,1,0,Kadang,Tidak Sehat,0,0,0,0
+66,Laki-laki,77,176,24.86,1,0,1,0,0,Kadang,Cukup Sehat,0,1,0,1
+19,Perempuan,59,185,17.24,0,1,0,0,0,Rutin,Sehat,0,0,1,1
+46,Laki-laki,77,185,22.5,0,0,1,0,0,Jarang,Sehat,0,1,1,0
+18,Perempuan,63,184,18.61,0,0,0,1,0,Kadang,Sehat,0,1,1,1
+58,Laki-laki,98,182,29.59,1,0,0,0,0,Kadang,Tidak Sehat,1,1,0,0
+64,Perempuan,58,172,19.61,1,1,1,1,0,Kadang,Tidak Sehat,0,1,1,0
+47,Perempuan,89,146,41.75,0,0,1,0,1,Jarang,Sehat,1,0,1,1
+66,Perempuan,50,179,15.61,0,0,1,0,0,Kadang,Cukup Sehat,0,1,1,0
+67,Laki-laki,74,152,32.03,1,0,1,0,1,Jarang,Sehat,1,0,1,1
+30,Laki-laki,85,184,25.11,1,0,0,1,0,Kadang,Tidak Sehat,0,1,1,0
+18,Laki-laki,70,185,20.45,0,1,1,0,0,Rutin,Tidak Sehat,0,0,0,0
+65,Laki-laki,61,153,26.06,0,1,0,0,0,Rutin,Sehat,0,1,1,0
+45,Laki-laki,72,165,26.45,1,1,0,1,0,Kadang,Cukup Sehat,0,0,0,0
+35,Perempuan,73,179,22.78,1,0,1,0,0,Kadang,Tidak Sehat,0,0,0,1
+22,Laki-laki,55,157,22.31,1,1,0,0,0,Jarang,Cukup Sehat,0,1,0,1
+34,Laki-laki,75,151,32.89,0,1,0,1,1,Rutin,Tidak Sehat,0,0,1,0
+58,Perempuan,52,182,15.7,0,0,0,1,0,Kadang,Sehat,0,0,0,0
+69,Perempuan,64,148,29.22,1,0,0,0,0,Rutin,Tidak Sehat,1,1,1,1
+24,Perempuan,100,159,39.56,0,1,1,1,1,Kadang,Sehat,0,0,1,0
+47,Perempuan,57,182,17.21,0,0,0,0,0,Rutin,Tidak Sehat,0,0,1,1
+44,Perempuan,73,184,21.56,0,0,0,0,0,Jarang,Tidak Sehat,0,1,1,1
+37,Laki-laki,75,154,31.62,1,1,1,1,1,Jarang,Sehat,0,0,0,0
+50,Laki-laki,67,172,22.65,0,0,0,0,0,Kadang,Tidak Sehat,0,1,1,1
+55,Perempuan,64,184,18.9,1,1,0,0,0,Kadang,Tidak Sehat,0,1,0,0
+58,Laki-laki,74,159,29.27,0,0,1,1,0,Rutin,Cukup Sehat,1,0,1,0
+70,Laki-laki,45,168,15.94,0,1,0,0,0,Jarang,Cukup Sehat,0,1,0,1
+20,Laki-laki,57,157,23.12,1,0,0,1,0,Rutin,Tidak Sehat,0,1,0,0
+30,Laki-laki,98,156,40.27,1,0,0,0,1,Kadang,Sehat,0,0,1,0
+37,Perempuan,68,160,26.56,1,0,1,0,0,Jarang,Tidak Sehat,0,0,0,0
+52,Perempuan,65,168,23.03,1,0,0,0,0,Rutin,Cukup Sehat,0,0,1,0
+21,Perempuan,99,153,42.29,1,0,0,1,1,Rutin,Sehat,0,0,0,1
+66,Perempuan,78,176,25.18,1,0,1,1,0,Rutin,Sehat,0,1,1,1
+35,Perempuan,95,185,27.76,0,0,0,0,0,Kadang,Tidak Sehat,0,1,0,1
+45,Perempuan,55,181,16.79,1,1,0,0,0,Jarang,Cukup Sehat,0,1,1,0
+55,Laki-laki,77,174,25.43,1,1,1,1,0,Kadang,Cukup Sehat,0,1,1,1
+35,Perempuan,56,146,26.27,1,0,1,0,0,Kadang,Tidak Sehat,0,1,0,1
+32,Laki-laki,49,152,21.21,1,0,0,1,0,Jarang,Sehat,0,1,1,1
+65,Perempuan,90,157,36.51,0,1,0,1,1,Kadang,Cukup Sehat,1,1,1,0
+48,Laki-laki,59,170,20.42,0,0,1,0,0,Rutin,Sehat,0,1,1,1
+68,Laki-laki,99,165,36.36,0,1,1,0,1,Kadang,Cukup Sehat,1,0,1,0
+54,Laki-laki,92,164,34.21,0,1,1,1,1,Jarang,Cukup Sehat,1,1,1,1
+38,Laki-laki,95,181,29.0,0,0,0,1,0,Rutin,Sehat,0,1,1,0
+43,Laki-laki,69,179,21.53,0,1,0,1,0,Rutin,Cukup Sehat,0,1,0,0
+24,Laki-laki,97,147,44.89,1,0,0,0,1,Jarang,Cukup Sehat,0,1,0,0
+36,Laki-laki,48,174,15.85,1,0,0,1,0,Kadang,Cukup Sehat,0,0,0,0
+52,Perempuan,92,175,30.04,0,1,0,0,1,Jarang,Cukup Sehat,1,1,1,0
+56,Perempuan,57,182,17.21,1,1,0,0,0,Jarang,Cukup Sehat,0,0,1,0
+51,Perempuan,76,181,23.2,1,1,0,0,0,Kadang,Sehat,0,1,1,1
+43,Laki-laki,60,171,20.52,0,1,1,1,0,Rutin,Tidak Sehat,0,0,1,0
+33,Laki-laki,85,162,32.39,1,0,0,1,1,Kadang,Sehat,0,0,1,0
+66,Laki-laki,94,177,30.0,1,1,1,0,1,Kadang,Tidak Sehat,1,0,1,0
+22,Perempuan,66,169,23.11,1,0,1,0,0,Jarang,Cukup Sehat,0,0,0,1
+60,Perempuan,74,176,23.89,0,0,0,1,0,Jarang,Cukup Sehat,0,1,0,0
+19,Laki-laki,63,156,25.89,0,1,0,0,0,Rutin,Tidak Sehat,0,1,0,1
+40,Laki-laki,90,158,36.05,0,0,1,0,1,Rutin,Sehat,0,0,1,1
+46,Laki-laki,45,183,13.44,0,1,0,0,0,Kadang,Tidak Sehat,0,0,0,0
+44,Laki-laki,66,145,31.39,0,0,0,0,1,Rutin,Tidak Sehat,0,0,0,1
+50,Laki-laki,65,165,23.88,0,0,1,1,0,Jarang,Tidak Sehat,0,0,0,1
+38,Laki-laki,70,145,33.29,1,0,1,0,1,Kadang,Tidak Sehat,0,0,1,1
+20,Laki-laki,71,158,28.44,1,1,0,0,0,Kadang,Tidak Sehat,0,1,1,0
+39,Laki-laki,93,185,27.17,1,1,0,1,0,Jarang,Sehat,0,1,1,0
+50,Laki-laki,46,159,18.2,0,1,0,1,0,Jarang,Sehat,0,0,0,0
+41,Perempuan,57,163,21.45,0,1,0,0,0,Jarang,Sehat,0,1,1,0
+35,Perempuan,78,147,36.1,1,1,0,0,1,Rutin,Cukup Sehat,0,1,0,0
+52,Laki-laki,96,160,37.5,0,1,1,0,1,Kadang,Sehat,1,0,0,1
+22,Laki-laki,85,148,38.81,0,0,0,0,1,Jarang,Sehat,0,0,0,0
+45,Perempuan,55,164,20.45,0,0,1,0,0,Rutin,Tidak Sehat,0,1,1,1
+58,Laki-laki,100,162,38.1,1,0,1,1,1,Kadang,Tidak Sehat,1,1,1,1
+50,Perempuan,97,154,40.9,1,0,1,1,1,Jarang,Cukup Sehat,1,0,0,1
+42,Perempuan,74,164,27.51,1,1,1,0,0,Kadang,Tidak Sehat,0,1,0,0
+30,Laki-laki,100,145,47.56,1,1,1,1,1,Kadang,Sehat,0,1,1,1
+37,Laki-laki,47,171,16.07,0,1,0,0,0,Kadang,Cukup Sehat,0,1,1,1
+62,Laki-laki,72,169,25.21,0,0,1,0,0,Kadang,Sehat,0,0,0,1
+56,Perempuan,61,154,25.72,0,0,0,0,0,Jarang,Sehat,0,1,1,0
+51,Laki-laki,55,172,18.59,1,1,1,1,0,Rutin,Cukup Sehat,0,1,0,0
+58,Perempuan,62,154,26.14,0,1,1,0,0,Jarang,Cukup Sehat,0,0,0,0
+67,Perempuan,71,178,22.41,1,1,0,0,0,Kadang,Tidak Sehat,0,0,0,1
+29,Laki-laki,81,173,27.06,0,0,0,0,0,Rutin,Tidak Sehat,0,0,1,1
+46,Laki-laki,55,185,16.07,0,1,0,1,0,Jarang,Cukup Sehat,0,0,1,0
+55,Laki-laki,76,175,24.82,0,0,0,1,0,Jarang,Sehat,0,0,0,0
+51,Laki-laki,83,169,29.06,1,1,1,1,0,Rutin,Cukup Sehat,1,1,1,1
+38,Laki-laki,87,168,30.82,1,1,0,1,1,Kadang,Tidak Sehat,0,0,1,1
+64,Laki-laki,83,146,38.94,0,1,0,1,1,Kadang,Sehat,1,1,1,0
+18,Perempuan,85,146,39.88,1,0,1,1,1,Jarang,Sehat,0,1,1,0
+40,Perempuan,87,175,28.41,0,1,1,0,0,Rutin,Tidak Sehat,0,0,0,1
+68,Laki-laki,98,164,36.44,1,0,1,0,1,Kadang,Sehat,1,0,0,0
+28,Laki-laki,72,151,31.58,0,0,1,1,1,Kadang,Tidak Sehat,0,1,1,0
+60,Laki-laki,85,179,26.53,1,0,1,0,0,Rutin,Sehat,0,0,1,1
+63,Perempuan,99,180,30.56,1,0,0,1,1,Jarang,Cukup Sehat,1,0,0,0
+39,Laki-laki,81,152,35.06,1,0,1,1,1,Rutin,Sehat,0,0,1,0
+55,Laki-laki,72,169,25.21,1,1,0,0,0,Jarang,Cukup Sehat,0,0,1,1
+27,Perempuan,76,159,30.06,1,0,1,0,1,Rutin,Sehat,0,0,1,1
+50,Laki-laki,99,162,37.72,1,0,1,1,1,Rutin,Cukup Sehat,1,0,1,0
+70,Laki-laki,89,159,35.2,0,0,1,1,1,Kadang,Sehat,1,0,0,1
+39,Perempuan,67,175,21.88,1,1,0,1,0,Kadang,Sehat,0,0,1,0
+26,Perempuan,100,182,30.19,0,1,1,0,1,Rutin,Tidak Sehat,0,1,1,1
+27,Laki-laki,96,158,38.46,0,0,1,0,1,Rutin,Tidak Sehat,0,1,1,0
+21,Laki-laki,75,167,26.89,0,0,0,1,0,Rutin,Cukup Sehat,0,0,1,0
+20,Laki-laki,70,160,27.34,1,1,0,1,0,Rutin,Sehat,0,0,1,1
+35,Perempuan,45,168,15.94,0,0,0,0,0,Kadang,Sehat,0,0,0,1
+35,Laki-laki,56,182,16.91,1,1,1,1,0,Rutin,Tidak Sehat,0,0,1,0
+63,Laki-laki,97,170,33.56,0,1,1,0,1,Rutin,Sehat,0,0,0,0
+29,Laki-laki,80,145,38.05,1,1,0,0,1,Jarang,Sehat,0,0,0,0
+53,Perempuan,50,147,23.14,0,1,1,0,0,Kadang,Sehat,0,0,0,1
+20,Perempuan,73,179,22.78,0,1,1,1,0,Rutin,Sehat,0,0,0,0
+33,Laki-laki,54,157,21.91,1,0,0,0,0,Rutin,Cukup Sehat,0,1,0,1
+22,Perempuan,69,161,26.62,0,1,1,0,0,Kadang,Sehat,0,1,0,0
+22,Perempuan,89,185,26.0,0,1,0,1,0,Jarang,Cukup Sehat,0,1,1,0
+56,Laki-laki,62,149,27.93,0,0,1,0,0,Kadang,Sehat,1,0,1,1
+67,Perempuan,100,154,42.17,0,1,0,0,1,Kadang,Tidak Sehat,1,1,0,0
+29,Perempuan,97,182,29.28,1,0,1,1,0,Rutin,Cukup Sehat,0,0,0,0
+38,Perempuan,67,156,27.53,1,1,0,1,0,Jarang,Sehat,0,0,0,0
+42,Perempuan,91,148,41.54,1,0,1,1,1,Jarang,Cukup Sehat,0,1,1,1
+35,Perempuan,90,178,28.41,0,1,0,1,0,Kadang,Cukup Sehat,0,0,0,0
+64,Laki-laki,55,150,24.44,0,0,1,1,0,Jarang,Cukup Sehat,0,0,1,1
+50,Laki-laki,45,170,15.57,0,0,1,1,0,Jarang,Sehat,0,0,1,0
+61,Laki-laki,49,156,20.13,1,0,1,0,0,Kadang,Cukup Sehat,0,1,0,1
+25,Perempuan,98,160,38.28,0,1,1,1,1,Kadang,Cukup Sehat,0,0,0,1
+31,Perempuan,97,177,30.96,0,1,1,0,1,Kadang,Tidak Sehat,0,1,1,1
+40,Laki-laki,67,145,31.87,0,1,1,0,1,Jarang,Cukup Sehat,0,1,0,0
+51,Laki-laki,52,171,17.78,1,0,0,1,0,Jarang,Cukup Sehat,0,1,1,1
+41,Perempuan,79,156,32.46,1,0,1,1,1,Jarang,Tidak Sehat,0,1,1,0
+40,Laki-laki,57,152,24.67,1,0,0,1,0,Kadang,Sehat,0,1,0,0
+60,Laki-laki,87,175,28.41,1,0,1,1,0,Rutin,Cukup Sehat,1,0,1,1
+50,Perempuan,52,153,22.21,0,0,0,0,0,Kadang,Sehat,0,0,0,0
+61,Perempuan,83,172,28.06,0,1,1,1,0,Kadang,Cukup Sehat,1,0,1,0
+57,Laki-laki,56,177,17.87,0,1,0,1,0,Rutin,Tidak Sehat,0,1,0,1
+63,Laki-laki,84,177,26.81,0,0,0,0,0,Jarang,Tidak Sehat,0,1,0,1
+30,Laki-laki,46,172,15.55,0,0,0,1,0,Kadang,Sehat,0,1,0,0
+39,Perempuan,48,175,15.67,1,0,1,0,0,Kadang,Cukup Sehat,0,1,1,1
+33,Perempuan,56,148,25.57,0,0,0,1,0,Jarang,Cukup Sehat,0,1,1,0
+45,Laki-laki,76,161,29.32,1,1,1,0,0,Jarang,Sehat,0,0,0,1
+41,Perempuan,78,182,23.55,1,0,1,0,0,Rutin,Cukup Sehat,0,0,0,0
+58,Laki-laki,82,147,37.95,0,0,1,0,1,Jarang,Sehat,1,1,1,1
+66,Laki-laki,91,179,28.4,0,0,0,0,0,Kadang,Sehat,1,1,1,1
+46,Laki-laki,49,172,16.56,1,1,0,0,0,Rutin,Cukup Sehat,0,0,1,0
+54,Laki-laki,92,157,37.32,1,1,0,0,1,Kadang,Sehat,1,1,1,1
+56,Perempuan,56,158,22.43,0,0,0,0,0,Rutin,Cukup Sehat,0,1,1,0
+36,Perempuan,52,180,16.05,0,0,0,0,0,Kadang,Tidak Sehat,0,0,1,0
+35,Laki-laki,97,160,37.89,0,0,0,1,1,Rutin,Sehat,0,1,1,0
+63,Perempuan,71,153,30.33,1,1,0,0,1,Kadang,Tidak Sehat,1,1,0,1
+19,Laki-laki,86,169,30.11,1,0,1,0,1,Kadang,Cukup Sehat,0,0,1,0
+46,Laki-laki,68,172,22.99,0,1,0,1,0,Jarang,Cukup Sehat,0,0,0,0
+54,Perempuan,86,156,35.34,1,0,1,0,1,Jarang,Cukup Sehat,1,0,0,0
+22,Perempuan,74,160,28.91,1,0,0,0,0,Rutin,Tidak Sehat,0,1,1,0
+25,Laki-laki,53,147,24.53,0,0,1,0,0,Rutin,Sehat,0,0,0,0
+52,Perempuan,57,150,25.33,0,1,1,0,0,Kadang,Cukup Sehat,0,1,0,0
+21,Perempuan,79,185,23.08,0,0,0,0,0,Rutin,Cukup Sehat,0,0,1,0
+18,Laki-laki,59,146,27.68,1,1,0,1,0,Rutin,Cukup Sehat,0,0,1,0
+49,Laki-laki,59,152,25.54,0,1,1,0,0,Rutin,Cukup Sehat,0,0,1,0
+20,Laki-laki,72,156,29.59,1,0,1,0,0,Rutin,Sehat,0,1,1,1
+24,Perempuan,87,176,28.09,1,1,0,0,0,Jarang,Sehat,0,0,1,0
+42,Perempuan,97,175,31.67,0,0,1,1,1,Jarang,Tidak Sehat,0,1,0,0
+67,Perempuan,65,167,23.31,1,1,1,1,0,Rutin,Sehat,0,1,0,0
+42,Perempuan,76,180,23.46,1,0,1,0,0,Rutin,Sehat,0,1,0,0
+33,Perempuan,58,145,27.59,0,1,1,0,0,Jarang,Tidak Sehat,0,1,1,0
+36,Perempuan,98,154,41.32,1,0,0,0,1,Jarang,Sehat,0,0,0,0
+42,Laki-laki,68,172,22.99,0,0,0,1,0,Rutin,Tidak Sehat,0,0,0,1
+27,Laki-laki,49,160,19.14,0,1,0,0,0,Kadang,Sehat,0,0,1,1
+44,Perempuan,95,173,31.74,0,1,0,0,1,Jarang,Sehat,0,0,0,0
+18,Perempuan,88,172,29.75,1,1,1,0,0,Kadang,Tidak Sehat,0,1,0,1
+26,Laki-laki,84,170,29.07,0,0,1,0,0,Rutin,Sehat,0,0,1,1
+38,Perempuan,55,169,19.26,0,1,1,0,0,Kadang,Tidak Sehat,0,0,0,1
+56,Perempuan,60,146,28.15,1,0,0,0,0,Jarang,Sehat,1,0,1,0
+53,Laki-laki,47,185,13.73,0,1,0,0,0,Rutin,Cukup Sehat,0,0,0,1
+23,Perempuan,67,145,31.87,1,1,0,1,1,Kadang,Sehat,0,1,0,0
+39,Perempuan,51,177,16.28,0,0,1,1,0,Rutin,Tidak Sehat,0,1,0,0
+61,Perempuan,85,150,37.78,0,0,0,0,1,Rutin,Tidak Sehat,1,1,1,0
+39,Perempuan,84,168,29.76,1,0,1,0,0,Jarang,Sehat,0,0,0,1
+24,Laki-laki,94,154,39.64,1,0,1,0,1,Kadang,Cukup Sehat,0,0,1,0
+22,Perempuan,68,181,20.76,1,0,0,0,0,Rutin,Cukup Sehat,0,1,1,1

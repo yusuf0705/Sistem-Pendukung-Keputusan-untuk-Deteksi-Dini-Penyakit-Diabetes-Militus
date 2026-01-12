@@ -4,132 +4,188 @@
 @section('page_title', 'Riwayat Kesehatan')
 
 @section('content')
-<div class="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 py-8 px-4 sm:px-6 lg:px-8 font-inter">
-    <div class="max-w-7xl mx-auto space-y-6">
+<div class="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 py-8 px-4">
+    <div class="max-w-7xl mx-auto">
 
         {{-- Header Section --}}
-        <div class="bg-white rounded-2xl shadow-lg p-6 border-l-4 border-green-700">
+        <div class="bg-white rounded-2xl shadow-xl p-8 mb-6">
             <div class="flex items-center justify-between flex-wrap gap-4">
                 <div>
-                    <h1 class="text-3xl font-bold text-gray-900 mb-2 font-poppins">Riwayat Kesehatan Saya</h1>
-                    <p class="text-gray-700">Pantau perkembangan kesehatan Anda secara berkala</p>
+                    <h1 class="text-4xl font-bold text-gray-800 mb-2">
+                        📋 Riwayat Kesehatan Saya
+                    </h1>
+                    <p class="text-gray-600">
+                        Pantau perkembangan kesehatan Anda secara berkala
+                    </p>
                 </div>
-                <div class="flex gap-2">
-                    <button type="button" onclick="downloadReport()" class="px-4 py-3 bg-green-700 text-white rounded-lg hover:bg-green-800 transition-all shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 min-h-[48px] min-w-[48px] flex items-center justify-center font-medium">
-                        <span class="sr-only">Unduh Laporan</span>
-                        <i class="fas fa-download mr-2" aria-hidden="true"></i>
-                        <span>Unduh Laporan</span>
-                    </button>
-                </div>
+                @if(!$riwayat->isEmpty())
+                <button type="button" onclick="previewReport()" 
+                    class="px-6 py-3 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-xl font-semibold hover:from-green-700 hover:to-green-800 transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                    <i class="fas fa-file-alt mr-2"></i>
+                    Unduh Laporan
+                </button>
+                @endif
             </div>
         </div>
 
         {{-- Cek apakah ada riwayat --}}
         @if($riwayat->isEmpty())
-            <div class="bg-white rounded-2xl shadow-lg p-12 text-center">
-                <div class="inline-flex items-center justify-center w-20 h-20 bg-gray-100 rounded-full mb-4">
-                    <i class="fas fa-history text-4xl text-gray-400"></i>
+            <div class="bg-white rounded-2xl shadow-xl p-12 text-center">
+                <div class="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-green-100 to-blue-100 rounded-full mb-6">
+                    <i class="fas fa-history text-5xl text-green-600"></i>
                 </div>
-                <h3 class="text-2xl font-bold text-gray-900 mb-2">Belum Ada Riwayat</h3>
-                <p class="text-gray-600 mb-6">Anda belum melakukan pemeriksaan. Mulai deteksi diabetes sekarang!</p>
-                <a href="{{ route('deteksi.create') }}" class="inline-flex items-center px-6 py-3 bg-green-700 text-white rounded-lg font-semibold hover:bg-green-800 transition-all shadow-md">
+                <h3 class="text-3xl font-bold text-gray-800 mb-3">Belum Ada Riwayat</h3>
+                <p class="text-gray-600 mb-8 max-w-md mx-auto">
+                    Anda belum melakukan pemeriksaan diabetes. Mulai deteksi sekarang untuk memantau kesehatan Anda!
+                </p>
+                <a href="{{ route('deteksi.create') }}" 
+                    class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-xl font-bold text-lg hover:from-green-700 hover:to-green-800 transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
                     <i class="fas fa-clipboard-list mr-2"></i>
                     Lakukan Pemeriksaan
                 </a>
             </div>
         @else
-            <div class="bg-white rounded-2xl shadow-lg p-6">
-                <div class="flex items-center justify-between mb-6">
-                    <h2 class="text-xl font-bold text-gray-900 flex items-center font-poppins">
-                        <span class="bg-green-700 text-white rounded-lg p-2 mr-3" aria-hidden="true">
-                            <i class="fas fa-history"></i>
-                        </span>
-                        Riwayat Detail Pemeriksaan
-                    </h2>
+            {{-- Statistics Cards --}}
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                {{-- Total Pemeriksaan --}}
+                <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-blue-500">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm mb-1">Total Pemeriksaan</p>
+                            <p class="text-3xl font-bold text-gray-800">{{ $riwayat->count() }}</p>
+                        </div>
+                        <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-file-medical text-2xl text-blue-600"></i>
+                        </div>
+                    </div>
                 </div>
 
-                <div id="historyContainer" class="space-y-4">
+                {{-- Rata-rata Skor Risiko --}}
+                <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-green-500">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm mb-1">Rata-rata Skor Risiko</p>
+                            <p class="text-3xl font-bold text-gray-800">
+                                {{ round($riwayat->avg('skor_resiko')) }}
+                                <span class="text-sm font-normal text-gray-600">%</span>
+                            </p>
+                        </div>
+                        <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-chart-line text-2xl text-green-600"></i>
+                        </div>
+                    </div>
+                </div>
+
+                {{-- Pemeriksaan Terakhir --}}
+                <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-purple-500">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm mb-1">Pemeriksaan Terakhir</p>
+                            <p class="text-lg font-bold text-gray-800">
+                                {{ $riwayat->first()->created_at->format('d M Y') }}
+                            </p>
+                            <p class="text-sm text-gray-500">
+                                {{ $riwayat->first()->created_at->diffForHumans() }}
+                            </p>
+                        </div>
+                        <div class="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-calendar-check text-2xl text-purple-600"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- History List --}}
+            <div class="bg-white rounded-2xl shadow-xl p-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b-2 border-green-500">
+                    📊 Riwayat Detail Pemeriksaan
+                </h2>
+
+                <div class="space-y-4">
                     @foreach ($riwayat as $index => $data)
-                        <div class="history-item group relative bg-gradient-to-r from-gray-50 to-white rounded-xl p-4 border-2 border-gray-200 hover:border-green-700 transition-all hover:shadow-md cursor-pointer focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
-                             data-id="{{ $data->id_riwayat_kesehatan }}"
+                        <div class="history-item group relative bg-gradient-to-r from-gray-50 to-white rounded-xl p-6 border-2 border-gray-200 hover:border-green-500 hover:shadow-lg transition-all duration-300 cursor-pointer"
+                             onclick="openDetailModal('{{ $data->id_riwayat_kesehatan }}')"
                              role="button" 
                              tabindex="0"
-                             aria-label="Lihat detail riwayat kesehatan tanggal {{ $data->created_at->format('d M Y') }}, status {{ $data->status_diabetes }}, tingkat risiko {{ $data->tingkat_resiko }}">
-                            {{-- Timeline Dot --}}
-                            <div class="absolute -left-3 top-1/2 transform -translate-y-1/2 w-6 h-6 bg-green-700 rounded-full border-4 border-white shadow-md group-hover:scale-110 transition-transform" aria-hidden="true"></div>
+                             onkeypress="if(event.key === 'Enter') openDetailModal('{{ $data->id_riwayat_kesehatan }}')">
                             
-                            <div class="ml-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+                            {{-- Timeline Indicator --}}
+                            <div class="absolute -left-4 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-full border-4 border-white shadow-md group-hover:scale-110 transition-transform"></div>
+                            
+                            <div class="ml-6 grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
                                 {{-- Date & Time --}}
-                                <div class="md:col-span-3">
+                                <div class="lg:col-span-3">
                                     <div class="flex items-center gap-3">
-                                        <div class="bg-green-700 bg-opacity-10 rounded-lg p-3" aria-hidden="true">
+                                        <div class="bg-gradient-to-br from-green-100 to-green-200 rounded-lg p-3">
                                             <i class="fas fa-calendar-day text-green-700 text-xl"></i>
                                         </div>
                                         <div>
-                                            <div class="font-semibold text-gray-900">{{ $data->created_at->format('d M Y') }}</div>
-                                            <div class="text-sm text-gray-700">{{ $data->created_at->format('H:i') }} WIB</div>
+                                            <div class="font-bold text-gray-800">{{ $data->created_at->format('d M Y') }}</div>
+                                            <div class="text-sm text-gray-500">{{ $data->created_at->format('H:i') }} WIB</div>
                                         </div>
                                     </div>
                                 </div>
 
-                                {{-- Blood Sugar Level --}}
-                                <div class="md:col-span-2">
-                                    <div class="text-center bg-white rounded-lg p-3 shadow-sm">
-                                        <div class="text-2xl font-bold {{ $data->status_diabetes === 'Normal' ? 'text-green-700' : 'text-red-700' }} font-poppins">
-                                            {{ $data->gula_darah_sewaktu }}
+                                {{-- Status Diabetes --}}
+                                <div class="lg:col-span-2">
+                                    <div class="text-center bg-gradient-to-br {{ $data->status_diabetes === 'Normal' ? 'from-green-50 to-green-100' : ($data->status_diabetes === 'Prediabetes' ? 'from-yellow-50 to-yellow-100' : 'from-red-50 to-red-100') }} rounded-lg p-4 shadow-sm">
+                                        <div class="text-2xl font-bold {{ $data->status_diabetes === 'Normal' ? 'text-green-700' : ($data->status_diabetes === 'Prediabetes' ? 'text-yellow-700' : 'text-red-700') }}">
+                                            {{ $data->status_diabetes }}
                                         </div>
-                                        <div class="text-xs text-gray-700 mt-1">mg/dL</div>
+                                        <div class="text-xs text-gray-600 mt-1 font-semibold">Status</div>
                                     </div>
                                 </div>
 
                                 {{-- Risk Level Badge --}}
-                                <div class="md:col-span-2 flex justify-center">
+                                <div class="lg:col-span-2 flex justify-center">
                                     @if ($data->tingkat_resiko === 'Rendah')
-                                        <span class="inline-flex items-center gap-2 px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-semibold shadow-sm font-poppins">
-                                            <i class="fas fa-check-circle" aria-hidden="true"></i>
-                                            Resiko Rendah
+                                        <span class="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-green-100 to-green-200 text-green-800 rounded-full text-sm font-bold shadow-sm">
+                                            <i class="fas fa-check-circle"></i>
+                                            Risiko Rendah
                                         </span>
                                     @elseif ($data->tingkat_resiko === 'Sedang')
-                                        <span class="inline-flex items-center gap-2 px-4 py-2 bg-yellow-100 text-yellow-800 rounded-full text-sm font-semibold shadow-sm font-poppins">
-                                            <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
-                                            Resiko Sedang
+                                        <span class="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-yellow-100 to-yellow-200 text-yellow-800 rounded-full text-sm font-bold shadow-sm">
+                                            <i class="fas fa-exclamation-circle"></i>
+                                            Risiko Sedang
                                         </span>
                                     @else
-                                        <span class="inline-flex items-center gap-2 px-4 py-2 bg-red-100 text-red-800 rounded-full text-sm font-semibold shadow-sm font-poppins">
-                                            <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
-                                            Resiko Tinggi
+                                        <span class="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-red-100 to-red-200 text-red-800 rounded-full text-sm font-bold shadow-sm">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                            Risiko Tinggi
                                         </span>
                                     @endif
                                 </div>
 
                                 {{-- Quick Info --}}
-                                <div class="md:col-span-4">
-                                    <div class="flex flex-wrap gap-2">
-                                        <span class="inline-flex items-center gap-1 px-2 py-1 bg-blue-50 text-blue-800 rounded text-xs font-medium">
-                                            <i class="fas fa-heartbeat" aria-hidden="true"></i>
-                                            {{ $data->status_diabetes }}
-                                        </span>
-                                        <span class="inline-flex items-center gap-1 px-2 py-1 bg-purple-50 text-purple-800 rounded text-xs font-medium">
-                                            <i class="fas fa-chart-line" aria-hidden="true"></i>
-                                            Skor: {{ $data->skor_resiko }}%
-                                        </span>
-                                        @if($data->perlu_konsul === 'Ya')
-                                            <span class="inline-flex items-center gap-1 px-2 py-1 bg-red-50 text-red-800 rounded text-xs font-medium">
-                                                <i class="fas fa-user-md" aria-hidden="true"></i>
-                                                Perlu Konsultasi
+                                <div class="lg:col-span-4">
+                                    <div class="space-y-2">
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 text-blue-700 rounded-lg text-xs font-semibold">
+                                                <i class="fas fa-heartbeat"></i>
+                                                {{ $data->status_diabetes }}
                                             </span>
-                                        @endif
-                                    </div>
-                                    <div class="text-xs text-gray-700 mt-2">
-                                        Klik atau tekan Enter untuk lihat detail lengkap
+                                            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-purple-50 text-purple-700 rounded-lg text-xs font-semibold">
+                                                <i class="fas fa-chart-line"></i>
+                                                Skor: {{ $data->skor_resiko }}%
+                                            </span>
+                                            @if($data->perlu_konsul === 'Ya')
+                                                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-red-50 text-red-700 rounded-lg text-xs font-semibold">
+                                                    <i class="fas fa-user-md"></i>
+                                                    Perlu Konsultasi
+                                                </span>
+                                            @endif
+                                        </div>
+                                        <p class="text-xs text-gray-500 italic">
+                                            Klik untuk melihat detail lengkap
+                                        </p>
                                     </div>
                                 </div>
 
                                 {{-- Action Button --}}
-                                <div class="md:col-span-1 flex justify-end">
-                                    <button type="button" class="text-gray-600 hover:text-green-700 transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 rounded-full p-2 min-h-[44px] min-w-[44px] flex items-center justify-center" aria-label="Buka detail">
-                                        <i class="fas fa-chevron-right" aria-hidden="true"></i>
-                                    </button>
+                                <div class="lg:col-span-1 flex justify-end">
+                                    <div class="w-10 h-10 bg-gray-100 group-hover:bg-green-100 rounded-full flex items-center justify-center transition-colors">
+                                        <i class="fas fa-chevron-right text-gray-400 group-hover:text-green-600 transition-colors"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -146,236 +202,261 @@
 {!! json_encode($riwayat->keyBy('id_riwayat_kesehatan')) !!}
 </script>
 
-{{-- Modal Detail dengan Tab --}}
-<div id="detailModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center p-4 hidden" aria-hidden="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
-    <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-screen-90 overflow-hidden flex flex-col font-inter">
+{{-- Modal Detail --}}
+<div id="detailModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col animate-slideIn">
         {{-- Header --}}
-        <div class="bg-gradient-to-r from-green-700 to-green-600 text-white p-6">
+        <div class="bg-gradient-to-r from-green-600 to-green-700 text-white p-6">
             <div class="flex items-center justify-between">
                 <div>
-                    <h3 id="modalTitle" class="text-2xl font-bold flex items-center gap-2 font-poppins">
-                        <i class="fas fa-file-medical-alt" aria-hidden="true"></i>
+                    <h3 class="text-2xl font-bold flex items-center gap-2">
+                        <i class="fas fa-file-medical-alt"></i>
                         Detail Riwayat Kesehatan
                     </h3>
-                    <p id="modalDesc" class="text-green-100 text-sm mt-1">Detail lengkap hasil analisis kesehatan</p>
                     <p class="text-green-100 text-sm mt-1" id="modalDate">-</p>
                 </div>
-                <button type="button" onclick="closeDetailModal()" class="text-white hover:text-green-200 transition-colors focus:outline-none focus:ring-2 focus:ring-white rounded-full p-2 min-h-[44px] min-w-[44px] flex items-center justify-center" aria-label="Tutup modal">
-                    <i class="fas fa-times text-2xl" aria-hidden="true"></i>
+                <button onclick="closeDetailModal()" 
+                    class="text-white hover:text-green-200 transition-colors p-2 hover:bg-white hover:bg-opacity-10 rounded-lg">
+                    <i class="fas fa-times text-2xl"></i>
                 </button>
             </div>
         </div>
 
         {{-- Tab Navigation --}}
-        <div class="bg-gray-100 border-b border-gray-200" role="tablist" aria-label="Detail riwayat kesehatan">
+        <div class="bg-gray-50 border-b border-gray-200">
             <div class="flex">
-                <button type="button" onclick="switchTab('dataInput')" id="tabDataInput" class="flex-1 px-6 py-4 font-semibold text-gray-900 hover:bg-white transition-all border-b-2 border-transparent focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-inset min-h-[60px] font-poppins" role="tab" aria-selected="true" aria-controls="contentDataInput">
-                    <i class="fas fa-clipboard-list mr-2" aria-hidden="true"></i>
+                <button onclick="switchTab('dataInput')" id="tabDataInput" 
+                    class="flex-1 px-6 py-4 font-semibold transition-all border-b-2">
+                    <i class="fas fa-clipboard-list mr-2"></i>
                     Data Input
                 </button>
-                <button type="button" onclick="switchTab('hasilResiko')" id="tabHasilResiko" class="flex-1 px-6 py-4 font-semibold text-gray-900 hover:bg-white transition-all border-b-2 border-transparent focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-inset min-h-[60px] font-poppins" role="tab" aria-selected="false" aria-controls="contentHasilResiko">
-                    <i class="fas fa-chart-pie mr-2" aria-hidden="true"></i>
+                <button onclick="switchTab('hasilResiko')" id="tabHasilResiko" 
+                    class="flex-1 px-6 py-4 font-semibold transition-all border-b-2">
+                    <i class="fas fa-chart-pie mr-2"></i>
                     Hasil & Rekomendasi
                 </button>
             </div>
         </div>
 
         {{-- Tab Content --}}
-        <div class="flex-1 overflow-y-auto p-6" style="max-height: calc(90vh - 250px);">
+        <div class="flex-1 overflow-y-auto p-6">
             {{-- Tab 1: Data Input --}}
-            <div id="contentDataInput" class="space-y-6" role="tabpanel" aria-labelledby="tabDataInput">
+            <div id="contentDataInput" class="space-y-6">
                 {{-- Data Pribadi --}}
-                <div class="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl p-5 border-l-4 border-blue-600">
-                    <h4 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2 font-poppins">
-                        <i class="fas fa-user-circle text-blue-700" aria-hidden="true"></i>
+                <div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 border-l-4 border-blue-500">
+                    <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                        <i class="fas fa-user-circle text-blue-600"></i>
                         Data Pribadi
                     </h4>
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-                        <div class="bg-white rounded-lg p-3 shadow-sm">
-                            <div class="text-xs text-gray-700 mb-1">Nama</div>
-                            <div class="font-semibold text-gray-900" id="modalNama">-</div>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="bg-white rounded-lg p-4 shadow-sm">
+                            <div class="text-xs text-gray-600 mb-1 font-semibold">Nama</div>
+                            <div class="font-bold text-gray-800" id="modalNama">-</div>
                         </div>
-                        <div class="bg-white rounded-lg p-3 shadow-sm">
-                            <div class="text-xs text-gray-700 mb-1">Usia</div>
-                            <div class="font-semibold text-gray-900" id="modalUsia">-</div>
+                        <div class="bg-white rounded-lg p-4 shadow-sm">
+                            <div class="text-xs text-gray-600 mb-1 font-semibold">Usia</div>
+                            <div class="font-bold text-gray-800" id="modalUsia">-</div>
                         </div>
-                        <div class="bg-white rounded-lg p-3 shadow-sm">
-                            <div class="text-xs text-gray-700 mb-1">Jenis Kelamin</div>
-                            <div class="font-semibold text-gray-900" id="modalJenisKelamin">-</div>
+                        <div class="bg-white rounded-lg p-4 shadow-sm">
+                            <div class="text-xs text-gray-600 mb-1 font-semibold">Jenis Kelamin</div>
+                            <div class="font-bold text-gray-800" id="modalJenisKelamin">-</div>
                         </div>
-                        <div class="bg-white rounded-lg p-3 shadow-sm">
-                            <div class="text-xs text-gray-700 mb-1">Berat Badan</div>
-                            <div class="font-semibold text-gray-900"><span id="modalBeratBadan">-</span> kg</div>
+                        <div class="bg-white rounded-lg p-4 shadow-sm">
+                            <div class="text-xs text-gray-600 mb-1 font-semibold">Berat Badan</div>
+                            <div class="font-bold text-gray-800"><span id="modalBeratBadan">-</span> kg</div>
                         </div>
-                        <div class="bg-white rounded-lg p-3 shadow-sm">
-                            <div class="text-xs text-gray-700 mb-1">Tinggi Badan</div>
-                            <div class="font-semibold text-gray-900"><span id="modalTinggiBadan">-</span> cm</div>
+                        <div class="bg-white rounded-lg p-4 shadow-sm">
+                            <div class="text-xs text-gray-600 mb-1 font-semibold">Tinggi Badan</div>
+                            <div class="font-bold text-gray-800"><span id="modalTinggiBadan">-</span> cm</div>
                         </div>
-                        <div class="bg-white rounded-lg p-3 shadow-sm">
-                            <div class="text-xs text-gray-700 mb-1">IMT</div>
-                            <div class="font-semibold text-gray-900" id="modalIMT">-</div>
+                        <div class="bg-white rounded-lg p-4 shadow-sm">
+                            <div class="text-xs text-gray-600 mb-1 font-semibold">IMT</div>
+                            <div class="font-bold text-gray-800" id="modalIMT">-</div>
                         </div>
                     </div>
                 </div>
 
                 {{-- Riwayat Penyakit --}}
-                <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-5 border-l-4 border-purple-600">
-                    <h4 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2 font-poppins">
-                        <i class="fas fa-notes-medical text-purple-700" aria-hidden="true"></i>
-                        Riwayat Penyakit & Keluarga
+                <div class="bg-gradient-to-r from-purple-50 to-purple-100 rounded-xl p-6 border-l-4 border-purple-500">
+                    <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                        <i class="fas fa-notes-medical text-purple-600"></i>
+                        Riwayat Penyakit
                     </h4>
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-                        <div class="bg-white rounded-lg p-3 shadow-sm">
-                            <div class="text-xs text-gray-700 mb-1">Keluarga Diabetes</div>
-                            <div class="font-semibold text-gray-900" id="modalKeluargaDiabetes">-</div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-white rounded-lg p-4 shadow-sm">
+                            <div class="text-xs text-gray-600 mb-1 font-semibold">Keluarga Diabetes</div>
+                            <div class="font-bold text-gray-800" id="modalKeluargaDiabetes">-</div>
                         </div>
-                        <div class="bg-white rounded-lg p-3 shadow-sm">
-                            <div class="text-xs text-gray-700 mb-1">Riwayat Hipertensi</div>
-                            <div class="font-semibold text-gray-900" id="modalHipertensi">-</div>
+                        <div class="bg-white rounded-lg p-4 shadow-sm">
+                            <div class="text-xs text-gray-600 mb-1 font-semibold">Riwayat Hipertensi</div>
+                            <div class="font-bold text-gray-800" id="modalHipertensi">-</div>
                         </div>
-                        <div class="bg-white rounded-lg p-3 shadow-sm">
-                            <div class="text-xs text-gray-700 mb-1">Riwayat Obesitas</div>
-                            <div class="font-semibold text-gray-900" id="modalObesitas">-</div>
+                        <div class="bg-white rounded-lg p-4 shadow-sm">
+                            <div class="text-xs text-gray-600 mb-1 font-semibold">Riwayat Obesitas</div>
+                            <div class="font-bold text-gray-800" id="modalObesitas">-</div>
                         </div>
                     </div>
                 </div>
 
                 {{-- Gaya Hidup --}}
-                <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-5 border-l-4 border-green-600">
-                    <h4 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2 font-poppins">
-                        <i class="fas fa-walking text-green-700" aria-hidden="true"></i>
+                <div class="bg-gradient-to-r from-green-50 to-green-100 rounded-xl p-6 border-l-4 border-green-500">
+                    <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                        <i class="fas fa-running text-green-600"></i>
                         Gaya Hidup
                     </h4>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-                        <div class="bg-white rounded-lg p-3 shadow-sm">
-                            <div class="text-xs text-gray-700 mb-1 flex items-center gap-1">
-                                <i class="fas fa-running text-blue-600" aria-hidden="true"></i>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-white rounded-lg p-4 shadow-sm">
+                            <div class="text-xs text-gray-600 mb-1 font-semibold flex items-center gap-1">
+                                <i class="fas fa-dumbbell text-blue-600"></i>
                                 Olahraga
                             </div>
-                            <div class="font-semibold text-gray-900" id="modalOlahraga">-</div>
+                            <div class="font-bold text-gray-800" id="modalOlahraga">-</div>
                         </div>
-                        <div class="bg-white rounded-lg p-3 shadow-sm">
-                            <div class="text-xs text-gray-700 mb-1 flex items-center gap-1">
-                                <i class="fas fa-utensils text-green-600" aria-hidden="true"></i>
+                        <div class="bg-white rounded-lg p-4 shadow-sm">
+                            <div class="text-xs text-gray-600 mb-1 font-semibold flex items-center gap-1">
+                                <i class="fas fa-utensils text-green-600"></i>
                                 Pola Makan
                             </div>
-                            <div class="font-semibold text-gray-900" id="modalPolaMakan">-</div>
+                            <div class="font-bold text-gray-800" id="modalPolaMakan">-</div>
                         </div>
-                        <div class="bg-white rounded-lg p-3 shadow-sm">
-                            <div class="text-xs text-gray-700 mb-1 flex items-center gap-1">
-                                <i class="fas fa-smoking text-red-600" aria-hidden="true"></i>
+                        <div class="bg-white rounded-lg p-4 shadow-sm">
+                            <div class="text-xs text-gray-600 mb-1 font-semibold flex items-center gap-1">
+                                <i class="fas fa-smoking text-red-600"></i>
                                 Merokok
                             </div>
-                            <div class="font-semibold text-gray-900" id="modalMerokok">-</div>
+                            <div class="font-bold text-gray-800" id="modalMerokok">-</div>
                         </div>
-                        <div class="bg-white rounded-lg p-3 shadow-sm">
-                            <div class="text-xs text-gray-700 mb-1 flex items-center gap-1">
-                                <i class="fas fa-wine-bottle text-purple-600" aria-hidden="true"></i>
+                        <div class="bg-white rounded-lg p-4 shadow-sm">
+                            <div class="text-xs text-gray-600 mb-1 font-semibold flex items-center gap-1">
+                                <i class="fas fa-wine-bottle text-purple-600"></i>
                                 Alkohol
                             </div>
-                            <div class="font-semibold text-gray-900" id="modalAlkohol">-</div>
+                            <div class="font-bold text-gray-800" id="modalAlkohol">-</div>
+                        </div>
+                    </div>
+                </div>
+
+                {{-- Gejala --}}
+                <div class="bg-gradient-to-r from-orange-50 to-orange-100 rounded-xl p-6 border-l-4 border-orange-500">
+                    <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                        <i class="fas fa-notes-medical text-orange-600"></i>
+                        Gejala yang Dialami
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-white rounded-lg p-4 shadow-sm">
+                            <div class="text-xs text-gray-600 mb-1 font-semibold flex items-center gap-1">
+                                <i class="fas fa-toilet text-blue-600"></i>
+                                Sering BAK Malam
+                            </div>
+                            <div class="font-bold text-gray-800" id="modalSeringBAK">-</div>
+                        </div>
+                        <div class="bg-white rounded-lg p-4 shadow-sm">
+                            <div class="text-xs text-gray-600 mb-1 font-semibold flex items-center gap-1">
+                                <i class="fas fa-utensils text-orange-600"></i>
+                                Sering Lapar
+                            </div>
+                            <div class="font-bold text-gray-800" id="modalSeringLapar">-</div>
+                        </div>
+                        <div class="bg-white rounded-lg p-4 shadow-sm">
+                            <div class="text-xs text-gray-600 mb-1 font-semibold flex items-center gap-1">
+                                <i class="fas fa-eye text-purple-600"></i>
+                                Pandangan Kabur
+                            </div>
+                            <div class="font-bold text-gray-800" id="modalPandanganKabur">-</div>
                         </div>
                     </div>
                 </div>
             </div>
 
             {{-- Tab 2: Hasil & Rekomendasi --}}
-            <div id="contentHasilResiko" class="space-y-6 hidden" role="tabpanel" aria-labelledby="tabHasilResiko">
-                {{-- Status Diabetes & Skor Resiko --}}
-                <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-xl p-5 border-l-4 border-green-700">
-                    <h4 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2 font-poppins">
-                        <i class="fas fa-chart-line text-green-700" aria-hidden="true"></i>
+            <div id="contentHasilResiko" class="space-y-6 hidden">
+                {{-- Hasil Analisis --}}
+                <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-xl p-6 border-l-4 border-green-600">
+                    <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                        <i class="fas fa-chart-line text-green-600"></i>
                         Hasil Analisis
                     </h4>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="bg-white rounded-lg p-4 shadow-md text-center">
-                            <div class="text-sm text-gray-700 mb-2">Status Diabetes</div>
-                            <div class="text-2xl font-bold font-poppins" id="modalStatusDiabetes">-</div>
+                        <div class="bg-white rounded-xl p-5 shadow-md text-center">
+                            <div class="text-sm text-gray-600 mb-2 font-semibold">Status Diabetes</div>
+                            <div class="text-2xl font-bold" id="modalStatusDiabetes">-</div>
                         </div>
-                        <div class="bg-white rounded-lg p-4 shadow-md text-center">
-                            <div class="text-sm text-gray-700 mb-2">Tingkat Resiko</div>
+                        <div class="bg-white rounded-xl p-5 shadow-md text-center">
+                            <div class="text-sm text-gray-600 mb-2 font-semibold">Tingkat Risiko</div>
                             <div id="modalTingkatResikoBadge"></div>
                         </div>
-                        <div class="bg-white rounded-lg p-4 shadow-md text-center">
-                            <div class="text-sm text-gray-700 mb-2">Skor Resiko</div>
-                            <div class="text-3xl font-bold text-green-700 font-poppins"><span id="modalSkorResiko">-</span>%</div>
+                        <div class="bg-white rounded-xl p-5 shadow-md text-center">
+                            <div class="text-sm text-gray-600 mb-2 font-semibold">Skor Risiko</div>
+                            <div class="text-3xl font-bold text-green-700"><span id="modalSkorResiko">-</span>%</div>
                         </div>
                     </div>
                 </div>
 
-                {{-- Penjelasan Resiko --}}
-                <div class="bg-blue-50 rounded-xl p-5 border-l-4 border-blue-600">
-                    <h4 class="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2 font-poppins">
-                        <i class="fas fa-info-circle text-blue-700" aria-hidden="true"></i>
+                {{-- Rekomendasi Sections --}}
+                <div class="bg-blue-50 rounded-xl p-6 border-l-4 border-blue-500">
+                    <h4 class="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
+                        <i class="fas fa-info-circle text-blue-600"></i>
                         Penjelasan Kondisi
                     </h4>
-                    <p class="text-gray-800 leading-relaxed" id="modalPenjelasanResiko">-</p>
+                    <p class="text-gray-700 leading-relaxed" id="modalPenjelasanResiko">-</p>
                 </div>
 
-                {{-- Rekomendasi Diet --}}
-                <div class="bg-green-50 rounded-xl p-5 border-l-4 border-green-600">
-                    <h4 class="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2 font-poppins">
-                        <i class="fas fa-apple-alt text-green-700" aria-hidden="true"></i>
+                <div class="bg-green-50 rounded-xl p-6 border-l-4 border-green-500">
+                    <h4 class="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
+                        <i class="fas fa-apple-alt text-green-600"></i>
                         Rekomendasi Diet
                     </h4>
-                    <p class="text-gray-800 leading-relaxed" id="modalRekomendasiDiet">-</p>
+                    <p class="text-gray-700 leading-relaxed" id="modalRekomendasiDiet">-</p>
                 </div>
 
-                {{-- Rekomendasi Olahraga --}}
-                <div class="bg-orange-50 rounded-xl p-5 border-l-4 border-orange-600">
-                    <h4 class="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2 font-poppins">
-                        <i class="fas fa-dumbbell text-orange-700" aria-hidden="true"></i>
+                <div class="bg-orange-50 rounded-xl p-6 border-l-4 border-orange-500">
+                    <h4 class="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
+                        <i class="fas fa-dumbbell text-orange-600"></i>
                         Rekomendasi Olahraga
                     </h4>
-                    <p class="text-gray-800 leading-relaxed" id="modalRekomendasiOlahraga">-</p>
+                    <p class="text-gray-700 leading-relaxed" id="modalRekomendasiOlahraga">-</p>
                 </div>
 
-                {{-- Perubahan Gaya Hidup --}}
-                <div class="bg-purple-50 rounded-xl p-5 border-l-4 border-purple-600">
-                    <h4 class="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2 font-poppins">
-                        <i class="fas fa-heart text-purple-700" aria-hidden="true"></i>
+                <div class="bg-purple-50 rounded-xl p-6 border-l-4 border-purple-500">
+                    <h4 class="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
+                        <i class="fas fa-heart text-purple-600"></i>
                         Perubahan Gaya Hidup
                     </h4>
-                    <p class="text-gray-800 leading-relaxed" id="modalPerubahanGayaHidup">-</p>
+                    <p class="text-gray-700 leading-relaxed" id="modalPerubahanGayaHidup">-</p>
                 </div>
 
-                {{-- Tips Pencegahan --}}
-                <div class="bg-yellow-50 rounded-xl p-5 border-l-4 border-yellow-600">
-                    <h4 class="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2 font-poppins">
-                        <i class="fas fa-lightbulb text-yellow-700" aria-hidden="true"></i>
+                <div class="bg-yellow-50 rounded-xl p-6 border-l-4 border-yellow-500">
+                    <h4 class="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
+                        <i class="fas fa-lightbulb text-yellow-600"></i>
                         Tips Pencegahan
                     </h4>
-                    <p class="text-gray-800 leading-relaxed" id="modalTipsPencegahan">-</p>
+                    <p class="text-gray-700 leading-relaxed" id="modalTipsPencegahan">-</p>
                 </div>
 
-                {{-- Konsultasi Medis --}}
-                <div id="modalKonsultasiSection" class="bg-red-50 rounded-xl p-5 border-l-4 border-red-600 hidden">
-                    <h4 class="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2 font-poppins">
-                        <i class="fas fa-user-md text-red-700" aria-hidden="true"></i>
+                <div id="modalKonsultasiSection" class="bg-red-50 rounded-xl p-6 border-l-4 border-red-500 hidden">
+                    <h4 class="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
+                        <i class="fas fa-user-md text-red-600"></i>
                         Rekomendasi Konsultasi
                     </h4>
                     <div class="flex items-start gap-3">
-                        <div class="shrink-0 w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-exclamation text-red-700" aria-hidden="true"></i>
+                        <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-exclamation text-red-600 text-xl"></i>
                         </div>
-                        <div class="flex-1">
-                            <p class="text-gray-800 leading-relaxed" id="modalPesanKonsultasi">-</p>
-                        </div>
+                        <p class="text-gray-700 leading-relaxed" id="modalPesanKonsultasi">-</p>
                     </div>
                 </div>
             </div>
         </div>
 
         {{-- Footer Actions --}}
-        <div class="bg-gray-50 p-4 border-t border-gray-200 flex gap-3">
-            <button type="button" onclick="closeDetailModal()" class="flex-1 px-4 py-3 bg-gray-300 hover:bg-gray-400 text-gray-900 rounded-lg font-medium transition-all focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 min-h-[48px] font-medium">
-                <i class="fas fa-times mr-2" aria-hidden="true"></i>Tutup
+        <div class="bg-gray-50 p-6 border-t border-gray-200 flex gap-3">
+            <button onclick="closeDetailModal()" 
+                class="flex-1 px-6 py-3 bg-gray-300 hover:bg-gray-400 text-gray-800 rounded-lg font-semibold transition-all">
+                <i class="fas fa-times mr-2"></i>Tutup
             </button>
-            <button type="button" onclick="printReport()" class="flex-1 px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 min-h-[48px] font-medium">
-                <i class="fas fa-print mr-2" aria-hidden="true"></i>Cetak
-            </button>
-            <button type="button" onclick="downloadDetailReport()" class="flex-1 px-4 py-3 bg-green-700 hover:bg-green-800 text-white rounded-lg font-medium transition-all focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 min-h-[48px] font-medium">
-                <i class="fas fa-download mr-2" aria-hidden="true"></i>Unduh PDF
+            <button onclick="printReport()" 
+                class="flex-1 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-all shadow-md">
+                <i class="fas fa-print mr-2"></i>Cetak
             </button>
         </div>
     </div>
@@ -385,19 +466,29 @@
 
 @push('styles')
 <style>
-    @keyframes fadeIn {
+    @keyframes slideIn {
         from {
             opacity: 0;
-            transform: scale(0.95);
+            transform: translateY(-20px);
         }
         to {
             opacity: 1;
-            transform: scale(1);
+            transform: translateY(0);
         }
     }
 
-    .animate-fadeIn {
-        animation: fadeIn 0.3s ease-out;
+    @keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .animate-slideIn {
+        animation: slideIn 0.3s ease-out;
+    }
+
+    .animate-spin {
+        animation: spin 1s linear infinite;
     }
 
     .overflow-y-auto::-webkit-scrollbar {
@@ -405,171 +496,127 @@
     }
 
     .overflow-y-auto::-webkit-scrollbar-track {
-        background: #f1f1f1;
+        background: #f1f5f9;
         border-radius: 10px;
     }
 
     .overflow-y-auto::-webkit-scrollbar-thumb {
-        background: #15803d;
+        background: #16a34a;
         border-radius: 10px;
     }
 
     .overflow-y-auto::-webkit-scrollbar-thumb:hover {
-        background: #166534;
+        background: #15803d;
     }
 
-    #contentDataInput,
-    #contentHasilResiko {
-        transition: opacity 0.3s ease-in-out;
-    }
-
-    .max-h-screen-90 {
-        max-height: 90vh;
-    }
-    
-    button:focus-visible,
-    [role="button"]:focus-visible,
-    [tabindex]:focus-visible {
-        outline: 2px solid #15803d;
-        outline-offset: 2px;
-    }
-
-    body {
-        font-family: 'Inter', sans-serif;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-        font-family: 'Poppins', sans-serif;
+    #tabDataInput.active,
+    #tabHasilResiko.active {
+        background-color: white;
+        border-bottom-color: #16a34a;
+        color: #16a34a;
     }
 </style>
 @endpush
 
 @push('scripts')
 <script>
-    // Data riwayat dari server
     let riwayatData = {};
     
     document.addEventListener('DOMContentLoaded', function() {
-        // Parse JSON data
         const scriptTag = document.getElementById('riwayat-data');
         if (scriptTag) {
             try {
                 riwayatData = JSON.parse(scriptTag.textContent);
-                console.log('Data loaded:', riwayatData);
             } catch (e) {
                 console.error('Error parsing JSON:', e);
             }
         }
 
-        // Event listeners untuk history items
-        const historyItems = document.querySelectorAll('.history-item');
-        historyItems.forEach(item => {
-            item.addEventListener('click', function() {
-                const id = this.getAttribute('data-id');
-                openDetailModal(id);
-            });
-
-            item.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    const id = this.getAttribute('data-id');
-                    openDetailModal(id);
-                }
-            });
-        });
-
-        // Close modal dengan ESC
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
                 closeDetailModal();
             }
         });
-
-        // Close modal dengan click outside
-        const modal = document.getElementById('detailModal');
-        if (modal) {
-            modal.addEventListener('click', function(event) {
-                if (event.target === this) {
-                    closeDetailModal();
-                }
-            });
-        }
     });
 
     function switchTab(tabName) {
         document.getElementById('contentDataInput').classList.add('hidden');
         document.getElementById('contentHasilResiko').classList.add('hidden');
         
-        document.getElementById('tabDataInput').classList.remove('bg-white', 'border-green-700', 'text-green-700');
-        document.getElementById('tabDataInput').setAttribute('aria-selected', 'false');
-        document.getElementById('tabHasilResiko').classList.remove('bg-white', 'border-green-700', 'text-green-700');
-        document.getElementById('tabHasilResiko').setAttribute('aria-selected', 'false');
+        document.getElementById('tabDataInput').classList.remove('active');
+        document.getElementById('tabHasilResiko').classList.remove('active');
         
         if (tabName === 'dataInput') {
             document.getElementById('contentDataInput').classList.remove('hidden');
-            document.getElementById('tabDataInput').classList.add('bg-white', 'border-green-700', 'text-green-700');
-            document.getElementById('tabDataInput').setAttribute('aria-selected', 'true');
+            document.getElementById('tabDataInput').classList.add('active');
         } else {
             document.getElementById('contentHasilResiko').classList.remove('hidden');
-            document.getElementById('tabHasilResiko').classList.add('bg-white', 'border-green-700', 'text-green-700');
-            document.getElementById('tabHasilResiko').setAttribute('aria-selected', 'true');
+            document.getElementById('tabHasilResiko').classList.add('active');
         }
     }
 
     function openDetailModal(id) {
         const data = riwayatData[id];
         if (!data) {
-            console.error('Data tidak ditemukan untuk ID:', id);
             alert('Data tidak ditemukan!');
             return;
         }
 
-        console.log('Opening modal with data:', data);
+        console.log('Data riwayat:', data); // Debug: lihat data yang dimuat
 
-        // Set tanggal
         document.getElementById('modalDate').textContent = formatDate(data.created_at);
 
         // TAB 1: DATA INPUT
-        document.getElementById('modalNama').textContent = data.nama || '-';
-        document.getElementById('modalUsia').textContent = (data.usia || '-') + ' tahun';
-        document.getElementById('modalJenisKelamin').textContent = data.jenis_kelamin || '-';
-        document.getElementById('modalBeratBadan').textContent = data.berat_badan || '-';
-        document.getElementById('modalTinggiBadan').textContent = data.tinggi_badan || '-';
-        document.getElementById('modalIMT').textContent = data.imt || '-';
+        document.getElementById('modalNama').textContent = data.nama || 'Tidak Diisi';
+        document.getElementById('modalUsia').textContent = (data.usia || 'Tidak Diisi') + (data.usia ? ' tahun' : '');
+        document.getElementById('modalJenisKelamin').textContent = data.jenis_kelamin || 'Tidak Diisi';
+        document.getElementById('modalBeratBadan').textContent = data.berat_badan || 'Tidak Diisi';
+        document.getElementById('modalTinggiBadan').textContent = data.tinggi_badan || 'Tidak Diisi';
+        document.getElementById('modalIMT').textContent = data.imt || 'Tidak Diisi';
 
-        document.getElementById('modalKeluargaDiabetes').textContent = data.keluarga_diabetes || '-';
-        document.getElementById('modalHipertensi').textContent = data.riwayat_hipertensi || '-';
-        document.getElementById('modalObesitas').textContent = data.riwayat_obesitas || '-';
+        document.getElementById('modalKeluargaDiabetes').textContent = data.keluarga_diabetes || 'Tidak Diisi';
+        document.getElementById('modalHipertensi').textContent = data.riwayat_hipertensi || 'Tidak Diisi';
+        document.getElementById('modalObesitas').textContent = data.riwayat_obesitas || 'Tidak Diisi';
 
-        document.getElementById('modalOlahraga').textContent = data.olahraga || '-';
-        document.getElementById('modalPolaMakan').textContent = data.pola_makan || '-';
-        document.getElementById('modalMerokok').textContent = data.merokok || '-';
-        document.getElementById('modalAlkohol').textContent = data.minum_alkohol || '-';
+        document.getElementById('modalOlahraga').textContent = data.olahraga || 'Tidak Diisi';
+        document.getElementById('modalPolaMakan').textContent = data.pola_makan || 'Tidak Diisi';
+        document.getElementById('modalMerokok').textContent = data.merokok || 'Tidak Diisi';
+        document.getElementById('modalAlkohol').textContent = data.minum_alkohol || 'Tidak Diisi';
+
+        // Gejala - dengan pengecekan
+        console.log('Gejala data:', {
+            bak: data.sering_buang_air_kecil_malam,
+            lapar: data.sering_lapar,
+            kabur: data.pandangan_kabur
+        });
+        
+        document.getElementById('modalSeringBAK').textContent = data.sering_buang_air_kecil_malam || 'Tidak Diisi';
+        document.getElementById('modalSeringLapar').textContent = data.sering_lapar || 'Tidak Diisi';
+        document.getElementById('modalPandanganKabur').textContent = data.pandangan_kabur || 'Tidak Diisi';
 
         // TAB 2: HASIL & REKOMENDASI
-        document.getElementById('modalStatusDiabetes').textContent = data.status_diabetes || '-';
-        
         const statusEl = document.getElementById('modalStatusDiabetes');
+        statusEl.textContent = data.status_diabetes || '-';
+        
         if (data.status_diabetes === 'Normal') {
-            statusEl.className = 'text-2xl font-bold text-green-700 font-poppins';
+            statusEl.className = 'text-2xl font-bold text-green-700';
         } else if (data.status_diabetes === 'Prediabetes') {
-            statusEl.className = 'text-2xl font-bold text-yellow-700 font-poppins';
+            statusEl.className = 'text-2xl font-bold text-yellow-700';
         } else {
-            statusEl.className = 'text-2xl font-bold text-red-700 font-poppins';
+            statusEl.className = 'text-2xl font-bold text-red-700';
         }
 
         let resikoBadgeHtml = '';
         if (data.tingkat_resiko === 'Rendah') {
-            resikoBadgeHtml = '<span class="inline-flex items-center gap-2 px-4 py-2 bg-green-100 text-green-800 rounded-full text-lg font-bold font-poppins"><i class="fas fa-check-circle"></i>Rendah</span>';
+            resikoBadgeHtml = '<span class="inline-flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-green-100 to-green-200 text-green-800 rounded-full text-lg font-bold"><i class="fas fa-check-circle"></i>Rendah</span>';
         } else if (data.tingkat_resiko === 'Sedang') {
-            resikoBadgeHtml = '<span class="inline-flex items-center gap-2 px-4 py-2 bg-yellow-100 text-yellow-800 rounded-full text-lg font-bold font-poppins"><i class="fas fa-exclamation-circle"></i>Sedang</span>';
+            resikoBadgeHtml = '<span class="inline-flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-yellow-100 to-yellow-200 text-yellow-800 rounded-full text-lg font-bold"><i class="fas fa-exclamation-circle"></i>Sedang</span>';
         } else {
-            resikoBadgeHtml = '<span class="inline-flex items-center gap-2 px-4 py-2 bg-red-100 text-red-800 rounded-full text-lg font-bold font-poppins"><i class="fas fa-exclamation-triangle"></i>Tinggi</span>';
+            resikoBadgeHtml = '<span class="inline-flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-red-100 to-red-200 text-red-800 rounded-full text-lg font-bold"><i class="fas fa-exclamation-triangle"></i>Tinggi</span>';
         }
         document.getElementById('modalTingkatResikoBadge').innerHTML = resikoBadgeHtml;
 
         document.getElementById('modalSkorResiko').textContent = data.skor_resiko || '-';
-
         document.getElementById('modalPenjelasanResiko').textContent = data.penjelasan_resiko || '-';
         document.getElementById('modalRekomendasiDiet').textContent = data.rekomendasi_diet || '-';
         document.getElementById('modalRekomendasiOlahraga').textContent = data.rekomendasi_olahraga || '-';
@@ -585,17 +632,18 @@
         }
 
         switchTab('dataInput');
+        
         const modal = document.getElementById('detailModal');
         modal.classList.remove('hidden');
-        modal.classList.add('flex', 'animate-fadeIn');
-        modal.setAttribute('aria-hidden', 'false');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
     }
 
     function closeDetailModal() {
         const modal = document.getElementById('detailModal');
         modal.classList.add('hidden');
-        modal.classList.remove('flex', 'animate-fadeIn');
-        modal.setAttribute('aria-hidden', 'true');
+        modal.classList.remove('flex');
+        document.body.style.overflow = 'auto';
     }
 
     function formatDate(dateStr) {
@@ -610,8 +658,7 @@
         return date.toLocaleDateString('id-ID', options) + ' WIB';
     }
 
-    function downloadReport() {
-        // Ambil semua data riwayat
+    function previewReport() {
         const allData = Object.values(riwayatData);
         
         if (allData.length === 0) {
@@ -619,324 +666,146 @@
             return;
         }
 
-        // Buat HTML untuk laporan
+        downloadReport(); // Call existing HTML preview function
+    }
+
+    function formatDateSimple(dateStr) {
+        const date = new Date(dateStr);
+        return date.toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' });
+    }
+
+    function downloadReport() {
+        const allData = Object.values(riwayatData);
+        
+        if (allData.length === 0) {
+            alert('Tidak ada data untuk diunduh!');
+            return;
+        }
+
         let html = `
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <title>Laporan Riwayat Kesehatan</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            color: #333;
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 3px solid #15803d;
-        }
-        .header h1 {
-            color: #15803d;
-            margin: 0;
-        }
-        .header p {
-            color: #666;
-            margin: 10px 0;
-        }
-        .summary {
-            background: #f0fdf4;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            border-left: 4px solid #15803d;
-        }
-        .summary h2 {
-            color: #15803d;
-            margin-top: 0;
-        }
-        .summary-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-top: 15px;
-        }
-        .summary-item {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-        }
-        .summary-item .label {
-            font-size: 12px;
-            color: #666;
-            margin-bottom: 5px;
-        }
-        .summary-item .value {
-            font-size: 24px;
-            font-weight: bold;
-            color: #15803d;
-        }
-        .history-list {
-            margin-top: 30px;
-        }
-        .history-item {
-            background: white;
-            border: 2px solid #e5e7eb;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            page-break-inside: avoid;
-        }
-        .history-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #f3f4f6;
-        }
-        .history-date {
-            font-size: 16px;
-            font-weight: bold;
-            color: #15803d;
-        }
-        .badge {
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-        .badge-rendah {
-            background: #dcfce7;
-            color: #166534;
-        }
-        .badge-sedang {
-            background: #fef3c7;
-            color: #92400e;
-        }
-        .badge-tinggi {
-            background: #fee2e2;
-            color: #991b1b;
-        }
-        .data-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin: 15px 0;
-        }
-        .data-item {
-            background: #f9fafb;
-            padding: 10px;
-            border-radius: 6px;
-        }
-        .data-item .label {
-            font-size: 11px;
-            color: #666;
-            margin-bottom: 3px;
-        }
-        .data-item .value {
-            font-weight: bold;
-            color: #333;
-        }
-        .recommendations {
-            background: #fffbeb;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 15px;
-            border-left: 4px solid #f59e0b;
-        }
-        .recommendations h4 {
-            color: #92400e;
-            margin: 0 0 10px 0;
-            font-size: 14px;
-        }
-        .recommendations p {
-            margin: 5px 0;
-            font-size: 13px;
-            line-height: 1.6;
-        }
-        .chart-container {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 30px 0;
-            border: 2px solid #e5e7eb;
-        }
-        .chart-container h2 {
-            color: #15803d;
-            margin-top: 0;
-        }
-        .chart {
-            width: 100%;
-            height: 250px;
-            position: relative;
-            margin-top: 20px;
-        }
-        .bar-chart {
-            display: flex;
-            align-items: flex-end;
-            height: 200px;
-            gap: 10px;
-            padding: 20px 0;
-        }
-        .bar {
-            flex: 1;
-            background: linear-gradient(to top, #15803d, #22c55e);
-            border-radius: 8px 8px 0 0;
-            position: relative;
-            min-height: 20px;
-        }
-        .bar-label {
-            position: absolute;
-            bottom: -25px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            font-size: 11px;
-            color: #666;
-        }
-        .bar-value {
-            position: absolute;
-            top: -20px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            font-size: 12px;
-            font-weight: bold;
-            color: #15803d;
-        }
-        .footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 2px solid #e5e7eb;
-            text-align: center;
-            color: #666;
-            font-size: 12px;
-        }
-        @media print {
-            body { margin: 20px; }
-            .history-item { page-break-inside: avoid; }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; padding: 30px; color: #333; background: #f9fafb; }
+        .container { max-width: 1000px; margin: 0 auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header { text-align: center; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 3px solid #16a34a; }
+        .header h1 { color: #16a34a; font-size: 32px; margin-bottom: 10px; }
+        .header p { color: #666; font-size: 14px; }
+        .summary { background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%); padding: 25px; border-radius: 12px; margin-bottom: 30px; }
+        .summary h2 { color: #15803d; margin-bottom: 20px; font-size: 22px; }
+        .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .stat-card { background: white; padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .stat-label { font-size: 12px; color: #666; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .stat-value { font-size: 28px; font-weight: bold; color: #16a34a; }
+        .history-item { background: #f9fafb; border: 2px solid #e5e7eb; border-radius: 12px; padding: 25px; margin-bottom: 25px; page-break-inside: avoid; }
+        .history-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #e5e7eb; }
+        .history-date { font-size: 16px; font-weight: bold; color: #16a34a; }
+        .badge { padding: 8px 16px; border-radius: 25px; font-size: 13px; font-weight: bold; }
+        .badge-rendah { background: #dcfce7; color: #166534; }
+        .badge-sedang { background: #fef3c7; color: #92400e; }
+        .badge-tinggi { background: #fee2e2; color: #991b1b; }
+        .data-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin: 20px 0; }
+        .data-item { background: white; padding: 15px; border-radius: 8px; border-left: 3px solid #16a34a; }
+        .data-label { font-size: 11px; color: #666; margin-bottom: 5px; font-weight: 600; }
+        .data-value { font-weight: bold; color: #333; font-size: 15px; }
+        .recommendations { background: #fffbeb; padding: 20px; border-radius: 10px; margin-top: 20px; border-left: 4px solid #f59e0b; }
+        .recommendations h4 { color: #92400e; margin-bottom: 12px; font-size: 15px; }
+        .recommendations p { margin: 8px 0; font-size: 13px; line-height: 1.8; color: #666; }
+        .footer { margin-top: 50px; padding-top: 25px; border-top: 2px solid #e5e7eb; text-align: center; color: #666; font-size: 12px; }
+        @media print { body { padding: 0; background: white; } .container { box-shadow: none; } }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>📊 Laporan Riwayat Kesehatan</h1>
-        <p>Sistem Deteksi Dini Diabetes</p>
-        <p>Tanggal Cetak: ${new Date().toLocaleDateString('id-ID', { 
-            day: '2-digit', 
-            month: 'long', 
-            year: 'numeric' 
-        })}</p>
-    </div>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Laporan Riwayat Kesehatan</h1>
+            <p>Sistem Deteksi Dini Diabetes</p>
+            <p style="margin-top: 10px; font-weight: bold;">Tanggal Cetak: ${new Date().toLocaleDateString('id-ID', { 
+                day: '2-digit', 
+                month: 'long', 
+                year: 'numeric' 
+            })}</p>
+        </div>
 
-    <div class="summary">
-        <h2>📈 Ringkasan Pemeriksaan</h2>
-        <div class="summary-grid">
-            <div class="summary-item">
-                <div class="label">Total Pemeriksaan</div>
-                <div class="value">${allData.length}</div>
-            </div>
-            <div class="summary-item">
-                <div class="label">Rata-rata Gula Darah</div>
-                <div class="value">${Math.round(allData.reduce((sum, d) => sum + parseFloat(d.gula_darah_sewaktu), 0) / allData.length)} mg/dL</div>
-            </div>
-            <div class="summary-item">
-                <div class="label">Rata-rata Skor Risiko</div>
-                <div class="value">${Math.round(allData.reduce((sum, d) => sum + parseFloat(d.skor_resiko), 0) / allData.length)}%</div>
+        <div class="summary">
+            <h2>📈 Ringkasan Pemeriksaan</h2>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-label">Total Pemeriksaan</div>
+                    <div class="stat-value">${allData.length}</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Rata-rata IMT</div>
+                    <div class="stat-value">${(allData.reduce((sum, d) => sum + parseFloat(d.imt), 0) / allData.length).toFixed(1)}</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Rata-rata Skor Risiko</div>
+                    <div class="stat-value">${Math.round(allData.reduce((sum, d) => sum + parseFloat(d.skor_resiko), 0) / allData.length)}<span style="font-size: 14px; color: #666;">%</span></div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="chart-container">
-        <h2>📉 Grafik Perkembangan Gula Darah</h2>
-        <div class="bar-chart">
-            ${allData.slice(0, 10).reverse().map((d, i) => {
-                const maxValue = Math.max(...allData.map(x => parseFloat(x.gula_darah_sewaktu)));
-                const height = (parseFloat(d.gula_darah_sewaktu) / maxValue) * 100;
-                return `
-                    <div class="bar" style="height: ${height}%">
-                        <div class="bar-value">${d.gula_darah_sewaktu}</div>
-                        <div class="bar-label">${new Date(d.created_at).toLocaleDateString('id-ID', { day: '2-digit', month: 'short' })}</div>
-                    </div>
-                `;
-            }).join('')}
-        </div>
-    </div>
-
-    <div class="history-list">
-        <h2 style="color: #15803d; margin-bottom: 20px;">📋 Detail Riwayat Pemeriksaan</h2>
+        <h2 style="color: #16a34a; margin-bottom: 25px; font-size: 24px;">📋 Detail Riwayat Pemeriksaan</h2>
+        
         ${allData.map(data => `
             <div class="history-item">
                 <div class="history-header">
-                    <div class="history-date">
-                        📅 ${formatDate(data.created_at)}
-                    </div>
-                    <span class="badge badge-${data.tingkat_resiko.toLowerCase()}">
-                        Risiko ${data.tingkat_resiko}
-                    </span>
+                    <div class="history-date">📅 ${formatDate(data.created_at)}</div>
+                    <span class="badge badge-${data.tingkat_resiko.toLowerCase()}">Risiko ${data.tingkat_resiko}</span>
                 </div>
 
                 <div class="data-grid">
                     <div class="data-item">
-                        <div class="label">Status</div>
-                        <div class="value">${data.status_diabetes}</div>
+                        <div class="data-label">Status</div>
+                        <div class="data-value">${data.status_diabetes}</div>
                     </div>
                     <div class="data-item">
-                        <div class="label">Gula Darah</div>
-                        <div class="value">${data.gula_darah_sewaktu} mg/dL</div>
+                        <div class="data-label">IMT</div>
+                        <div class="data-value">${data.imt}</div>
                     </div>
                     <div class="data-item">
-                        <div class="label">Skor Risiko</div>
-                        <div class="value">${data.skor_resiko}%</div>
+                        <div class="data-label">Skor Risiko</div>
+                        <div class="data-value">${data.skor_resiko}%</div>
                     </div>
                     <div class="data-item">
-                        <div class="label">IMT</div>
-                        <div class="value">${data.imt}</div>
+                        <div class="data-label">Tingkat Risiko</div>
+                        <div class="data-value">${data.tingkat_resiko}</div>
                     </div>
                 </div>
 
                 <div class="recommendations">
-                    <h4>💡 Rekomendasi</h4>
+                    <h4>💡 Rekomendasi Kesehatan</h4>
                     <p><strong>Diet:</strong> ${data.rekomendasi_diet}</p>
                     <p><strong>Olahraga:</strong> ${data.rekomendasi_olahraga}</p>
-                    ${data.perlu_konsul === 'Ya' ? '<p style="color: #991b1b;"><strong>⚠️ Perlu Konsultasi Dokter</strong></p>' : ''}
+                    ${data.perlu_konsul === 'Ya' ? '<p style="color: #991b1b; font-weight: bold; margin-top: 10px;">⚠️ Disarankan untuk berkonsultasi dengan dokter</p>' : ''}
                 </div>
             </div>
         `).join('')}
-    </div>
 
-    <div class="footer">
-        <p><strong>Catatan:</strong> Laporan ini bersifat informatif dan tidak menggantikan konsultasi medis profesional.</p>
-        <p>Untuk informasi lebih lanjut, silakan berkonsultasi dengan tenaga kesehatan.</p>
+        <div class="footer">
+            <p><strong>⚠️ Penting:</strong> Laporan ini bersifat informatif dan tidak menggantikan diagnosis medis profesional.</p>
+            <p style="margin-top: 8px;">Untuk informasi lebih lanjut, silakan berkonsultasi dengan tenaga kesehatan.</p>
+        </div>
     </div>
 </body>
 </html>
         `;
 
-        // Buka window baru dan print
         const printWindow = window.open('', '_blank');
         printWindow.document.write(html);
         printWindow.document.close();
         
-        // Tunggu sebentar untuk load, lalu print dan download
         setTimeout(() => {
             printWindow.print();
-            
-            // Optional: Auto download as PDF (works in some browsers)
-            // printWindow.document.title = 'Laporan_Kesehatan_' + new Date().toISOString().split('T')[0];
         }, 500);
     }
 
-    function downloadDetailReport() {
-        alert('Fitur Unduh Detail Riwayat (PDF) akan segera tersedia!\n\nLaporan akan berisi:\n- Data input lengkap\n- Hasil analisis AI\n- Rekomendasi kesehatan');
-    }
-
     function printReport() {
-        alert('Fitur Cetak Laporan akan segera tersedia!\n\nAnda dapat mencetak detail riwayat kesehatan ini.');
+        window.print();
     }
 </script>
 @endpush
