@@ -66,6 +66,66 @@ class RiwayatController extends Controller
     }
 
     /**
+     * ✅ TAMBAHKAN METHOD INI - untuk fetch data riwayat via AJAX
+     */
+    public function getRiwayatData()
+    {
+        $riwayat = RiwayatKesehatan::whereHas('dataKesehatanUser', function($query) {
+                $query->where('id_user', Auth::id());
+            })
+            ->with('dataKesehatanUser')
+            ->orderBy('created_at', 'desc')
+            ->get()
+            ->mapWithKeys(function($item) {
+                return [
+                    $item->id_riwayat_kesehatan => [
+                        'id_riwayat_kesehatan' => $item->id_riwayat_kesehatan,
+                        'id_data_kesehatan_user' => $item->id_data_kesehatan_user,
+                        'created_at' => $item->created_at->toIso8601String(), // Format untuk JavaScript
+                        
+                        // Data dari data_kesehatan_user
+                        'nama' => $item->dataKesehatanUser->nama,
+                        'usia' => $item->dataKesehatanUser->usia,
+                        'jenis_kelamin' => $item->dataKesehatanUser->jenis_kelamin == 1 || $item->dataKesehatanUser->jenis_kelamin == 'Laki-laki' 
+                            ? 'Laki-Laki' 
+                            : 'Perempuan',
+                        'berat_badan' => $item->dataKesehatanUser->berat_badan,
+                        'tinggi_badan' => $item->dataKesehatanUser->tinggi_badan,
+                        'imt' => $item->dataKesehatanUser->imt,
+                        
+                        // Data gaya hidup
+                        'keluarga_diabetes' => $this->formatYaTidak($item->keluarga_diabetes),
+                        'merokok' => $this->formatYaTidak($item->merokok),
+                        'minum_alkohol' => $this->formatYaTidak($item->minum_alkohol),
+                        'riwayat_hipertensi' => $this->formatYaTidak($item->riwayat_hipertensi),
+                        'riwayat_obesitas' => $this->formatYaTidak($item->riwayat_obesitas),
+                        'olahraga' => $this->formatOlahraga($item->olahraga),
+                        'pola_makan' => $this->formatPolaMakan($item->pola_makan),
+                        
+                        // Gejala
+                        'sering_buang_air_kecil_malam' => $this->formatGejala($item->sering_buang_air_kecil_malam),
+                        'sering_lapar' => $this->formatGejala($item->sering_lapar),
+                        'pandangan_kabur' => $this->formatGejala($item->pandangan_kabur),
+                        
+                        // Hasil analisis AI
+                        'tingkat_resiko' => $item->tingkat_resiko,
+                        'skor_resiko' => $item->skor_resiko,
+                        'status_diabetes' => $item->status_diabetes,
+                        'penjelasan_resiko' => $item->penjelasan_resiko,
+                        'rekomendasi_diet' => $item->rekomendasi_diet,
+                        'rekomendasi_olahraga' => $item->rekomendasi_olahraga,
+                        'perubahan_gaya_hidup' => $item->perubahan_gaya_hidup,
+                        'tips_pencegahan' => $item->tips_pencegahan,
+                        'perlu_konsul' => $item->perlu_konsul,
+                        'pesan_konsultasi' => $item->pesan_konsultasi,
+                    ]
+                ];
+            });
+
+        return response()->json($riwayat);
+    }
+
+    /**
      * Format field Ya/Tidak
      * Menangani nilai yang sudah string "Ya"/"Tidak" atau masih 1/0
      */

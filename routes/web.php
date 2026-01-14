@@ -39,7 +39,7 @@ Route::get('/forgot-password', [AuthController::class, 'showForgotPassword'])
 | USER ROUTES (WAJIB LOGIN)
 |--------------------------------------------------------------------------
 */
-Route::middleware('auth', 'role.redirect' )->group(function () {
+Route::middleware('auth', 'role.redirect')->group(function () {
 
     // Logout
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -74,6 +74,8 @@ Route::middleware('auth', 'role.redirect' )->group(function () {
         Route::get('/', [RiwayatController::class, 'index'])->name('index');
     });
 
+    // ✅ Route untuk fetch data riwayat (PINDAHKAN KE LUAR PREFIX)
+    Route::get('/riwayat-data', [RiwayatController::class, 'getRiwayatData'])->name('riwayat.data');
 });
 
 // Dataset (tetap PUBLIC)
@@ -107,5 +109,4 @@ Route::prefix('admin')
             Route::put('/update/{id}', [UserManagementController::class, 'update'])->name('update');
             Route::delete('/destroy/{id}', [UserManagementController::class, 'destroy'])->name('destroy');
         });
-
 });

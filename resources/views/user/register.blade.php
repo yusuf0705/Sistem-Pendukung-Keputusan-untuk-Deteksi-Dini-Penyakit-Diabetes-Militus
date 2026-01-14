@@ -76,6 +76,28 @@
                 @enderror
             </div>
 
+            {{-- Role (Hidden by default, show dengan ?admin=1 di URL) --}}
+            @if(request()->get('admin') == '1')
+            <div>
+                <label for="role" class="block text-sm font-medium text-gray-700">
+                    Role
+                </label>
+                <select
+                    id="role"
+                    name="role"
+                    class="w-full mt-1 p-2 rounded-md focus:outline-none focus:ring-1
+                    {{ $errors->has('role') ? 'border-red-500 focus:ring-red-500' : 'border focus:ring-custom-green' }}"
+                >
+                    <option value="pengguna" {{ old('role') == 'pengguna' ? 'selected' : '' }}>Pengguna</option>
+                    <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+                </select>
+
+                @error('role')
+                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+            @endif
+
             {{-- Password --}}
             <div>
                 <label for="password" class="block text-sm font-medium text-gray-700">

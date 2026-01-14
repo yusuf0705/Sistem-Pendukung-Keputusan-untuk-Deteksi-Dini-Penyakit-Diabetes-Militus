@@ -19,7 +19,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        // role sengaja tidak dimasukkan agar default migration dipakai
+        'role', // ✅ Tambahkan ini
     ];
 
     protected $hidden = [
